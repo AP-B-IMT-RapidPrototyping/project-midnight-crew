@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://ctr683cecmun4"]
+
+[sub_resource type="Gradient" id="Gradient_2kxai"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yh2uj"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_30qvf"]
+noise = SubResource("FastNoiseLite_yh2uj")
+color_ramp = SubResource("Gradient_2kxai")
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_wunu3"]
+energy_multiplier = 0.0
+night_sky = SubResource("NoiseTexture2D_30qvf")
+
+[sub_resource type="Sky" id="Sky_3dk0f"]
+sky_material = SubResource("PhysicalSkyMaterial_wunu3")
+
+[sub_resource type="Environment" id="Environment_shg2y"]
+background_mode = 2
+sky = SubResource("Sky_3dk0f")
+
+[sub_resource type="BoxMesh" id="BoxMesh_2kxai"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yh2uj"]
+
+[node name="Test" type="Node3D" unique_id=239861615]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1211001635]
+environment = SubResource("Environment_shg2y")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=701482830]
+transform = Transform3D(4.862057, 0, 0, 0, 0.22431874, 0, 0, 0, 5.278054, 0, 0, 0)
+mesh = SubResource("BoxMesh_2kxai")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=411254825]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=594076735]
+shape = SubResource("BoxShape3D_yh2uj")
