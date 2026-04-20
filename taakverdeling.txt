@@ -1,9 +1,9 @@
 Jens:
-	-abc
+	-Map building
 Quinten:
-	-abc
+	-shooting
 Leon:
-	-abc
+	-player/kies iets
 Lukas:
-	-abc
+	-npc spawnen en bewegen
 
