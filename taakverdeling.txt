@@ -3,7 +3,7 @@ Jens:
 Quinten:
 	-shooting
 Leon:
-	-player/kies iets
+	-player/light/omgeving
 Lukas:
 	-npc spawnen en bewegen
 
