@@ -1,19 +1,11 @@
 [gd_scene format=3 uid="uid://ctr683cecmun4"]
 
-[sub_resource type="Gradient" id="Gradient_2kxai"]
+[ext_resource type="PackedScene" uid="uid://c7vx3wkkgs0kj" path="res://Scenes/Leon/Player.tscn" id="1_yh2uj"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_yh2uj"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_30qvf"]
-noise = SubResource("FastNoiseLite_yh2uj")
-color_ramp = SubResource("Gradient_2kxai")
-
-[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_wunu3"]
-energy_multiplier = 0.0
-night_sky = SubResource("NoiseTexture2D_30qvf")
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_30qvf"]
 
 [sub_resource type="Sky" id="Sky_3dk0f"]
-sky_material = SubResource("PhysicalSkyMaterial_wunu3")
+sky_material = SubResource("ProceduralSkyMaterial_30qvf")
 
 [sub_resource type="Environment" id="Environment_shg2y"]
 background_mode = 2
@@ -36,3 +28,6 @@ mesh = SubResource("BoxMesh_2kxai")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=594076735]
 shape = SubResource("BoxShape3D_yh2uj")
+
+[node name="Player" parent="." unique_id=375722602 instance=ExtResource("1_yh2uj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.567976, 0, 0.28034496)
