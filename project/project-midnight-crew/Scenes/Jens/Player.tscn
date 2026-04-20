@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c7vx3wkkgs0kj"]
+
+[ext_resource type="Script" uid="uid://bctu1swcu68y2" path="res://Scripts/Jens/PlayerController.cs" id="1_bhcow"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6msv3"]
+
+[node name="Player" type="CharacterBody3D" unique_id=375722602 node_paths=PackedStringArray("_aimRaycast", "_camera")]
+script = ExtResource("1_bhcow")
+_aimRaycast = NodePath("Camera3D/AimRaycast")
+_camera = NodePath("Camera3D")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1141483306]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="WeaponMount" type="Node3D" parent="Camera3D" unique_id=674083429]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34981155, -0.17893219, -1.0413011)
+
+[node name="AimRaycast" type="RayCast3D" parent="Camera3D" unique_id=899564986]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=578253121]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_6msv3")
