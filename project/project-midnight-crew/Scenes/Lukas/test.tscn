@@ -1,3 +1,124 @@
 [gd_scene format=3 uid="uid://bfu6t3rh74k6n"]
 
-[node name="Test" type="Node3D" unique_id=891299672]
+[ext_resource type="PackedScene" uid="uid://c7m3rrdu0s8em" path="res://Assets/Characters-kit/Models/GLB format/character-b.glb" id="1_wkhql"]
+[ext_resource type="PackedScene" uid="uid://cx82vix7ypkyf" path="res://Assets/Characters-kit/Models/GLB format/character-c.glb" id="2_srvjw"]
+[ext_resource type="PackedScene" uid="uid://dfo42mlp0bv6s" path="res://Assets/Characters-kit/Models/GLB format/character-d.glb" id="3_c7suf"]
+[ext_resource type="PackedScene" uid="uid://bya1u1v0hx61t" path="res://Assets/Characters-kit/Models/GLB format/character-e.glb" id="4_it1eo"]
+[ext_resource type="PackedScene" uid="uid://daykr4iacqol6" path="res://Assets/Characters-kit/Models/GLB format/character-f.glb" id="5_28d7m"]
+[ext_resource type="PackedScene" uid="uid://d24fxdxcixhia" path="res://Assets/Characters-kit/Models/GLB format/character-g.glb" id="6_sgs6c"]
+[ext_resource type="PackedScene" uid="uid://bpqvgtmsf4m1v" path="res://Assets/Characters-kit/Models/GLB format/character-h.glb" id="7_lalu0"]
+[ext_resource type="PackedScene" uid="uid://olksmf7jf50" path="res://Assets/Characters-kit/Models/GLB format/character-i.glb" id="8_aulwl"]
+[ext_resource type="PackedScene" uid="uid://d8ivvbdu8a5" path="res://Assets/Characters-kit/Models/GLB format/character-j.glb" id="9_s0hsw"]
+[ext_resource type="PackedScene" uid="uid://dgmfv14076mv7" path="res://Assets/Characters-kit/Models/GLB format/character-k.glb" id="10_cmtrq"]
+[ext_resource type="PackedScene" uid="uid://cuf5hawme4srp" path="res://Assets/Characters-kit/Models/GLB format/character-l.glb" id="11_cfxsd"]
+[ext_resource type="PackedScene" uid="uid://dbunqj3tir46d" path="res://Assets/Characters-kit/Models/GLB format/character-m.glb" id="12_w87r8"]
+[ext_resource type="PackedScene" uid="uid://cd6vbodxkk6ae" path="res://Assets/Characters-kit/Models/GLB format/character-n.glb" id="13_u4l3t"]
+[ext_resource type="PackedScene" uid="uid://b5pvutbmyngkk" path="res://Assets/Characters-kit/Models/GLB format/character-o.glb" id="14_vhhn5"]
+[ext_resource type="PackedScene" uid="uid://f0he5s18cuci" path="res://Assets/Characters-kit/Models/GLB format/character-p.glb" id="15_0hqyx"]
+[ext_resource type="PackedScene" uid="uid://by4okvmek3r8g" path="res://Assets/Characters-kit/Models/GLB format/character-q.glb" id="16_l1rp3"]
+[ext_resource type="PackedScene" uid="uid://brcde7i7eclfc" path="res://Assets/Characters-kit/Models/GLB format/character-r.glb" id="17_rmbes"]
+[ext_resource type="PackedScene" uid="uid://bq6vqnbnghox" path="res://Assets/Characters-kit/Models/GLB format/character-a.glb" id="18_0kddg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_fp833"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ghe5m"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fp833"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ghe5m"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_fp833"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wkhql"]
+
+[node name="Character spawn test" type="Node3D" unique_id=891299672]
+
+[node name="Vloer2" type="MeshInstance3D" parent="." unique_id=1099764906]
+transform = Transform3D(50, 0, 0, 0, 0.243, 0, 0, 0, 50, 0, 0, 0)
+mesh = SubResource("BoxMesh_fp833")
+
+[node name="Collision" type="StaticBody3D" parent="Vloer2" unique_id=114462083]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Vloer2/Collision" unique_id=564756658]
+shape = SubResource("BoxShape3D_ghe5m")
+
+[node name="Bal" type="RigidBody3D" parent="." unique_id=1900400700]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8825247, 0)
+physics_material_override = SubResource("PhysicsMaterial_fp833")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bal" unique_id=1802194004]
+shape = SubResource("SphereShape3D_ghe5m")
+
+[node name="Bal" type="MeshInstance3D" parent="Bal" unique_id=370084615]
+mesh = SubResource("SphereMesh_fp833")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1249567827]
+transform = Transform3D(1, 0, 0, 0, 0.96190375, 0.2733885, 0, -0.2733885, 0.96190375, -2.8277464, 4.9534063, 29.529716)
+fov = 42.5
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=585258204]
+transform = Transform3D(1, 0, 0, 0, -0.33740732, 0.94135875, 0, -0.94135875, -0.33740732, 0, 0, 0)
+shadow_enabled = true
+
+[node name="NPC\'s" type="Node3D" parent="." unique_id=1311558092]
+
+[node name="character-c2" parent="NPC\'s" unique_id=35239154 instance=ExtResource("2_srvjw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3358445, 0, 0)
+
+[node name="character-d2" parent="NPC\'s" unique_id=641361404 instance=ExtResource("3_c7suf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3608289, 0, 0)
+
+[node name="character-e2" parent="NPC\'s" unique_id=1611133165 instance=ExtResource("4_it1eo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.187854, 0, 0)
+
+[node name="character-f2" parent="NPC\'s" unique_id=25224614 instance=ExtResource("5_28d7m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4610043, 0, 0)
+
+[node name="character-g2" parent="NPC\'s" unique_id=565100675 instance=ExtResource("6_sgs6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.600312, 0, 0)
+
+[node name="character-h2" parent="NPC\'s" unique_id=1116497908 instance=ExtResource("7_lalu0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.708122, 0, 0)
+
+[node name="character-i2" parent="NPC\'s" unique_id=1326021196 instance=ExtResource("8_aulwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.08647, 0, 0)
+
+[node name="character-j2" parent="NPC\'s" unique_id=1368296574 instance=ExtResource("9_s0hsw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.430024, 0, 0)
+
+[node name="character-k2" parent="NPC\'s" unique_id=1402365084 instance=ExtResource("10_cmtrq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.983312, 0, 0)
+
+[node name="character-l2" parent="NPC\'s" unique_id=1394607674 instance=ExtResource("11_cfxsd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5054164, 0, 0)
+
+[node name="character-m2" parent="NPC\'s" unique_id=432340759 instance=ExtResource("12_w87r8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.244915, 0, 0)
+
+[node name="character-n2" parent="NPC\'s" unique_id=1622108599 instance=ExtResource("13_u4l3t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.442721, 0, 0)
+
+[node name="character-o2" parent="NPC\'s" unique_id=1487430902 instance=ExtResource("14_vhhn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.182232, 0, 0)
+
+[node name="character-p2" parent="NPC\'s" unique_id=1470791922 instance=ExtResource("15_0hqyx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.467274, 0, 0)
+
+[node name="character-q2" parent="NPC\'s" unique_id=1885241899 instance=ExtResource("16_l1rp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.191896, 0, 0)
+
+[node name="character-r2" parent="NPC\'s" unique_id=1686674738 instance=ExtResource("17_rmbes")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3434391, 0, 0)
+
+[node name="character-a2" parent="NPC\'s" unique_id=212070329 groups=["NPC"] instance=ExtResource("18_0kddg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.325027, 0, 0)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1514738958]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.764254)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=2035594594]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5603417, 0)
+shape = SubResource("CapsuleShape3D_wkhql")
+
+[node name="character-b2" parent="CharacterBody3D/CollisionShape3D" unique_id=7807842 instance=ExtResource("1_wkhql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9966272, 0)
