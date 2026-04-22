@@ -18,6 +18,10 @@ config/icon="res://icon.svg"
 
 project/assembly_name="Project Midnight Crew"
 
+[global_group]
+
+NPC=""
+
 [input]
 
 move_left={
