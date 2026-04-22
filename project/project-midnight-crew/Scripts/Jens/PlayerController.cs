@@ -5,11 +5,14 @@ public partial class PlayerController : CharacterBody3D
 {
 
 	
-	[Export] private RayCast3D _aimRaycast;
+	[Export] private RayCast3D aimRaycast;
 	[Signal]
     public delegate void ShootEventHandler(RayCast3D raycast);
-	[Export] private Camera3D _camera;
-	[Export] private float _mouseSensitivity = 0.003f;
+	[Export] private Camera3D camera;
+	[Export] private Vector3 cameraPosition;
+	[Export] private float mouseSensitivity = 0.003f;
+
+	
 	private float _Speed = 5.0f;
 	private float _JumpVelocity = 4.5f;
 
@@ -18,8 +21,8 @@ public partial class PlayerController : CharacterBody3D
 		if (Input.IsActionJustPressed("shoot"))
     {
         // Stuur de raycast naar het wapen
-        EmitSignal(SignalName.Shoot, _aimRaycast);
-        GD.Print($"Hit: {_aimRaycast.GetCollisionPoint()}");
+        EmitSignal(SignalName.Shoot, aimRaycast);
+        GD.Print($"Hit: {aimRaycast.GetCollisionPoint()}");
     }
 	}
 
@@ -28,15 +31,15 @@ public partial class PlayerController : CharacterBody3D
         if (@event is InputEventMouseMotion mouseMotion)
 		{
 			// Horizontal rotation: roteer de HELE speler (Y-axis)
-			this.RotateY(-mouseMotion.Relative.X * _mouseSensitivity);
+			this.RotateY(-mouseMotion.Relative.X * mouseSensitivity);
 
 			// Vertical rotation: roteer alleen de CAMERA (X-axis)
-            _camera.RotateX(-mouseMotion.Relative.Y * _mouseSensitivity);
+            camera.RotateX(-mouseMotion.Relative.Y * mouseSensitivity);
 
 			// Voorkom dat de camera omdraait (clamp tussen -86° en +86°, of -1.5 en 1.5 radialen)
-    		Vector3 cameraRotation = _camera.Rotation;
+    		Vector3 cameraRotation = camera.Rotation;
     		cameraRotation.X = Mathf.Clamp(cameraRotation.X, -1.5f, 1.5f);
-    		_camera.Rotation = cameraRotation;
+    		camera.Rotation = cameraRotation;
 		}
     }
 

@@ -1,0 +1,202 @@
+[gd_scene format=3 uid="uid://dpm3gftbkc0rn"]
+
+[ext_resource type="Script" uid="uid://cof4lepsnnma6" path="res://Scripts/Quinten/Sniper.cs" id="1_mijjs"]
+[ext_resource type="PackedScene" uid="uid://dj2t3qts74muw" path="res://Assets/sniper_rifle.glb" id="2_vcee5"]
+[ext_resource type="Script" uid="uid://bctu1swcu68y2" path="res://Scripts/Jens/PlayerController.cs" id="3_jiq7k"]
+[ext_resource type="Script" uid="uid://ds85ifwj1gr1x" path="res://Scripts/Quinten/Aim.cs" id="4_qm3g2"]
+[ext_resource type="Script" uid="uid://14227kpe2ble" path="res://Scripts/Quinten/Targets.cs" id="5_af112"]
+[ext_resource type="PackedScene" uid="uid://bq6vqnbnghox" path="res://Assets/Characters-kit/Models/GLB format/character-a.glb" id="6_447yy"]
+[ext_resource type="PackedScene" uid="uid://dsqrf0633vjyk" path="res://Assets/City_Kit/Models/GLB format/building-skyscraper-a.glb" id="7_stsrm"]
+[ext_resource type="Script" uid="uid://b8s7c8vpd1xus" path="res://Scripts/Quinten/Lightning.cs" id="8_xwsit"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_nicaj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fmn6n"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_urtjc"]
+sky_top_color = Color(0.15855417, 0.19773602, 0.24993038, 1)
+sky_horizon_color = Color(0.11013468, 0.11323301, 0.11943654, 1)
+sky_cover_modulate = Color(0.12591085, 0.12591085, 0.12591082, 1)
+ground_horizon_color = Color(0.16362688, 0.16769296, 0.17583418, 1)
+
+[sub_resource type="Sky" id="Sky_rm4hi"]
+sky_material = SubResource("ProceduralSkyMaterial_urtjc")
+
+[sub_resource type="Environment" id="Environment_6bv4v"]
+background_mode = 2
+sky = SubResource("Sky_rm4hi")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6msv3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_urtjc"]
+size = Vector3(1.6055908, 2.6975098, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rm4hi"]
+size = Vector3(1.3791504, 2.822464, 1.2973022)
+
+[node name="SniperTest" type="Node3D" unique_id=1663795418]
+
+[node name="floor" type="Node3D" parent="." unique_id=143612845]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor" unique_id=997553857]
+transform = Transform3D(300, 0, 0, 0, 0.1, 0, 0, 0, 300, 0, 0, 0)
+mesh = SubResource("BoxMesh_nicaj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor/MeshInstance3D" unique_id=674937764]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor/MeshInstance3D/StaticBody3D" unique_id=1739400608]
+shape = SubResource("BoxShape3D_fmn6n")
+
+[node name="sniper" type="Node3D" parent="." unique_id=142128290 node_paths=PackedStringArray("fireRateTimer", "muzzle", "weaponMount")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -119.51181, 11.424179, 0)
+script = ExtResource("1_mijjs")
+fireRateTimer = NodePath("FireRateTimer")
+muzzle = NodePath("Marker3D")
+weaponMount = NodePath("../Player/Camera3D/WeaponMount")
+
+[node name="sniper" parent="sniper" unique_id=1080428924 instance=ExtResource("2_vcee5")]
+
+[node name="Marker3D" type="Marker3D" parent="sniper" unique_id=884870607]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.01676941, 0.46613854)
+
+[node name="FireRateTimer" type="Timer" parent="sniper" unique_id=3318789]
+one_shot = true
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=375722602 node_paths=PackedStringArray("aimRaycast", "camera")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 83.50294, 144.1242, 0)
+script = ExtResource("3_jiq7k")
+aimRaycast = NodePath("Camera3D/AimRaycast")
+camera = NodePath("Camera3D")
+cameraPosition = Vector3(0, 1.5, -50)
+
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=1141483306 node_paths=PackedStringArray("camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+environment = SubResource("Environment_6bv4v")
+near = 0.1
+far = 999.93
+script = ExtResource("4_qm3g2")
+camera = NodePath(".")
+
+[node name="WeaponMount" type="Node3D" parent="Player/Camera3D" unique_id=674083429]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.3498116, -0.17893219, -0.32334614)
+
+[node name="AimRaycast" type="RayCast3D" parent="Player/Camera3D" unique_id=899564986]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+target_position = Vector3(0, 0, -300)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=578253121]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_6msv3")
+
+[node name="target" type="Node3D" parent="." unique_id=191793007]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3125439, 1.4494085, -12.775198)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="target" unique_id=571773254 node_paths=PackedStringArray("_root")]
+script = ExtResource("5_af112")
+_root = NodePath("..")
+
+[node name="character-a3" parent="target/RigidBody3D" unique_id=312559708 instance=ExtResource("6_447yy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9392729, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="target/RigidBody3D" unique_id=874976892]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0012817383, 0.40093708, 0)
+shape = SubResource("BoxShape3D_urtjc")
+
+[node name="target2" type="Node3D" parent="." unique_id=434927636]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2971525, 1.4494085, -12.775198)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="target2" unique_id=1482109549 node_paths=PackedStringArray("_root")]
+script = ExtResource("5_af112")
+_root = NodePath("..")
+
+[node name="character-a3" parent="target2/RigidBody3D" unique_id=1143640283 instance=ExtResource("6_447yy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9392729, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="target2/RigidBody3D" unique_id=1794376434]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0012817383, 0.40093708, 0)
+shape = SubResource("BoxShape3D_urtjc")
+
+[node name="target3" type="Node3D" parent="." unique_id=722703048]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5022593, 1.4494085, -12.775198)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="target3" unique_id=1867098660 node_paths=PackedStringArray("_root")]
+script = ExtResource("5_af112")
+_root = NodePath("..")
+
+[node name="character-a3" parent="target3/RigidBody3D" unique_id=1542385463 instance=ExtResource("6_447yy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9392729, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="target3/RigidBody3D" unique_id=1214195436]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0012817383, 0.40093708, 0)
+shape = SubResource("BoxShape3D_urtjc")
+
+[node name="target4" type="Node3D" parent="." unique_id=916448178]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.27732, 1.7565498, -48.98925)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="target4" unique_id=517682255 node_paths=PackedStringArray("_root")]
+script = ExtResource("5_af112")
+_root = NodePath("..")
+
+[node name="character-a3" parent="target4/RigidBody3D" unique_id=923805056 instance=ExtResource("6_447yy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9392729, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="target4/RigidBody3D" unique_id=703617822]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0012817383, 0.40093708, 0)
+shape = SubResource("BoxShape3D_urtjc")
+
+[node name="Control" type="Control" parent="." unique_id=890376996]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1446075885]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1787658523]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=835255226]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="buildings" type="Node3D" parent="." unique_id=1041058820]
+
+[node name="skyscraper" parent="buildings" unique_id=464591979 instance=ExtResource("7_stsrm")]
+transform = Transform3D(-2.1855694e-06, 0, 50, 0, 50, 0, -50, 0, -2.1855694e-06, 114.35627, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="buildings/skyscraper" unique_id=1045914909]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="buildings/skyscraper/StaticBody3D" unique_id=2008484546]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0013427734, 1.4542618, 0.038238525)
+shape = SubResource("BoxShape3D_rm4hi")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1533583326 node_paths=PackedStringArray("countdown")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 200.12003, -2.164578e-06)
+visible = false
+light_energy = 200.0
+spot_range = 331.10312
+spot_angle = 45.875835
+script = ExtResource("8_xwsit")
+countdown = NodePath("countdown")
+
+[node name="countdown" type="Timer" parent="SpotLight3D" unique_id=386959484]
+one_shot = true
+
+[connection signal="Shoot" from="Player" to="sniper" method="OnShoot"]
