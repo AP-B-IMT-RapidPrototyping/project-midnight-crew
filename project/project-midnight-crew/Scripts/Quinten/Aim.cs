@@ -7,6 +7,7 @@ public partial class Aim : Camera3D
 {
 	private int StandardFov = 75;
 	[Export] private Camera3D camera;
+	[Export] TextureRect Scope;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -17,12 +18,15 @@ public partial class Aim : Camera3D
 	{
 		if (Input.IsActionPressed("aim"))
 		{
-				camera.Fov = 15;
+			camera.Fov = 15;
+			Scope.Visible = true;
+
 	
 		}
 		else
 		{
 			camera.Fov = 75; 
+			Scope.Visible = false;
 		}
 	}
 }

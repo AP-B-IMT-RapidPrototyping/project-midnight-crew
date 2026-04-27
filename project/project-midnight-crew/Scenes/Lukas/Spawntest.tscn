@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://bfu6t3rh74k6n"]
 
-[ext_resource type="PackedScene" uid="uid://bq6vqnbnghox" path="res://Assets/Characters-kit/Models/GLB format/character-a.glb" id="1_fqdi5"]
+[ext_resource type="Script" uid="uid://bd62ln2wxnyiu" path="res://Scripts/Lukas/NPC.cs" id="1_58jwk"]
+[ext_resource type="PackedScene" uid="uid://olksmf7jf50" path="res://Assets/Characters-kit/Models/GLB format/character-i.glb" id="10_b56wu"]
+[ext_resource type="Script" uid="uid://be6r2bfqo23gx" path="res://Scripts/Lukas/Bliksem.cs" id="12_e1ee1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_58jwk"]
 radius = 0.79296875
@@ -14,32 +16,97 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fqdi5"]
 
+[sub_resource type="Environment" id="Environment_e1ee1"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(0.25350276, 0.39236546, 1, 1)
+ambient_light_energy = 0.01
+
 [node name="SpawnTest" type="Node3D" unique_id=891299672]
 
 [node name="NPC\'s" type="Node3D" parent="." unique_id=763268545]
 
-[node name="npc" type="NavigationAgent3D" parent="NPC\'s" unique_id=1922938804 groups=["NPC"]]
+[node name="NPC1" type="CharacterBody3D" parent="NPC\'s" unique_id=1863660032]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.780033, 13.225464, -3.9424114)
+script = ExtResource("1_58jwk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC\'s/NPC1" unique_id=1647034278]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3533707, 0)
+shape = SubResource("CapsuleShape3D_58jwk")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="NPC\'s/NPC1" unique_id=218761326 groups=["NPC"]]
 avoidance_enabled = true
 use_3d_avoidance = true
 
-[node name="NPC1body" type="CharacterBody3D" parent="NPC\'s/npc" unique_id=1105627458]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.6207256, 0)
+[node name="character-i2" parent="NPC\'s/NPC1" unique_id=1326021196 instance=ExtResource("10_b56wu")]
 
-[node name="character-a2" parent="NPC\'s/npc/NPC1body" unique_id=212070329 instance=ExtResource("1_fqdi5")]
+[node name="NPC2" type="CharacterBody3D" parent="NPC\'s" unique_id=1998738446]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.780033, 13.225464, 3.0857143)
+script = ExtResource("1_58jwk")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC\'s/npc/NPC1body" unique_id=1838466319]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC\'s/NPC2" unique_id=70252507]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3533707, 0)
 shape = SubResource("CapsuleShape3D_58jwk")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="NPC\'s/NPC2" unique_id=632068031 groups=["NPC"]]
+avoidance_enabled = true
+use_3d_avoidance = true
+
+[node name="character-i2" parent="NPC\'s/NPC2" unique_id=859328141 instance=ExtResource("10_b56wu")]
+
+[node name="NPC3" type="CharacterBody3D" parent="NPC\'s" unique_id=338982765]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0735531, 13.225464, -3.9424114)
+script = ExtResource("1_58jwk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC\'s/NPC3" unique_id=1153736289]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3533707, 0)
+shape = SubResource("CapsuleShape3D_58jwk")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="NPC\'s/NPC3" unique_id=1615989712 groups=["NPC"]]
+avoidance_enabled = true
+use_3d_avoidance = true
+
+[node name="character-i2" parent="NPC\'s/NPC3" unique_id=1303482352 instance=ExtResource("10_b56wu")]
+
+[node name="NPC4" type="CharacterBody3D" parent="NPC\'s" unique_id=176378888]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.093373, 13.225464, 4.3154497)
+script = ExtResource("1_58jwk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC\'s/NPC4" unique_id=1752272583]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3533707, 0)
+shape = SubResource("CapsuleShape3D_58jwk")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="NPC\'s/NPC4" unique_id=814603498 groups=["NPC"]]
+avoidance_enabled = true
+use_3d_avoidance = true
+
+[node name="character-i2" parent="NPC\'s/NPC4" unique_id=935651636 instance=ExtResource("10_b56wu")]
+
+[node name="NPC5" type="CharacterBody3D" parent="NPC\'s" unique_id=31401734]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4575806, 13.225464, 0.115365505)
+script = ExtResource("1_58jwk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC\'s/NPC5" unique_id=1273722869]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3533707, 0)
+shape = SubResource("CapsuleShape3D_58jwk")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="NPC\'s/NPC5" unique_id=640756561 groups=["NPC"]]
+avoidance_enabled = true
+use_3d_avoidance = true
+
+[node name="character-i2" parent="NPC\'s/NPC5" unique_id=2060508432 instance=ExtResource("10_b56wu")]
 
 [node name="Environment" type="Node3D" parent="." unique_id=1229227751]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=85170275]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.1222677, 7.8866625)
+transform = Transform3D(1, 0, 0, 0, 0.85773313, 0.5140953, 0, -0.5140953, 0.85773313, 0, 20.044071, 43.403862)
+fov = 33.9
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=963640432]
 transform = Transform3D(1, 0, 0, 0, 0.74747354, 0.66429156, 0, -0.66429156, 0.74747354, 0, 0, 3.1209145)
-light_energy = 0.429
+light_energy = 0.0
 shadow_enabled = true
+script = ExtResource("12_e1ee1")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1948730834]
 navigation_mesh = SubResource("NavigationMesh_fqdi5")
@@ -52,3 +119,6 @@ mesh = SubResource("BoxMesh_t7lue")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/FloorMesh/StaticBody3D" unique_id=1240509515]
 shape = SubResource("BoxShape3D_fqdi5")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=721338255]
+environment = SubResource("Environment_e1ee1")
