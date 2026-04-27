@@ -39,42 +39,52 @@ public partial class Sniper : Node3D
 
 	public void ShowFlash(Vector3 start, Vector3 end)
 	{
-		// Maak een cilinder mesh voor de beam
+        // Maak een cilinder mesh voor de beam
         var beamMesh = new CylinderMesh();
         beamMesh.TopRadius = 0.01f;
         beamMesh.BottomRadius = 0.01f;
         beamMesh.Height = 1.0f;
 
-		// Maak een unshaded material in cyan kleur
+        // Maak een unshaded material (belangrijk: Transparantie aanzetten voor vervagen)
         var material = new StandardMaterial3D();
         material.ShadingMode = BaseMaterial3D.ShadingModeEnum.Unshaded;
         material.AlbedoColor = Colors.Yellow;
+        material.Transparency = BaseMaterial3D.TransparencyEnum.Alpha; // Nodig voor vervagen
 
-        // Maak een MeshInstance3D met de mesh en material
-		var beamInstance = new MeshInstance3D
+        // Maak een MeshInstance3D
+        var beamInstance = new MeshInstance3D
         {
             Mesh = beamMesh,
             MaterialOverride = material,
             CastShadow = GeometryInstance3D.ShadowCastingSetting.Off
         };
 
-        // Voeg toe aan de scene root
         GetTree().Root.AddChild(beamInstance);
 
-		// Bereken richting en afstand
+        // Positie en rotatie berekeningen
         Vector3 direction = end - start;
         float distance = direction.Length();
-
-		// Positioneer in het midden tussen start en einde
         beamInstance.GlobalPosition = start + direction / 2;
-        // Roteer zodat de beam naar het eindpunt wijst
         beamInstance.LookAt(end, Vector3.Up);
-        // Draai 90 graden zodat de cilinder horizontaal ligt
         beamInstance.RotateObjectLocal(Vector3.Right, Mathf.Pi / 2);
-        // Schaal de beam op basis van de afstand
         beamInstance.Scale = new Vector3(1, distance, 1);
 
-		// Verwijder de beam na 0.05 seconden
-        GetTree().CreateTimer(0.05).Timeout += () => beamInstance.QueueFree();
+        // --- EASE OUT EFFECT MET TWEEN ---
+        float duration = 0.2f; // Iets langer dan 0.05 voor een zichtbaar effect
+        var tween = GetTree().CreateTween();
+
+        // We animeren twee eigenschappen tegelijk voor een mooi effect:
+        // 1. De dikte (Scale X en Z) gaat naar 0
+        tween.Parallel().TweenProperty(beamInstance, "scale", new Vector3(0, distance, 0), duration)
+            .SetTrans(Tween.TransitionType.Expo)
+            .SetEase(Tween.EaseType.Out);
+
+        // 2. De kleur vervaagt (Alpha naar 0)
+        tween.Parallel().TweenProperty(material, "albedo_color:a", 0.0f, duration)
+            .SetTrans(Tween.TransitionType.Expo)
+            .SetEase(Tween.EaseType.Out);
+
+        // Verwijder de beam zodra de animatie klaar is
+        tween.Finished += () => beamInstance.QueueFree();
 	}
 }
