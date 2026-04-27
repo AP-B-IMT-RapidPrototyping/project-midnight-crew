@@ -21,7 +21,6 @@ public partial class Aim : Camera3D
 			camera.Fov = 15;
 			Scope.Visible = true;
 
-	
 		}
 		else
 		{
