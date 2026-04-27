@@ -70,14 +70,13 @@ aimRaycast = NodePath("Camera3D/AimRaycast")
 camera = NodePath("Camera3D")
 cameraPosition = Vector3(0, 1.5, -50)
 
-[node name="Camera3D" type="Camera3D" parent="Player" unique_id=1141483306 node_paths=PackedStringArray("camera", "Scope")]
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=1141483306 node_paths=PackedStringArray("camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 environment = SubResource("Environment_6bv4v")
 near = 0.1
 far = 999.93
 script = ExtResource("4_qm3g2")
 camera = NodePath(".")
-Scope = NodePath("../../scope/scope")
 
 [node name="WeaponMount" type="Node3D" parent="Player/Camera3D" unique_id=674083429]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.3498116, -0.17893219, -0.32334614)
