@@ -229,9 +229,9 @@ mesh = SubResource("BoxMesh_qf2jt")
 shape = SubResource("BoxShape3D_y7luc")
 
 [node name="Player" type="Node3D" parent="." unique_id=877525317]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.50322, 30.850826, 47.69196)
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="Player" unique_id=526639443]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.90007, 30.853542, 50.662407)
 script = ExtResource("5_y7luc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player/CharacterBody3D" unique_id=781608793]
@@ -243,6 +243,7 @@ shape = SubResource("CapsuleShape3D_y7luc")
 [node name="Camera3D" type="Camera3D" parent="Player/CharacterBody3D" unique_id=365659116]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6170349, -0.3098793)
 fov = 74.3
+near = 0.001
 
 [node name="Flashlight" type="SpotLight3D" parent="Player/CharacterBody3D/Camera3D" unique_id=185305545]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
