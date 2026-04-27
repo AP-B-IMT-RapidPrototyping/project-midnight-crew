@@ -32,6 +32,16 @@ ambient_light_energy = 0.01
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y7luc"]
 
+[sub_resource type="Gradient" id="Gradient_y7luc"]
+offsets = PackedFloat32Array(0, 0.15644172, 0.49386504, 0.82515335)
+colors = PackedColorArray(1, 1, 1, 1, 0.8431839, 0.8431839, 0.84318376, 1, 0.68142265, 0.6814239, 0.6814218, 0.63529414, 0, 0, 0, 0.63529414)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ul4fw"]
+gradient = SubResource("Gradient_y7luc")
+fill = 1
+fill_from = Vector2(0.5123457, 0.5164609)
+fill_to = Vector2(0.9444444, 0.030864198)
+
 [node name="Game" type="Node3D" unique_id=167556796]
 
 [node name="NPC\'s" type="Node3D" parent="." unique_id=42194367]
@@ -233,3 +243,28 @@ shape = SubResource("CapsuleShape3D_y7luc")
 [node name="Camera3D" type="Camera3D" parent="Player/CharacterBody3D" unique_id=365659116]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6170349, -0.3098793)
 fov = 74.3
+
+[node name="Flashlight" type="SpotLight3D" parent="Player/CharacterBody3D/Camera3D" unique_id=185305545]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+light_projector = SubResource("GradientTexture2D_ul4fw")
+light_specular = 5.041
+shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_begin = 10.0
+spot_range = 15.0
+spot_attenuation = 2.0
+spot_angle = 18.332874
+
+[node name="Lights" type="Node3D" parent="." unique_id=1537671484]
+
+[node name="Light1" type="OmniLight3D" parent="Lights" unique_id=464416539]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.826908, 30.026344, 9.095449)
+
+[node name="Light2" type="OmniLight3D" parent="Lights" unique_id=1521128775]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.773514, 30.026344, 9.095449)
+
+[node name="Light3" type="OmniLight3D" parent="Lights" unique_id=377393463]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.710255, 30.026344, 55.10771)
+
+[node name="Light4" type="OmniLight3D" parent="Lights" unique_id=1225931884]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.441967, 30.026344, 55.923363)
