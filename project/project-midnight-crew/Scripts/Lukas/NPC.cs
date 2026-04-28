@@ -4,14 +4,14 @@ using System;
 public partial class NPC : CharacterBody3D
 {
     [ExportGroup("Beweging")]
-    [Export] public float MaxSpeed = 20.0f;
-    [Export] public float RotationSpeed = 15.0f;
+    [Export] public float MaxSpeed = 5.0f; // Iets lager gezet voor realisme
+    [Export] public float RotationSpeed = 10.0f;
     [Export] public float WanderRange = 10.0f;
     [Export] public float SlowingDistance = 1.5f;
 
     [ExportGroup("Rust")]
-    [Export] public float MinWait = 0.0f;
-    [Export] public float MaxWait = 0.0f;
+    [Export] public float MinWait = 0f;
+    [Export] public float MaxWait = 0.01f;
 
     private NavigationAgent3D _navAgent;
     private bool _isWaiting = false;
@@ -20,14 +20,19 @@ public partial class NPC : CharacterBody3D
 
     public override void _Ready()
     {
-        // Zoek de NavigationAgent3D node
         _navAgent = GetNode<NavigationAgent3D>("NavigationAgent3D");
 
-        // Koppeling van het signaal (gecorrigeerd voor C#)
-        _navAgent.VelocityComputed += (safeVelocity) => OnVelocityComputed(safeVelocity);
+        // SIGNALEN
+        _navAgent.VelocityComputed += OnVelocityComputed;
 
-        // Start het proces
-        Callable.From(PickNewTarget).CallDeferred();
+        // Zorg dat de agent niet te kieskeurig is over de exacte eindpositie
+        _navAgent.TargetDesiredDistance = 0.5f;
+        _navAgent.PathDesiredDistance = 0.5f;
+
+        _rng.Randomize();
+
+        // Start na een kleine vertraging om de navigatie-map de tijd te geven om te laden
+        GetTree().CreateTimer(0.1f).Timeout += () => PickNewTarget();
     }
 
     public override void _PhysicsProcess(double delta)
@@ -44,94 +49,85 @@ public partial class NPC : CharacterBody3D
             currentVelocity.Y = 0;
         }
 
-        // 2. Beweging en Rotatie
-        if (!_isWaiting && !_navAgent.IsNavigationFinished())
+        // 2. Navigatie check
+        if (!_isWaiting)
         {
+            if (_navAgent.IsNavigationFinished())
+            {
+                StartWaiting();
+                return;
+            }
+
             Vector3 nextPathPos = _navAgent.GetNextPathPosition();
             Vector3 direction = (nextPathPos - GlobalPosition).Normalized();
             float distance = GlobalPosition.DistanceTo(_navAgent.TargetPosition);
 
-            // --- ROTATIE MET FIX ---
+            // Rotatie
             Vector3 lookDirection = new Vector3(direction.X, 0, direction.Z);
-            float rotationFactor = 0.2f;
-
             if (lookDirection.Length() > 0.01f)
             {
-                // Orthonormalized() voorkomt de "Quaternion not normalized" error
-                Basis cleanBasis = Transform.Basis.Orthonormalized();
                 Basis targetBasis = Basis.LookingAt(-lookDirection);
-
-                Basis newBasis = cleanBasis.Slerp(targetBasis, (float)delta * RotationSpeed);
-
+                Transform = Transform.Orthonormalized();
                 Transform3D newTransform = Transform;
-                newTransform.Basis = newBasis;
+                newTransform.Basis = Transform.Basis.Slerp(targetBasis, (float)delta * RotationSpeed);
                 Transform = newTransform;
-
-                // Bereken hoe goed de NPC in de juiste richting kijkt
-                rotationFactor = Mathf.Max(0.2f, -newBasis.Z.Dot(lookDirection));
             }
 
-            // --- VLOEIENDE VERTRAGING ---
+            // Snelheid berekenen
             float currentSpeed = MaxSpeed;
             if (distance < SlowingDistance)
             {
                 currentSpeed = Mathf.Lerp(0.1f, MaxSpeed, distance / SlowingDistance);
             }
 
-            // Combineer alles tot de gewenste snelheid
-            Vector3 desiredVelocity = direction * currentSpeed * rotationFactor;
+            Vector3 desiredVelocity = direction * currentSpeed;
 
-            // Geef door aan de agent voor avoidance
+            // Alleen doorgeven als we nog niet klaar zijn
             _navAgent.Velocity = desiredVelocity;
 
-            // Update alleen de Y-as in de directe Velocity (voor MoveAndSlide in de callback)
+            // Behoud Y velocity voor gravity
             Velocity = new Vector3(Velocity.X, currentVelocity.Y, Velocity.Z);
         }
         else
         {
-            // Stop langzaam als er niet gelopen wordt
-            currentVelocity.X = Mathf.MoveToward(Velocity.X, 0, MaxSpeed * (float)delta);
-            currentVelocity.Z = Mathf.MoveToward(Velocity.Z, 0, MaxSpeed * (float)delta);
-            Velocity = currentVelocity;
+            // Stilstand tijdens wachten
+            Velocity = new Vector3(0, currentVelocity.Y, 0);
             MoveAndSlide();
         }
     }
 
     private void OnVelocityComputed(Vector3 safeVelocity)
     {
-        // Belangrijk: combineer de 'veilige' snelheid met onze zwaartekracht
-        float currentY = Velocity.Y;
-        Vector3 finalVelocity = safeVelocity;
-        finalVelocity.Y = currentY;
+        if (_isWaiting) return;
 
-        Velocity = finalVelocity;
+        Velocity = new Vector3(safeVelocity.X, Velocity.Y, safeVelocity.Z);
         MoveAndSlide();
-
-        // Check of we het doel bereikt hebben
-        if (_navAgent.IsNavigationFinished() && !_isWaiting)
-        {
-            StartWaiting();
-        }
     }
 
     private void PickNewTarget()
     {
         _isWaiting = false;
 
-        Vector3 randomPos = new Vector3(
+        // Kies een punt in de buurt
+        Vector3 randomPos = GlobalPosition + new Vector3(
             _rng.RandfRange(-WanderRange, WanderRange),
             0,
             _rng.RandfRange(-WanderRange, WanderRange)
         );
 
-        _navAgent.TargetPosition = GlobalPosition + randomPos;
+        // BELANGRIJK: Projecteer het punt op de navigatie-vloer
+        // Dit voorkomt dat de NPC naar plekken wil waar hij niet kan komen
+        _navAgent.TargetPosition = NavigationServer3D.MapGetClosestPoint(_navAgent.GetNavigationMap(), randomPos);
     }
 
     private async void StartWaiting()
     {
+        if (_isWaiting) return;
         _isWaiting = true;
 
         float waitTime = _rng.RandfRange(MinWait, MaxWait);
+
+        // Gebruik een timer maar check of de NPC nog bestaat na afloop
         await ToSignal(GetTree().CreateTimer(waitTime), SceneTreeTimer.SignalName.Timeout);
 
         if (IsInsideTree())
