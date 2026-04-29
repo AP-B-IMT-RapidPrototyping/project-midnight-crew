@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://ddfwywd1kxd44"]
+
+[sub_resource type="Sky" id="Sky_83n72"]
+
+[sub_resource type="Environment" id="Environment_qs3u7"]
+background_mode = 1
+background_color = Color(1, 1, 1, 1)
+background_energy_multiplier = 0.5
+sky = SubResource("Sky_83n72")
+ambient_light_source = 3
+ambient_light_color = Color(0.86036915, 0.8603692, 0.8603691, 1)
+ambient_light_energy = 1.79
+reflected_light_source = 2
+tonemap_mode = 2
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0416
+volumetric_fog_albedo = Color(0.23826236, 0.23826218, 0.23826218, 1)
+volumetric_fog_emission = Color(0.24405202, 0.24405205, 0.24405202, 1)
+volumetric_fog_anisotropy = 0.4
+volumetric_fog_length = 17.69
+volumetric_fog_detail_spread = 0.5
+volumetric_fog_sky_affect = 0.413
+volumetric_fog_temporal_reprojection_amount = 0.819
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n83lk"]
+emission_shape = 3
+emission_box_extents = Vector3(10, 0.5, 10)
+direction = Vector3(0, -1, 0)
+spread = 1.0
+initial_velocity_min = 0.099999994
+initial_velocity_max = 0.099999994
+color = Color(0.23537052, 0.23537052, 0.23537052, 1)
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+
+[sub_resource type="Curve" id="Curve_83n72"]
+_limits = [0.0, 0.1, 0.0, 1.0]
+_data = [Vector2(0.007978722, 0.00041891634), 0.0, 0.0, 0, 0, Vector2(0.13829787, 0.012887865), 0.057076912, 0.057076912, 0, 0, Vector2(0.9893618, 0.001456216), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n83lk"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 1, 0.91764706)
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_qs3u7"]
+material = SubResource("StandardMaterial3D_n83lk")
+curve = SubResource("Curve_83n72")
+
+[node name="Node3D" type="Node3D" unique_id=950914347]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1405915120]
+environment = SubResource("Environment_qs3u7")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=117046753]
+transform = Transform3D(1.5339208, 0, 0, 0, 0.9363779, 0, 0, 0, 1.4489795, 0, 16.645641, 0)
+amount = 10000
+lifetime = 2.0
+randomness = 0.5
+visibility_aabb = AABB(-10, -20, -10, 20, 20, 20)
+trail_enabled = true
+trail_lifetime = 0.01
+process_material = SubResource("ParticleProcessMaterial_n83lk")
+draw_pass_1 = SubResource("RibbonTrailMesh_qs3u7")
