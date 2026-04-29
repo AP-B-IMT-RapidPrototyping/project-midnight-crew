@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://d0d1pe1wt0uoq" path="res://Assets/city/models/building11.gltf" id="13_1c2on"]
 [ext_resource type="PackedScene" uid="uid://j2x37bocwde6" path="res://Assets/city/models/building12.gltf" id="14_vdcqi"]
 [ext_resource type="PackedScene" uid="uid://djh3jowrl4a66" path="res://Assets/city/models/floor.gltf" id="15_dvns4"]
-[ext_resource type="PackedScene" uid="uid://bfdgstux2bqqy" path="res://Scenes/Jens/Player.tscn" id="15_xfw5f"]
 [ext_resource type="PackedScene" uid="uid://duokw36ywp2qd" path="res://Assets/city/models/sidewalk.gltf" id="16_we5cl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xfw5f"]
@@ -78,8 +77,3 @@ shape = SubResource("BoxShape3D_xpkbr")
 [node name="floor" parent="." unique_id=1251733203 instance=ExtResource("15_dvns4")]
 
 [node name="sidewalk" parent="." unique_id=733171490 instance=ExtResource("16_we5cl")]
-
-[node name="Player" parent="." unique_id=375722602 instance=ExtResource("15_xfw5f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.16886, 112.11718, 31.806128)
-
-[editable path="Player"]
