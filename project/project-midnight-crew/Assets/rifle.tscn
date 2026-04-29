@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://yjlrjkdqutkk"]
+
+[ext_resource type="PackedScene" uid="uid://dj2t3qts74muw" path="res://Assets/sniper_rifle.glb" id="1_8srcc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3n7j7"]
+no_depth_test = true
+albedo_color = Color(0, 0.39215687, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8srcc"]
+no_depth_test = true
+albedo_color = Color(0.093160845, 0.093160845, 0.09316083, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vn2rf"]
+no_depth_test = true
+albedo_color = Color(0.27314225, 0.27314225, 0.27314222, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uu88j"]
+no_depth_test = true
+albedo_color = Color(2.695322e-06, 0.85013604, 0.8532345, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_78i72"]
+no_depth_test = true
+albedo_color = Color(0.3137255, 1, 1, 1)
+
+[node name="sniper-rifle" unique_id=2026035808 instance=ExtResource("1_8srcc")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+
+[node name="Object_4" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cylinder_0" parent_id_path=PackedInt32Array(1177827318) index="0" unique_id=1957228876]
+surface_material_override/0 = SubResource("StandardMaterial3D_3n7j7")
+
+[node name="Object_5" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cylinder_0" parent_id_path=PackedInt32Array(1177827318) index="1" unique_id=1576074999]
+surface_material_override/0 = SubResource("StandardMaterial3D_8srcc")
+
+[node name="Object_6" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cylinder_0" parent_id_path=PackedInt32Array(1177827318) index="2" unique_id=2121876205]
+surface_material_override/0 = SubResource("StandardMaterial3D_vn2rf")
+
+[node name="Object_7" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cylinder_0" parent_id_path=PackedInt32Array(1177827318) index="3" unique_id=1502118342]
+surface_material_override/0 = SubResource("StandardMaterial3D_uu88j")
+
+[node name="Object_8" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cylinder_0" parent_id_path=PackedInt32Array(1177827318) index="4" unique_id=335552810]
+surface_material_override/0 = SubResource("StandardMaterial3D_78i72")

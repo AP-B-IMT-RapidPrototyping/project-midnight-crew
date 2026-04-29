@@ -6,8 +6,8 @@ public partial class SniperShot : Node3D
     [Export] public float Range = 200.0f;
 
     [ExportGroup("Recoil Instellingen")]
-    [Export] public float RecoilAmount = 2.0f; // Sterkte in graden
-    [Export] public float RecoilTime = 0.08f;  // Snelheid van de kick
+    [Export] public float RecoilAmount = 0.4f; // Sterkte in graden
+    [Export] public float RecoilTime = 0.12f;  // Snelheid van de kick
 
     [ExportGroup("Debug Visueel")]
     [Export] public bool ShowRaycast = true;

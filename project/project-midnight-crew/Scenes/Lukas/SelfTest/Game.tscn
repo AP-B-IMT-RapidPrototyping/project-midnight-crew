@@ -4,8 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://olksmf7jf50" path="res://Assets/Characters-kit/Models/GLB format/character-i.glb" id="2_qf2jt"]
 [ext_resource type="Script" uid="uid://be6r2bfqo23gx" path="res://Scripts/Lukas/Bliksem.cs" id="3_y7luc"]
 [ext_resource type="Texture2D" uid="uid://dp0snvvbp6ird" path="res://Assets/Lukas/lightning-bolt-png-16.png" id="4_qf2jt"]
+[ext_resource type="Texture2D" uid="uid://1ef74jdviv34" path="res://Assets/Lukas/nightsky.jpg" id="5_o804n"]
 [ext_resource type="Script" uid="uid://b1cx4qx462jqj" path="res://Scripts/Lukas/PlayerScript.cs" id="5_y7luc"]
-[ext_resource type="PackedScene" uid="uid://dj2t3qts74muw" path="res://Assets/sniper_rifle.glb" id="6_ul4fw"]
+[ext_resource type="PackedScene" uid="uid://yjlrjkdqutkk" path="res://Assets/rifle.tscn" id="6_o804n"]
 [ext_resource type="Script" uid="uid://bbnqoe1pg3nt7" path="res://Scripts/Lukas/SniperShot.cs" id="7_i6jla"]
 [ext_resource type="Texture2D" uid="uid://bjmxql0qjr4tq" path="res://Assets/sniper scope.png" id="8_0ogue"]
 [ext_resource type="AudioStream" uid="uid://ct5rfyibv1hg1" path="res://Assets/Lukas/aimzoom.mp3" id="8_ocih0"]
@@ -23,8 +24,19 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ocih0"]
 
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_eljl3"]
+panorama = ExtResource("5_o804n")
+energy_multiplier = 1.67
+
+[sub_resource type="Sky" id="Sky_o804n"]
+sky_material = SubResource("PanoramaSkyMaterial_eljl3")
+
 [sub_resource type="Environment" id="Environment_eljl3"]
+background_mode = 1
+background_color = Color(0.27314225, 0.27314225, 0.27314222, 1)
 background_energy_multiplier = 0.5
+sky = SubResource("Sky_o804n")
+sky_custom_fov = 145.2
 
 [sub_resource type="BoxMesh" id="BoxMesh_qf2jt"]
 
@@ -122,7 +134,7 @@ use_3d_avoidance = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1439575203 node_paths=PackedStringArray("bliksem")]
 transform = Transform3D(1, 0, 0, 0, 0.74747354, 0.66429156, 0, -0.66429156, 0.74747354, 0, 0, 3.1209145)
-light_energy = 1.081
+light_energy = 0.0
 shadow_enabled = true
 script = ExtResource("3_y7luc")
 bliksem = NodePath("Sprite3D")
@@ -261,21 +273,19 @@ spot_range = 15.0
 spot_attenuation = 2.0
 spot_angle = 18.332874
 
-[node name="Sniper" parent="Player/CharacterBody3D/Camera3D" unique_id=2026035808 instance=ExtResource("6_ul4fw")]
-transform = Transform3D(-2.5, 0, -2.1855695e-07, 0, 2.5, 0, 2.1855695e-07, 0, -2.5, 0.63, -0.26, -0.919)
+[node name="Sniper" parent="Player/CharacterBody3D/Camera3D" unique_id=2026035808 instance=ExtResource("6_o804n")]
+transform = Transform3D(-2.5, 0, -2.1855695e-07, 0, 2.5, 0, 2.1855695e-07, 0, -2.5, 0.63000107, -0.26000023, -0.9189987)
 script = ExtResource("7_i6jla")
-RecoilAmount = 0.8
-RecoilTime = 0.15
-RayColor = Color(0.91764706, 0.9137255, 0, 0.7294118)
+RayColor = Color(1, 0.76862746, 0, 0.7764706)
 
 [node name="BarrelLoc" type="Node3D" parent="Player/CharacterBody3D/Camera3D/Sniper" unique_id=1695789603]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.016038895, 0.46954346)
+transform = Transform3D(1, 0, 7.1054274e-15, 0, 1, 0, -7.1054274e-15, 0, 1, 0, 0.016038895, 0.46954346)
 
 [node name="RayCast3D" type="RayCast3D" parent="Player/CharacterBody3D/Camera3D/Sniper/BarrelLoc" unique_id=193377388]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
 
 [node name="ShootSound" type="AudioStreamPlayer3D" parent="Player/CharacterBody3D/Camera3D/Sniper" unique_id=1718295604]
-transform = Transform3D(-0.4, 0, 3.4969112e-08, 0, 0.4, 0, -3.4969112e-08, 0, -0.4, 0.25199986, -0.07885885, -0.3675995)
+transform = Transform3D(-0.4, 0, 3.496911e-08, 0, 0.4, 0, -3.496911e-08, 0, -0.4, 0.25199986, -0.07885885, -0.3675995)
 stream = ExtResource("9_eljl3")
 
 [node name="AimSound" type="AudioStreamPlayer3D" parent="Player/CharacterBody3D" unique_id=1461551409]

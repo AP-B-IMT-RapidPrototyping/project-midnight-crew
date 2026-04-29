@@ -36,7 +36,7 @@
               "RelativeDocumentMoniker": "Scripts\\Lukas\\PlayerScript.cs",
               "ToolTip": "D:\\AP\\1ste jaar\\Vakken\\Rapid Prototyping\\Midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\Scripts\\Lukas\\PlayerScript.cs",
               "RelativeToolTip": "Scripts\\Lukas\\PlayerScript.cs",
-              "ViewState": "AgIAAEoAAAAAAAAAAAAiwCwAAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-28T11:04:10.647Z",
               "EditorCaption": ""
@@ -49,7 +49,7 @@
               "RelativeDocumentMoniker": "Scripts\\Lukas\\SniperShot.cs",
               "ToolTip": "D:\\AP\\1ste jaar\\Vakken\\Rapid Prototyping\\Midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\Scripts\\Lukas\\SniperShot.cs",
               "RelativeToolTip": "Scripts\\Lukas\\SniperShot.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAAABkAAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-28T10:45:18.425Z",
               "EditorCaption": ""
@@ -76,8 +76,7 @@
               "RelativeToolTip": "Scripts\\Lukas\\NPC.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-22T08:14:23.863Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-22T08:14:23.863Z"
             }
           ]
         }
