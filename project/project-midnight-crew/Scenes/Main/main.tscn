@@ -190,6 +190,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.258347, 113.34107, 29.449
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="Player" unique_id=1662704326]
 script = ExtResource("5_hfg1r")
+JumpVelocity = 6.0
 DefaultFov = 50.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player/CharacterBody3D" unique_id=515671965]

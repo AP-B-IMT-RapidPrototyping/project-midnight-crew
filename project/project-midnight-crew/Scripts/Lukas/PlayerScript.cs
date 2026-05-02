@@ -5,6 +5,9 @@ public partial class PlayerScript : CharacterBody3D
 {
     [ExportGroup("Beweging")]
     [Export] public float Speed = 5.0f;
+    [Export] public float SprintMultiplier = 1.6f; // NIEUW: Hoeveel sneller je gaat tijdens sprinten
+    [Export] public float GravityMultiplier = 2.0f;
+    [Export] public float JumpVelocity = 4.5f;
     [Export] public float MouseSensitivity = 0.002f;
 
     [ExportGroup("Aim / Zoom")]
@@ -27,11 +30,9 @@ public partial class PlayerScript : CharacterBody3D
     private Node3D _sniperModel;
     private Vector3 _baseCameraPos;
 
-    // Audio variabele
     private AudioStreamPlayer3D _aimSound;
     private bool _wasAiming = false;
 
-    // Property voor de Tween en Camera rotatie
     public float RotationX { get; set; } = 0f;
 
     public override void _Ready()
@@ -43,8 +44,6 @@ public partial class PlayerScript : CharacterBody3D
         _flashlight.LightEnergy = 0.0f;
 
         _sniperModel = _camera.GetNode<Node3D>("Sniper");
-
-        // Zoek de AimSound node op
         _aimSound = GetNode<AudioStreamPlayer3D>("AimSound");
 
         _scopeUI = GetTree().Root.FindChild("Scope", true, false) as TextureRect;
@@ -70,9 +69,7 @@ public partial class PlayerScript : CharacterBody3D
         if (Input.MouseMode == Input.MouseModeEnum.Captured && @event is InputEventMouseMotion mouseMotion)
         {
             float currentSens = Input.IsActionPressed("aim") ? AimSensitivity : MouseSensitivity;
-
             RotateY(-mouseMotion.Relative.X * currentSens);
-
             RotationX -= mouseMotion.Relative.Y * currentSens;
             RotationX = Mathf.Clamp(RotationX, Mathf.DegToRad(-89f), Mathf.DegToRad(89f));
         }
@@ -81,15 +78,17 @@ public partial class PlayerScript : CharacterBody3D
     public override void _PhysicsProcess(double delta)
     {
         bool isCurrentlyAiming = Input.IsActionPressed("aim");
+        // NIEUW: Check of we sprinten (alleen als we niet mikken)
+        bool isSprinting = Input.IsActionPressed("sprint") && !isCurrentlyAiming;
 
-        // --- AIM GELUID LOGICA ---
+        // --- AIM GELUID ---
         if (isCurrentlyAiming && !_wasAiming)
         {
             if (_aimSound != null) _aimSound.Play();
         }
         _wasAiming = isCurrentlyAiming;
 
-        // --- AIM & ZICHTBAARHEID ---
+        // --- AIM & FOV ---
         if (isCurrentlyAiming)
         {
             _camera.Fov = Mathf.Lerp(_camera.Fov, ZoomFov, AimLerpSpeed);
@@ -103,32 +102,44 @@ public partial class PlayerScript : CharacterBody3D
             if (_sniperModel != null) _sniperModel.Visible = true;
         }
 
-        // --- BEWEGING ---
+        // --- BEWEGING & SPRINGEN ---
         Vector3 velocity = Velocity;
-        if (!IsOnFloor()) velocity += GetGravity() * (float)delta;
+
+        if (!IsOnFloor())
+        {
+            velocity += GetGravity() * GravityMultiplier * (float)delta;
+        }
+
+        if (Input.IsActionJustPressed("jump") && IsOnFloor())
+        {
+            velocity.Y = JumpVelocity;
+        }
 
         Vector2 inputDir = Input.GetVector("move_left", "move_right", "move_forward", "move_backward");
         Vector3 direction = (Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
 
+        // NIEUW: Bereken de huidige snelheid (Speed * multiplier als we sprinten)
+        float currentMaxSpeed = isSprinting ? Speed * SprintMultiplier : Speed;
+
         if (direction != Vector3.Zero)
         {
-            velocity.X = direction.X * Speed;
-            velocity.Z = direction.Z * Speed;
+            velocity.X = direction.X * currentMaxSpeed;
+            velocity.Z = direction.Z * currentMaxSpeed;
         }
         else
         {
-            velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-            velocity.Z = Mathf.MoveToward(Velocity.Z, 0, Speed);
+            velocity.X = Mathf.MoveToward(Velocity.X, 0, currentMaxSpeed);
+            velocity.Z = Mathf.MoveToward(Velocity.Z, 0, currentMaxSpeed);
         }
 
         Velocity = velocity;
         MoveAndSlide();
 
-        // --- HEAD BOBBING LOGICA ---
-        float bobMult = isCurrentlyAiming ? 0.1f : 1.0f;
+        // --- HEAD BOBBING ---
+        // NIEUW: Bobbing gaat sneller als we sprinten
+        float bobMult = isCurrentlyAiming ? 0.1f : (isSprinting ? 1.5f : 1.0f);
         Vector3 targetBobPos = _baseCameraPos;
 
-        // Alleen bobben als we op de grond staan en echt snelheid hebben
         if (IsOnFloor() && velocity.Length() > 0.1f)
         {
             _tBob += (float)delta * velocity.Length();
@@ -136,11 +147,7 @@ public partial class PlayerScript : CharacterBody3D
             targetBobPos.X += Mathf.Cos(_tBob * BobFreq * 0.5f) * BobAmp * bobMult;
         }
 
-        // Gebruik Lerp om de camera vloeiend naar de bob-positie OF de base-positie te brengen
-        // 10.0f bepaalt hoe snel de camera terugveert.
         _camera.Position = _camera.Position.Lerp(targetBobPos, (float)delta * 10.0f);
-
-        // --- CAMERA ROTATIE UPDATE ---
         _camera.Rotation = new Vector3(RotationX, 0, 0);
     }
 
@@ -151,12 +158,7 @@ public partial class PlayerScript : CharacterBody3D
         float targetRot = RotationX + recoilInRad;
         float originalRot = RotationX;
 
-        tween.TweenProperty(this, nameof(RotationX), targetRot, time)
-             .SetTrans(Tween.TransitionType.Quad)
-             .SetEase(Tween.EaseType.Out);
-
-        tween.TweenProperty(this, nameof(RotationX), originalRot, time * 2.5f)
-             .SetTrans(Tween.TransitionType.Quad)
-             .SetEase(Tween.EaseType.In);
+        tween.TweenProperty(this, nameof(RotationX), targetRot, time).SetTrans(Tween.TransitionType.Quad).SetEase(Tween.EaseType.Out);
+        tween.TweenProperty(this, nameof(RotationX), originalRot, time * 2.5f).SetTrans(Tween.TransitionType.Quad).SetEase(Tween.EaseType.In);
     }
 }

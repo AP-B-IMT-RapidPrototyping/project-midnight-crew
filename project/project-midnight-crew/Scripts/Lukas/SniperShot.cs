@@ -6,8 +6,8 @@ public partial class SniperShot : Node3D
     [Export] public float Range = 200.0f;
 
     [ExportGroup("Recoil Instellingen")]
-    [Export] public float RecoilAmount = 0.4f; // Sterkte in graden
-    [Export] public float RecoilTime = 0.12f;  // Snelheid van de kick
+    [Export] public float RecoilAmount = 0.4f;
+    [Export] public float RecoilTime = 0.12f;
 
     [ExportGroup("Debug Visueel")]
     [Export] public bool ShowRaycast = true;
@@ -21,8 +21,6 @@ public partial class SniperShot : Node3D
     public override void _Ready()
     {
         _barrelLoc = GetNode<Node3D>("BarrelLoc");
-
-        // Zoek de ShootSound node op (zorg dat deze als kind onder de Sniper staat)
         _shootSound = GetNode<AudioStreamPlayer3D>("ShootSound");
     }
 
@@ -36,32 +34,29 @@ public partial class SniperShot : Node3D
 
     private void Shoot()
     {
-        // Speel het geluid direct af
-        if (_shootSound != null)
-        {
-            _shootSound.Play();
-        }
+        if (_shootSound != null) _shootSound.Play();
 
         ApplyVisualRecoil();
 
-        // --- 1. HIT DETECTION VIA CAMERA ---
         Camera3D camera = GetViewport().GetCamera3D();
         if (camera == null) return;
 
         var spaceState = GetWorld3D().DirectSpaceState;
-
         Vector3 camStart = camera.GlobalPosition;
         Vector3 camDirection = -camera.GlobalTransform.Basis.Z;
         Vector3 camEnd = camStart + camDirection * Range;
 
         var camQuery = PhysicsRayQueryParameters3D.Create(camStart, camEnd);
 
-        // VEILIGE EXCLUDE: We zoeken de player op om te voorkomen dat de sniper zichzelf raakt
+        // --- DE FIX: COLLISION MASK ---
+        // We stellen het masker in op 1. Dit betekent dat de kogel ALLEEN 
+        // botst met objecten die op Collision Layer 1 staan.
+        // Onzichtbare muren zet je in de editor op Layer 2, dan ziet de kogel ze niet.
+        camQuery.CollisionMask = 1;
+
+        // Exclude player
         Node n = GetParent();
-        while (n != null && !(n is CollisionObject3D))
-        {
-            n = n.GetParent();
-        }
+        while (n != null && !(n is CollisionObject3D)) n = n.GetParent();
         if (n is CollisionObject3D playerCollision)
         {
             camQuery.Exclude = new Godot.Collections.Array<Rid> { playerCollision.GetRid() };
@@ -69,7 +64,7 @@ public partial class SniperShot : Node3D
 
         var result = spaceState.IntersectRay(camQuery);
 
-        // --- 2. VISUEEL EFFECT VIA BARREL ---
+        // --- VISUEEL EFFECT ---
         Vector3 barrelStart = _barrelLoc.GlobalPosition;
         Vector3 hitPoint = result.Count > 0 ? (Vector3)result["position"] : camEnd;
 
@@ -78,11 +73,10 @@ public partial class SniperShot : Node3D
             DebugDrawLine(barrelStart, hitPoint);
         }
 
-        // --- 3. DAMAGE AFHANDELING ---
+        // --- DAMAGE ---
         if (result.Count > 0)
         {
             Node hitObject = (Node)result["collider"];
-
             if (hitObject.IsInGroup("NPC"))
             {
                 GD.Print($"Target geëlimineerd: {hitObject.Name}");
@@ -93,13 +87,8 @@ public partial class SniperShot : Node3D
 
     private void ApplyVisualRecoil()
     {
-        // Zoek de PlayerScript node in de ouders
         Node n = GetParent();
-        while (n != null && !(n is PlayerScript))
-        {
-            n = n.GetParent();
-        }
-
+        while (n != null && !(n is PlayerScript)) n = n.GetParent();
         if (n is PlayerScript player)
         {
             player.ApplyRecoil(RecoilAmount, RecoilTime);
@@ -110,7 +99,9 @@ public partial class SniperShot : Node3D
     {
         MeshInstance3D meshInstance = new MeshInstance3D();
         BoxMesh boxMesh = new BoxMesh();
-        boxMesh.Size = new Vector3(RayThickness, RayThickness, start.DistanceTo(end));
+
+        float distance = start.DistanceTo(end);
+        boxMesh.Size = new Vector3(RayThickness, RayThickness, distance);
         meshInstance.Mesh = boxMesh;
 
         StandardMaterial3D material = new StandardMaterial3D();
@@ -124,8 +115,9 @@ public partial class SniperShot : Node3D
 
         GetTree().Root.AddChild(meshInstance);
 
-        meshInstance.GlobalPosition = start.Lerp(end, 0.5f);
-        meshInstance.LookAt(end);
+        // De fix voor de positie van de lijn (LookAtFromPosition is vaak betrouwbaarder)
+        meshInstance.LookAtFromPosition(start, end);
+        meshInstance.TranslateObjectLocal(new Vector3(0, 0, -distance / 2.0f));
 
         GetTree().CreateTimer(RayDuration).Timeout += () => meshInstance.QueueFree();
     }

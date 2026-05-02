@@ -100,6 +100,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.026374817, 0, 0.17962265)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.481834, 53.945103, 30.059368)
 
 [node name="collisions" type="StaticBody3D" parent="Buildings/building12" unique_id=1626631182]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/building12/collisions" unique_id=1440166690]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.121307, 55.315704, 30.075424)
@@ -138,40 +140,43 @@ transform = Transform3D(-0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.
 shape = SubResource("BoxShape3D_rcwdl")
 
 [node name="borders" type="StaticBody3D" parent="Buildings/building12" unique_id=1348670472]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Buildings/building12/borders" unique_id=1030482009]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.10068, 114.5096, 29.96857)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.472305, 114.5096, 29.982595)
 shape = SubResource("BoxShape3D_mxgwt")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Buildings/building12/borders" unique_id=976059952]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.21999, 114.53115, 30.022392)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.697083, 114.53115, 30.093918)
 shape = SubResource("BoxShape3D_8la3f")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Buildings/building12/borders" unique_id=1505588484]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -62.125126, 114.52111, 21.13231)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -62.13613, 114.52111, 20.697458)
 shape = SubResource("BoxShape3D_p7jqi")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Buildings/building12/borders" unique_id=542001750]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -62.087368, 114.41337, 38.847115)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -62.140545, 114.41337, 39.469055)
 shape = SubResource("BoxShape3D_ft4ju")
 
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="Buildings/building12/borders" unique_id=900067842]
-transform = Transform3D(0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.7071067, -66.4188, 114.375626, 36.254505)
+transform = Transform3D(0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.7071067, -66.77841, 114.375626, 36.647133)
 shape = SubResource("BoxShape3D_4cbyn")
 
 [node name="CollisionShape3D7" type="CollisionShape3D" parent="Buildings/building12/borders" unique_id=1631255503]
-transform = Transform3D(-0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, -0.7071067, -66.471794, 114.48833, 23.65771)
+transform = Transform3D(-0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, -0.7071067, -66.94327, 114.48833, 23.620909)
 shape = SubResource("BoxShape3D_3t3oo")
 
 [node name="CollisionShape3D8" type="CollisionShape3D" parent="Buildings/building12/borders" unique_id=1588832515]
-transform = Transform3D(0.70710665, 0, 0.70710665, 0, 1, 0, -0.70710665, 0, 0.70710665, -57.765903, 114.530075, 23.731354)
+transform = Transform3D(0.70710665, 0, 0.70710665, 0, 1, 0, -0.70710665, 0, 0.70710665, -57.298088, 114.530075, 23.591845)
 shape = SubResource("BoxShape3D_0xtj5")
 
 [node name="CollisionShape3D9" type="CollisionShape3D" parent="Buildings/building12/borders" unique_id=1239797621]
-transform = Transform3D(-0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, -0.7071067, -57.845787, 114.571846, 36.224823)
+transform = Transform3D(-0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, -0.7071067, -57.381668, 114.571846, 36.63388)
 shape = SubResource("BoxShape3D_gnpxt")
 
 [node name="floor" parent="." unique_id=1251733203 instance=ExtResource("15_dvns4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4953699, 0)
 
 [node name="sidewalk" parent="." unique_id=733171490 instance=ExtResource("16_we5cl")]
 
