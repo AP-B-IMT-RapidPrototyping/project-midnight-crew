@@ -46,12 +46,12 @@ sky_custom_fov = 145.2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y7luc"]
 
-[sub_resource type="Gradient" id="Gradient_y7luc"]
+[sub_resource type="Gradient" id="Gradient_o804n"]
 offsets = PackedFloat32Array(0, 0.15644172, 0.49386504, 0.82515335)
 colors = PackedColorArray(1, 1, 1, 1, 0.8431839, 0.8431839, 0.84318376, 1, 0.68142265, 0.6814239, 0.6814218, 0.63529414, 0, 0, 0, 0.63529414)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ul4fw"]
-gradient = SubResource("Gradient_y7luc")
+gradient = SubResource("Gradient_o804n")
 fill = 1
 fill_from = Vector2(0.5123457, 0.5164609)
 fill_to = Vector2(0.9444444, 0.030864198)

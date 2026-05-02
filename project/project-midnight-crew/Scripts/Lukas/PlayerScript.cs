@@ -85,7 +85,6 @@ public partial class PlayerScript : CharacterBody3D
         // --- AIM GELUID LOGICA ---
         if (isCurrentlyAiming && !_wasAiming)
         {
-            // Speelt af zodra je de knop indrukt
             if (_aimSound != null) _aimSound.Play();
         }
         _wasAiming = isCurrentlyAiming;
@@ -125,22 +124,29 @@ public partial class PlayerScript : CharacterBody3D
         Velocity = velocity;
         MoveAndSlide();
 
-        // --- HEAD BOBBING ---
+        // --- HEAD BOBBING LOGICA ---
         float bobMult = isCurrentlyAiming ? 0.1f : 1.0f;
-        _tBob += (float)delta * velocity.Length() * (IsOnFloor() ? 1.0f : 0.0f);
-        Vector3 pos = _camera.Position;
-        pos.Y = _baseCameraPos.Y + Mathf.Sin(_tBob * BobFreq) * BobAmp * bobMult;
-        pos.X = _baseCameraPos.X + Mathf.Cos(_tBob * BobFreq * 0.5f) * BobAmp * bobMult;
+        Vector3 targetBobPos = _baseCameraPos;
 
-        // --- CAMERA UPDATE ---
-        _camera.Position = pos;
+        // Alleen bobben als we op de grond staan en echt snelheid hebben
+        if (IsOnFloor() && velocity.Length() > 0.1f)
+        {
+            _tBob += (float)delta * velocity.Length();
+            targetBobPos.Y += Mathf.Sin(_tBob * BobFreq) * BobAmp * bobMult;
+            targetBobPos.X += Mathf.Cos(_tBob * BobFreq * 0.5f) * BobAmp * bobMult;
+        }
+
+        // Gebruik Lerp om de camera vloeiend naar de bob-positie OF de base-positie te brengen
+        // 10.0f bepaalt hoe snel de camera terugveert.
+        _camera.Position = _camera.Position.Lerp(targetBobPos, (float)delta * 10.0f);
+
+        // --- CAMERA ROTATIE UPDATE ---
         _camera.Rotation = new Vector3(RotationX, 0, 0);
     }
 
     public void ApplyRecoil(float strength, float time)
     {
         Tween tween = GetTree().CreateTween();
-
         float recoilInRad = Mathf.DegToRad(strength * 5f);
         float targetRot = RotationX + recoilInRad;
         float originalRot = RotationX;

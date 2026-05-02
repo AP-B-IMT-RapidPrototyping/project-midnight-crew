@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://dxt33aw605gqx"]
+
+[ext_resource type="Script" uid="uid://b1cx4qx462jqj" path="res://Scripts/Lukas/PlayerScript.cs" id="1_ksfm1"]
+[ext_resource type="PackedScene" uid="uid://yjlrjkdqutkk" path="res://Assets/rifle.tscn" id="2_nccew"]
+[ext_resource type="Script" uid="uid://bbnqoe1pg3nt7" path="res://Scripts/Lukas/SniperShot.cs" id="3_6eyxt"]
+[ext_resource type="AudioStream" uid="uid://ddkx82vkp5k2q" path="res://Assets/Lukas/Shot.mp3" id="4_uigj3"]
+[ext_resource type="AudioStream" uid="uid://ct5rfyibv1hg1" path="res://Assets/Lukas/aimzoom.mp3" id="5_p0sd8"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_qf2jt"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y7luc"]
+
+[sub_resource type="Gradient" id="Gradient_y7luc"]
+offsets = PackedFloat32Array(0, 0.15644172, 0.49386504, 0.82515335)
+colors = PackedColorArray(1, 1, 1, 1, 0.8431839, 0.8431839, 0.84318376, 1, 0.68142265, 0.6814239, 0.6814218, 0.63529414, 0, 0, 0, 0.63529414)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ul4fw"]
+gradient = SubResource("Gradient_y7luc")
+fill = 1
+fill_from = Vector2(0.5123457, 0.5164609)
+fill_to = Vector2(0.9444444, 0.030864198)
+
+[node name="Player" type="Node3D" unique_id=1371931447]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=685774704]
+script = ExtResource("1_ksfm1")
+DefaultFov = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=405938748]
+mesh = SubResource("CapsuleMesh_qf2jt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1996366096]
+shape = SubResource("CapsuleShape3D_y7luc")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D" unique_id=1494828395]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4571476, 0)
+fov = 45.1
+near = 0.001
+
+[node name="Flashlight" type="SpotLight3D" parent="CharacterBody3D/Camera3D" unique_id=345976904]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+light_projector = SubResource("GradientTexture2D_ul4fw")
+light_specular = 5.041
+shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_begin = 10.0
+spot_range = 15.0
+spot_attenuation = 2.0
+spot_angle = 18.332874
+
+[node name="Sniper" parent="CharacterBody3D/Camera3D" unique_id=2026035808 instance=ExtResource("2_nccew")]
+transform = Transform3D(-2.5, 0, -2.1855695e-07, 0, 2.5, 0, 2.1855695e-07, 0, -2.5, 0.63000107, -0.26000023, -0.9189987)
+script = ExtResource("3_6eyxt")
+RayColor = Color(1, 0.76862746, 0, 0.7764706)
+
+[node name="BarrelLoc" type="Node3D" parent="CharacterBody3D/Camera3D/Sniper" unique_id=1563117150]
+transform = Transform3D(1, 0, 7.1054274e-15, 0, 1, 0, -7.1054274e-15, 0, 1, 0, 0.016038895, 0.46954346)
+
+[node name="RayCast3D" type="RayCast3D" parent="CharacterBody3D/Camera3D/Sniper/BarrelLoc" unique_id=909560736]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+
+[node name="ShootSound" type="AudioStreamPlayer3D" parent="CharacterBody3D/Camera3D/Sniper" unique_id=422854695]
+transform = Transform3D(-0.4, 0, 3.496911e-08, 0, 0.4, 0, -3.496911e-08, 0, -0.4, 0.25199986, -0.07885885, -0.3675995)
+stream = ExtResource("4_uigj3")
+
+[node name="AimSound" type="AudioStreamPlayer3D" parent="CharacterBody3D" unique_id=770602280]
+stream = ExtResource("5_p0sd8")
+pitch_scale = 2.0
