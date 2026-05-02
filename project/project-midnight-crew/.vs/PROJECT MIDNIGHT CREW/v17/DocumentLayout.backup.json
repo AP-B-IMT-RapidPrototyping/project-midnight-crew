@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\AP\\1ste jaar\\Vakken\\Rapid Prototyping\\Midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|d:\\ap\\1ste jaar\\vakken\\rapid prototyping\\midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\scripts\\lukas\\playerscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|solutionrelative:scripts\\lukas\\playerscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|d:\\ap\\1ste jaar\\vakken\\rapid prototyping\\midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\scripts\\lukas\\snipershot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|solutionrelative:scripts\\lukas\\snipershot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|d:\\ap\\1ste jaar\\vakken\\rapid prototyping\\midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\scripts\\lukas\\playerscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|solutionrelative:scripts\\lukas\\playerscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|d:\\ap\\1ste jaar\\vakken\\rapid prototyping\\midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\scripts\\lukas\\npc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,30 +26,30 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "PlayerScript.cs",
               "DocumentMoniker": "D:\\AP\\1ste jaar\\Vakken\\Rapid Prototyping\\Midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\Scripts\\Lukas\\PlayerScript.cs",
               "RelativeDocumentMoniker": "Scripts\\Lukas\\PlayerScript.cs",
               "ToolTip": "D:\\AP\\1ste jaar\\Vakken\\Rapid Prototyping\\Midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\Scripts\\Lukas\\PlayerScript.cs",
               "RelativeToolTip": "Scripts\\Lukas\\PlayerScript.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-28T11:04:10.647Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "SniperShot.cs",
               "DocumentMoniker": "D:\\AP\\1ste jaar\\Vakken\\Rapid Prototyping\\Midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\Scripts\\Lukas\\SniperShot.cs",
               "RelativeDocumentMoniker": "Scripts\\Lukas\\SniperShot.cs",
               "ToolTip": "D:\\AP\\1ste jaar\\Vakken\\Rapid Prototyping\\Midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\Scripts\\Lukas\\SniperShot.cs",
               "RelativeToolTip": "Scripts\\Lukas\\SniperShot.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAMBUwBkAAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-28T10:45:18.425Z",
               "EditorCaption": ""
