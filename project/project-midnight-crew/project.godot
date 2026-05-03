@@ -21,6 +21,7 @@ project/assembly_name="Project Midnight Crew"
 [global_group]
 
 NPC=""
+audio=""
 
 [input]
 
