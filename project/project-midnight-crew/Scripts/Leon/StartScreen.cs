@@ -4,6 +4,16 @@ using System.ComponentModel;
 
 public partial class StartScreen : Node3D
 {
+	[Export] private StaticBody3D Level1Knop;
+	[Export] private StaticBody3D Level2Knop;	
+	[Export] private StaticBody3D Level3Knop;	
+	[Export] private StaticBody3D Level4Knop;
+	[Export] private StaticBody3D TerugStartKnop;	
+	[Export] private MeshInstance3D Level1Kleur;
+	[Export] private MeshInstance3D Level2Kleur;	
+	[Export] private MeshInstance3D Level3Kleur;	
+	[Export] private MeshInstance3D Level4Kleur;
+	[Export] private MeshInstance3D TerugStartKleur;	
 	[Export] private StaticBody3D startKnop;
 	[Export] private StaticBody3D settingKnop;
 	[Export] private StaticBody3D quitKnop;
@@ -12,7 +22,7 @@ public partial class StartScreen : Node3D
 	[Export] private MeshInstance3D settingKleur;
 	[Export] private MeshInstance3D quitKleur;
 	[Export] private MeshInstance3D terugKleur;
-	[Export] private AnimationPlayer SettingDraaien;
+	[Export] private AnimationPlayer AnimatieDraaien;
 
 	private Color hoverKleur = new Color(0, 0, 0);
 	private Color normalKleur = new Color(1, 1, 1);
@@ -26,6 +36,7 @@ public partial class StartScreen : Node3D
             startKnop.MouseExited += OnStartExit;
 		
 		}
+
 		if (settingKnop != null)
 		{
 			settingKnop.InputEvent += OnSettingInput;
@@ -45,21 +56,79 @@ public partial class StartScreen : Node3D
 			terugKnop.InputEvent += OnTerugInput;
 			terugKnop.MouseEntered += OnTerugHover;
             terugKnop.MouseExited += OnTerugExit;
+		}
+
+		if (Level1Knop != null)
+		{
+			Level1Knop.InputEvent += OnLevel1Input;
+			Level1Knop.MouseEntered += OnLevel1Hover;
+            Level1Knop.MouseExited += OnLevel1Exit;
 		} 
 		
+		if (Level2Knop != null)
+		{
+			Level2Knop.InputEvent += OnLevel2Input;
+			Level2Knop.MouseEntered += OnLevel2Hover;
+            Level2Knop.MouseExited += OnLevel2Exit;
+		} 
+
+		if (Level3Knop != null)
+		{
+			Level3Knop.InputEvent += OnLevel3Input;
+			Level3Knop.MouseEntered += OnLevel3Hover;
+            Level3Knop.MouseExited += OnLevel3Exit;
+		}
+
+		if (Level4Knop != null)
+		{
+			Level4Knop.InputEvent += OnLevel4Input;
+			Level4Knop.MouseEntered += OnLevel4Hover;
+            Level4Knop.MouseExited += OnLevel4Exit;
+		} 
+
+		if (TerugStartKnop != null)
+		{
+			TerugStartKnop.InputEvent += OnTerugStartInput;
+			TerugStartKnop.MouseEntered += OnTerugStartHover;
+            TerugStartKnop.MouseExited += OnTerugStartExit;
+		} 
 	}
 
+	//startkleur hover
 	private void OnStartHover() => VeranderKleur(startKleur, hoverKleur);
     private void OnStartExit()  => VeranderKleur(startKleur, normalKleur);
 
+	//settingkleur hover
     private void OnSettingHover() => VeranderKleur(settingKleur, hoverKleur);
     private void OnSettingExit()  => VeranderKleur(settingKleur, normalKleur);
 
+	//quitkleur hover
     private void OnQuitHover() => VeranderKleur(quitKleur, hoverKleur);
     private void OnQuitExit()  => VeranderKleur(quitKleur, normalKleur);
 
+	//terugkleur hover
     private void OnTerugHover() => VeranderKleur(terugKleur, hoverKleur);
     private void OnTerugExit()  => VeranderKleur(terugKleur, normalKleur);
+	
+	//level1kleur hover
+	private void OnLevel1Hover() => VeranderKleur(Level1Kleur, hoverKleur);
+    private void OnLevel1Exit()  => VeranderKleur(Level1Kleur, normalKleur);
+
+	//level2kleur hover
+	private void OnLevel2Hover() => VeranderKleur(Level2Kleur, hoverKleur);
+    private void OnLevel2Exit()  => VeranderKleur(Level2Kleur, normalKleur);
+
+	//level3kleur hover
+	private void OnLevel3Hover() => VeranderKleur(Level3Kleur, hoverKleur);
+    private void OnLevel3Exit()  => VeranderKleur(Level3Kleur, normalKleur);
+
+	//level4kleur hover
+	private void OnLevel4Hover() => VeranderKleur(Level4Kleur, hoverKleur);
+    private void OnLevel4Exit()  => VeranderKleur(Level4Kleur, normalKleur);
+
+	//terugstartkleur hover
+	private void OnTerugStartHover() => VeranderKleur(TerugStartKleur, hoverKleur);
+    private void OnTerugStartExit()  => VeranderKleur(TerugStartKleur, normalKleur);
 
 	private void VeranderKleur(MeshInstance3D mesh, Color kleur)
     {
@@ -117,16 +186,82 @@ public partial class StartScreen : Node3D
         }
     }
 
+	private void OnLevel1Input(Node camera, InputEvent @event, Vector3 position, Vector3 normal, long shapeIdx)
+    {
+        if (@event is InputEventMouseButton mouseEvent)
+        {
+            if (mouseEvent.Pressed && mouseEvent.ButtonIndex == MouseButton.Left)
+            {
+                Level1();
+            }
+        }
+    }
+
+	private void OnLevel2Input(Node camera, InputEvent @event, Vector3 position, Vector3 normal, long shapeIdx)
+    {
+        if (@event is InputEventMouseButton mouseEvent)
+        {
+            if (mouseEvent.Pressed && mouseEvent.ButtonIndex == MouseButton.Left)
+            {
+                Level2();
+            }
+        }
+    }
+
+	private void OnLevel3Input(Node camera, InputEvent @event, Vector3 position, Vector3 normal, long shapeIdx)
+    {
+        if (@event is InputEventMouseButton mouseEvent)
+        {
+            if (mouseEvent.Pressed && mouseEvent.ButtonIndex == MouseButton.Left)
+            {
+                Level3();
+            }
+        }
+    }
+
+	private void OnLevel4Input(Node camera, InputEvent @event, Vector3 position, Vector3 normal, long shapeIdx)
+    {
+        if (@event is InputEventMouseButton mouseEvent)
+        {
+            if (mouseEvent.Pressed && mouseEvent.ButtonIndex == MouseButton.Left)
+            {
+                Level4();
+            }
+        }
+    }
+
+	private void OnTerugStartInput(Node camera, InputEvent @event, Vector3 position, Vector3 normal, long shapeIdx)
+    {
+        if (@event is InputEventMouseButton mouseEvent)
+        {
+            if (mouseEvent.Pressed && mouseEvent.ButtonIndex == MouseButton.Left)
+            {
+                TerugStart();
+            }
+        }
+    }
+
 	public void Start()
 	{
 		GD.Print("Start");
+
+		Level1Kleur.Visible = true;
+		Level2Kleur.Visible = true;
+		Level3Kleur.Visible = true;
+		Level4Kleur.Visible = true;
+		TerugStartKleur.Visible = true;
+
+		if(AnimatieDraaien != null)
+		{
+			AnimatieDraaien.Play("start");
+		}
 	}
 
 	public void Setting()
 	{
-		if(SettingDraaien != null)
+		if(AnimatieDraaien != null)
 		{
-			SettingDraaien.Play("Setting_draaien");
+			AnimatieDraaien.Play("Setting_draaien");
 		}
 
 		GD.Print("Settings");
@@ -140,11 +275,49 @@ public partial class StartScreen : Node3D
 
 	public void Terug()
 	{
-		if(SettingDraaien != null)
+		if(AnimatieDraaien != null)
 		{
-			SettingDraaien.Play("Setting_terug");
+			AnimatieDraaien.Play("Setting_terug");
 		}
 
 		GD.Print("Terug");
+	}
+
+	public void Level1()
+	{
+		GD.Print("Level1");
+	}
+
+	public void Level2()
+	{
+		GD.Print("Level2");
+	}
+
+	public void Level3()
+	{
+		GD.Print("Level3");
+	}
+
+	public void Level4()
+	{
+		GD.Print("Level4");
+	}
+
+	public async void TerugStart()
+	{
+		GD.Print("TerugStart");
+
+		if(AnimatieDraaien != null)
+		{
+			AnimatieDraaien.Play("terug_start");
+
+			//Delay tot de animatie stopt
+			await ToSignal(AnimatieDraaien, "animation_finished");
+			Level1Kleur.Visible = false;
+			Level2Kleur.Visible = false;
+			Level3Kleur.Visible = false;
+			Level4Kleur.Visible = false;
+			TerugStartKleur.Visible = false;
+		}
 	}
 }

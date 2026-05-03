@@ -2,96 +2,6 @@
 
 [ext_resource type="Script" uid="uid://ij5jm75auubn" path="res://Scripts/Leon/StartScreen.cs" id="1_alo1v"]
 
-[sub_resource type="Animation" id="Animation_12ueu"]
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0.7461967, 0), Vector3(1, 0.7461967, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:rotation")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, -1.5707964, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_5ol73"]
-resource_name = "Setting_draaien"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.9666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0.7461967, 0), Vector3(0.84957874, 0.7461967, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:rotation")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.9666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, -1.5707964, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_alo1v"]
-resource_name = "Setting_terug"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.85, 0.746, 0), Vector3(0, 0.7461967, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:rotation")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, -1.5707964, 0), Vector3(0, 0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_lj7eh"]
-_data = {
-&"RESET": SubResource("Animation_12ueu"),
-&"Setting_draaien": SubResource("Animation_5ol73"),
-&"Setting_terug": SubResource("Animation_alo1v")
-}
-
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_alo1v"]
 
 [sub_resource type="Sky" id="Sky_12ueu"]
@@ -100,18 +10,6 @@ sky_material = SubResource("ProceduralSkyMaterial_alo1v")
 [sub_resource type="Environment" id="Environment_5ol73"]
 background_mode = 2
 sky = SubResource("Sky_12ueu")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_alo1v"]
-albedo_color = Color(0.2, 0, 1, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_alo1v"]
-material = SubResource("StandardMaterial3D_alo1v")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_12ueu"]
-albedo_color = Color(1, 0.09803922, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_5ol73"]
-material = SubResource("StandardMaterial3D_12ueu")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ol73"]
 
@@ -154,79 +52,309 @@ font_size = 8
 [sub_resource type="BoxShape3D" id="BoxShape3D_h5mqm"]
 size = Vector3(0.20678711, 0.10180664, 0.08862305)
 
-[node name="StartScreen" type="Node3D" unique_id=674047538 node_paths=PackedStringArray("startKnop", "settingKnop", "quitKnop", "terugKnop", "startKleur", "settingKleur", "quitKleur", "terugKleur", "SettingDraaien")]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h5mqm"]
+
+[sub_resource type="TextMesh" id="TextMesh_jjcdy"]
+material = SubResource("StandardMaterial3D_h5mqm")
+text = "Level 1 tutorial"
+font_size = 8
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bpvjc"]
+size = Vector3(0.5602417, 0.0770874, 0.08911133)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_td1m4"]
+
+[sub_resource type="TextMesh" id="TextMesh_1hokx"]
+material = SubResource("StandardMaterial3D_td1m4")
+text = "Level 2"
+font_size = 8
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0sokx"]
+size = Vector3(0.2593994, 0.054779053, 0.10406494)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b8ayr"]
+
+[sub_resource type="TextMesh" id="TextMesh_dahmb"]
+material = SubResource("StandardMaterial3D_b8ayr")
+text = "Level 3"
+font_size = 8
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j0ptm"]
+size = Vector3(0.276886, 0.0739212, 0.114868164)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rywdt"]
+
+[sub_resource type="TextMesh" id="TextMesh_1pjxw"]
+material = SubResource("StandardMaterial3D_rywdt")
+text = "Level 4"
+font_size = 8
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b2ibr"]
+size = Vector3(0.26135254, 0.0659256, 0.10424805)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_alo1v"]
+
+[sub_resource type="TextMesh" id="TextMesh_n3tqk"]
+material = SubResource("StandardMaterial3D_alo1v")
+text = "Terug"
+font_size = 8
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h7bbb"]
+size = Vector3(0.22205353, 0.07788086, 0.13256836)
+
+[sub_resource type="Animation" id="Animation_12ueu"]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StartMenu/Camera3D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.7461967, 0), Vector3(1, 0.7461967, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StartMenu/Camera3D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -1.5707964, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5ol73"]
+resource_name = "Setting_draaien"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StartMenu/Camera3D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.9666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.7461967, 0), Vector3(0.84957874, 0.7461967, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StartMenu/Camera3D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.9666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -1.5707964, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_alo1v"]
+resource_name = "Setting_terug"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StartMenu/Camera3D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.85, 0.746, 0), Vector3(0, 0.7461967, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StartMenu/Camera3D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -1.5707964, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lj7eh"]
+resource_name = "start"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StartMenu/Camera3D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.7461967, 0), Vector3(0, 0.7461967, -2.8355668)]
+}
+
+[sub_resource type="Animation" id="Animation_h5mqm"]
+resource_name = "terug_start"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StartMenu/Camera3D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.7461967, -2.8355668), Vector3(0, 0.7461967, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lj7eh"]
+_data = {
+&"RESET": SubResource("Animation_12ueu"),
+&"Setting_draaien": SubResource("Animation_5ol73"),
+&"Setting_terug": SubResource("Animation_alo1v"),
+&"start": SubResource("Animation_lj7eh"),
+&"terug_start": SubResource("Animation_h5mqm")
+}
+
+[node name="StartScreen" type="Node3D" unique_id=674047538 node_paths=PackedStringArray("Level1Knop", "Level2Knop", "Level3Knop", "Level4Knop", "TerugStartKnop", "Level1Kleur", "Level2Kleur", "Level3Kleur", "Level4Kleur", "TerugStartKleur", "startKnop", "settingKnop", "quitKnop", "terugKnop", "startKleur", "settingKleur", "quitKleur", "terugKleur", "AnimatieDraaien")]
 script = ExtResource("1_alo1v")
-startKnop = NodePath("Menu/Start/Start")
-settingKnop = NodePath("Menu/Settings/Settings")
-quitKnop = NodePath("Menu/Quit/Quit")
-terugKnop = NodePath("Menu/Terug/Terug")
-startKleur = NodePath("Menu/Start")
-settingKleur = NodePath("Menu/Settings")
-quitKleur = NodePath("Menu/Quit")
-terugKleur = NodePath("Menu/Terug")
-SettingDraaien = NodePath("SettingAnimation")
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=2068208189]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7461967, 0)
-
-[node name="SettingAnimation" type="AnimationPlayer" parent="." unique_id=1817279648]
-libraries/ = SubResource("AnimationLibrary_lj7eh")
+Level1Knop = NodePath("StartMenu/Menu/Level1/Level1")
+Level2Knop = NodePath("StartMenu/Menu/Level2/Level2")
+Level3Knop = NodePath("StartMenu/Menu/Level3/Level3")
+Level4Knop = NodePath("StartMenu/Menu/Level4/Level4")
+TerugStartKnop = NodePath("StartMenu/Menu/Terug_start/Terug_start")
+Level1Kleur = NodePath("StartMenu/Menu/Level1")
+Level2Kleur = NodePath("StartMenu/Menu/Level2")
+Level3Kleur = NodePath("StartMenu/Menu/Level3")
+Level4Kleur = NodePath("StartMenu/Menu/Level4")
+TerugStartKleur = NodePath("StartMenu/Menu/Terug_start")
+startKnop = NodePath("StartMenu/Menu/Start/Start")
+settingKnop = NodePath("StartMenu/Menu/Settings/Settings")
+quitKnop = NodePath("StartMenu/Menu/Quit/Quit")
+terugKnop = NodePath("StartMenu/Menu/Terug/Terug")
+startKleur = NodePath("StartMenu/Menu/Start")
+settingKleur = NodePath("StartMenu/Menu/Settings")
+quitKleur = NodePath("StartMenu/Menu/Quit")
+terugKleur = NodePath("StartMenu/Menu/Terug")
+AnimatieDraaien = NodePath("StartMenu/Animation")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1303609494]
 environment = SubResource("Environment_5ol73")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="WorldEnvironment" unique_id=502768708]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.100392, 0.17740428, 0)
-mesh = SubResource("BoxMesh_alo1v")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=792350324]
-transform = Transform3D(8.08251, 0, 0, 0, 0.2158562, 0, 0, 0, 2.872909, 1, 0, 0)
-mesh = SubResource("BoxMesh_alo1v")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=237078616]
-transform = Transform3D(10.598432, 0, 0, 0, 1.6413043, 0, 0, 0, 1, 0.4461453, 0, -1.6674625)
-mesh = SubResource("BoxMesh_5ol73")
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1305428094]
 
-[node name="Menu" type="Node3D" parent="." unique_id=1507913195]
+[node name="StartMenu" type="Node3D" parent="." unique_id=1415149395]
 
-[node name="Start" type="MeshInstance3D" parent="Menu" unique_id=953330542]
+[node name="Menu" type="Node3D" parent="StartMenu" unique_id=1507913195]
+
+[node name="Start" type="MeshInstance3D" parent="StartMenu/Menu" unique_id=953330542]
 transform = Transform3D(0.97204655, 0.047313914, 0.07000146, -0.019050235, 0.99214906, -0.037623398, -0.2340134, 0.11576541, 0.2938354, -0.42516708, 1.0278797, -0.49151343)
 mesh = SubResource("TextMesh_alo1v")
 
-[node name="Start" type="StaticBody3D" parent="Menu/Start" unique_id=1161371332]
+[node name="Start" type="StaticBody3D" parent="StartMenu/Menu/Start" unique_id=1161371332]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Menu/Start/Start" unique_id=1570351142]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StartMenu/Menu/Start/Start" unique_id=1570351142]
 transform = Transform3D(0.99988335, 6.221235e-07, 6.4074993e-07, 2.9671937e-06, 0.98090816, -3.6507845e-07, 0, -8.523464e-06, 1.002241, 0.0016264617, 0.0010322928, 0.013450146)
 shape = SubResource("BoxShape3D_alo1v")
 
-[node name="Settings" type="MeshInstance3D" parent="Menu" unique_id=1165876537]
+[node name="Settings" type="MeshInstance3D" parent="StartMenu/Menu" unique_id=1165876537]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.9923319, -0.037623387, 0, 0.123601474, 0.30205858, 0, 1.0088977, -0.492)
 mesh = SubResource("TextMesh_12ueu")
 
-[node name="Settings" type="StaticBody3D" parent="Menu/Settings" unique_id=948482786]
+[node name="Settings" type="StaticBody3D" parent="StartMenu/Menu/Settings" unique_id=948482786]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Menu/Settings/Settings" unique_id=1670101550]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StartMenu/Menu/Settings/Settings" unique_id=1670101550]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000014, 0.006988529, -0.0022497773, 0.025206327)
 shape = SubResource("BoxShape3D_12ueu")
 
-[node name="Quit" type="MeshInstance3D" parent="Menu" unique_id=1351588284]
+[node name="Quit" type="MeshInstance3D" parent="StartMenu/Menu" unique_id=1351588284]
 transform = Transform3D(0.972967, -0.010542699, -0.070223905, -0.018709438, 0.99207556, -0.03781834, 0.23018336, 0.12519965, 0.2937571, 0.39057893, 1.028, -0.492)
 mesh = SubResource("TextMesh_5ol73")
 
-[node name="Quit" type="StaticBody3D" parent="Menu/Quit" unique_id=1056362977]
+[node name="Quit" type="StaticBody3D" parent="StartMenu/Menu/Quit" unique_id=1056362977]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Menu/Quit/Quit" unique_id=1703823070]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StartMenu/Menu/Quit/Quit" unique_id=1703823070]
 transform = Transform3D(0.99999887, 1.8626451e-08, 0, 1.1175871e-08, 0.99999285, -5.9604645e-08, 5.9604645e-08, 4.7683716e-07, 1, -0.0003966838, -0.0013129115, 0.0015842915)
 shape = SubResource("BoxShape3D_5ol73")
 
-[node name="Terug" type="MeshInstance3D" parent="Menu" unique_id=1704308781]
+[node name="Terug" type="MeshInstance3D" parent="StartMenu/Menu" unique_id=1704308781]
 transform = Transform3D(-4.3711385e-08, -0.12360147, -0.30205858, 0, 0.99233186, -0.037623387, 0.99999994, -5.4027915e-09, -1.3203401e-08, 1.2983863, 1.009, 0)
 mesh = SubResource("TextMesh_lj7eh")
 
-[node name="Terug" type="StaticBody3D" parent="Menu/Terug" unique_id=2111014363]
+[node name="Terug" type="StaticBody3D" parent="StartMenu/Menu/Terug" unique_id=2111014363]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Menu/Terug/Terug" unique_id=548390977]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StartMenu/Menu/Terug/Terug" unique_id=548390977]
 transform = Transform3D(0.9999846, 1.150191e-13, 2.2915003e-13, -4.2188475e-14, 0.9999999, 7.1334005e-17, -6.963319e-13, 2.9802322e-08, 1, -0.010375495, -0.005248964, -0.0050063133)
 shape = SubResource("BoxShape3D_h5mqm")
+
+[node name="Level1" type="MeshInstance3D" parent="StartMenu/Menu" unique_id=117571077]
+transform = Transform3D(0.9440198, 0, 0.10041563, 0, 1, 0, -0.3298883, 0, 0.28735292, -0.36596543, 1.0262717, -3.537948)
+visible = false
+mesh = SubResource("TextMesh_jjcdy")
+
+[node name="Level1" type="StaticBody3D" parent="StartMenu/Menu/Level1" unique_id=1341075577]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StartMenu/Menu/Level1/Level1" unique_id=1724052815]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -2.3841858e-07, 0, 1, 0.0018630028, 0.0046691895, 0.00573349)
+shape = SubResource("BoxShape3D_bpvjc")
+
+[node name="Level2" type="MeshInstance3D" parent="StartMenu/Menu" unique_id=674207855]
+transform = Transform3D(0.9440198, 0, 0.100415625, 0, 1, 0, -0.32988825, 0, 0.28735286, -0.51576877, 0.90106094, -3.4857528)
+visible = false
+mesh = SubResource("TextMesh_1hokx")
+
+[node name="Level2" type="StaticBody3D" parent="StartMenu/Menu/Level2" unique_id=1580060806]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StartMenu/Menu/Level2/Level2" unique_id=1283809020]
+transform = Transform3D(1, 0, -1.4901161e-08, 0, 1, 0, 0, 0, 1, -0.004943013, 0.0068206787, 0.00821209)
+shape = SubResource("BoxShape3D_0sokx")
+
+[node name="Level3" type="MeshInstance3D" parent="StartMenu/Menu" unique_id=421218906]
+transform = Transform3D(0.9613634, -0.00620311, 0.08377238, 0.005865508, 0.9999806, 0.0006239155, -0.27521887, -0.00035625693, 0.2926375, -0.52069294, 0.7841904, -3.4857528)
+visible = false
+mesh = SubResource("TextMesh_dahmb")
+
+[node name="Level3" type="StaticBody3D" parent="StartMenu/Menu/Level3" unique_id=702411243]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StartMenu/Menu/Level3/Level3" unique_id=779159739]
+transform = Transform3D(1, 5.020411e-10, 0, -1.09139364e-10, 1.0000001, -1.6589183e-09, 0, 0, 1.0000066, 0.005966991, 0.0066426396, 0.022144318)
+shape = SubResource("BoxShape3D_j0ptm")
+
+[node name="Level4" type="MeshInstance3D" parent="StartMenu/Menu" unique_id=1861587626]
+transform = Transform3D(0.9505785, -0.00621202, 0.094489954, 0.005865508, 0.9999806, 0.0006239155, -0.3104279, -0.00012762853, 0.2893548, -0.5262091, 0.66320246, -3.4857528)
+visible = false
+mesh = SubResource("TextMesh_1pjxw")
+
+[node name="Level4" type="StaticBody3D" parent="StartMenu/Menu/Level4" unique_id=1448215040]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StartMenu/Menu/Level4/Level4" unique_id=858102804]
+transform = Transform3D(1, -2.3946268e-07, 8.195639e-08, 3.637979e-12, 0.9999636, -1.4551915e-11, 2.3841858e-07, -8.1490725e-10, 0.99999976, -0.0031113625, -0.0003787279, -0.011838913)
+shape = SubResource("BoxShape3D_b2ibr")
+
+[node name="Terug_start" type="MeshInstance3D" parent="StartMenu/Menu" unique_id=1629496718]
+transform = Transform3D(0.94380075, 0, -0.10060622, 0, 1, 0, 0.33051434, 0, 0.28728625, 0.4181261, 1.0262717, -3.537948)
+visible = false
+mesh = SubResource("TextMesh_n3tqk")
+
+[node name="Terug_start" type="StaticBody3D" parent="StartMenu/Menu/Terug_start" unique_id=1114998577]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StartMenu/Menu/Terug_start/Terug_start" unique_id=455656983]
+transform = Transform3D(0.9999995, 0, 0, 0, 1, 0, 1.1920929e-07, 0, 1, -0.007907093, -0.011108398, 0.012097359)
+shape = SubResource("BoxShape3D_h7bbb")
+
+[node name="Animation" type="AnimationPlayer" parent="StartMenu" unique_id=1817279648]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_lj7eh")
+
+[node name="Camera3D" type="Camera3D" parent="StartMenu" unique_id=2068208189]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7461967, 0)
