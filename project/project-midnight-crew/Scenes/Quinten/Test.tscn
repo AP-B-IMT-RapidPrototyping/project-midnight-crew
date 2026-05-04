@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://ct5rfyibv1hg1" path="res://Assets/Lukas/aimzoom.mp3" id="11_f0umh"]
 [ext_resource type="Texture2D" uid="uid://1ef74jdviv34" path="res://Assets/Lukas/nightsky.jpg" id="12_kdtny"]
 [ext_resource type="Script" uid="uid://bd62ln2wxnyiu" path="res://Scripts/Lukas/NPC.cs" id="13_6xa7u"]
+[ext_resource type="Script" uid="uid://ci2nnol0a672j" path="res://Scenes/Quinten/SelectTarget.cs" id="14_7m33r"]
 [ext_resource type="PackedScene" uid="uid://olksmf7jf50" path="res://Assets/Characters-kit/Models/GLB format/character-i.glb" id="14_yd61x"]
 [ext_resource type="AudioStream" uid="uid://bcsn0ckj5kcxm" path="res://Scenes/Quinten/slow-heartbeat.mp3" id="16_bv8ji"]
 
@@ -288,6 +289,7 @@ environment = SubResource("Environment_4e4y2")
 
 [node name="NPC\'s" type="Node3D" parent="Test-Main/NPC\'s" unique_id=1686742987]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.993088, 0.23377609, 61.59191)
+script = ExtResource("14_7m33r")
 
 [node name="NPC1" type="CharacterBody3D" parent="Test-Main/NPC\'s/NPC\'s" unique_id=2091238049 groups=["NPC"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.130035, 1.7898808, -3.3896027)
