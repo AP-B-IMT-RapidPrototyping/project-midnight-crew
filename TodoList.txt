@@ -2,7 +2,7 @@ TODO:
 
 	Ammo counter
 	Reload
-	Recoil limit
+	Fire rate
 	Extra levels
 	Map vergroten/Rand verbergen
 	Target selection
