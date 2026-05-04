@@ -23,6 +23,7 @@ project/assembly_name="Project Midnight Crew"
 
 NPC=""
 audio=""
+Target=""
 
 [input]
 
