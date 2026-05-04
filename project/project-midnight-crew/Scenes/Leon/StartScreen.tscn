@@ -1,15 +1,12 @@
 [gd_scene format=3 uid="uid://7bi4a3fyo3yp"]
 
 [ext_resource type="Script" uid="uid://ij5jm75auubn" path="res://Scripts/Leon/StartScreen.cs" id="1_alo1v"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_alo1v"]
-
-[sub_resource type="Sky" id="Sky_12ueu"]
-sky_material = SubResource("ProceduralSkyMaterial_alo1v")
-
-[sub_resource type="Environment" id="Environment_5ol73"]
-background_mode = 2
-sky = SubResource("Sky_12ueu")
+[ext_resource type="PackedScene" uid="uid://cwpmrt4p2phm2" path="res://Scenes/Jens/Map1.tscn" id="2_12ueu"]
+[ext_resource type="Texture2D" uid="uid://1ef74jdviv34" path="res://Assets/Lukas/nightsky.jpg" id="3_h5mqm"]
+[ext_resource type="Script" uid="uid://be6r2bfqo23gx" path="res://Scripts/Lukas/Bliksem.cs" id="4_jjcdy"]
+[ext_resource type="AudioStream" uid="uid://dsu78jwjhh4iq" path="res://Assets/Lukas/Bliksem1.mp3" id="5_bpvjc"]
+[ext_resource type="AudioStream" uid="uid://dy18m0curl4e6" path="res://Assets/Lukas/Bliksem2.mp3" id="6_td1m4"]
+[ext_resource type="Texture2D" uid="uid://dp0snvvbp6ird" path="res://Assets/Lukas/lightning-bolt-png-16.png" id="7_1hokx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ol73"]
 
@@ -217,14 +214,72 @@ tracks/0/keys = {
 "values": [Vector3(0, 0.7461967, -2.8355668), Vector3(0, 0.7461967, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_n3tqk"]
+resource_name = "vooruit"
+length = 10.0
+loop_mode = 2
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lj7eh"]
 _data = {
 &"RESET": SubResource("Animation_12ueu"),
 &"Setting_draaien": SubResource("Animation_5ol73"),
 &"Setting_terug": SubResource("Animation_alo1v"),
 &"start": SubResource("Animation_lj7eh"),
-&"terug_start": SubResource("Animation_h5mqm")
+&"terug_start": SubResource("Animation_h5mqm"),
+&"vooruit": SubResource("Animation_n3tqk")
 }
+
+[sub_resource type="Animation" id="Animation_h7bbb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Map1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -48.810444, -46)]
+}
+
+[sub_resource type="Animation" id="Animation_jjcdy"]
+resource_name = "Vooruit"
+length = 20.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Map1:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 19.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -48.810444, -46), Vector3(0, -48.810444, 156)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bpvjc"]
+_data = {
+&"RESET": SubResource("Animation_h7bbb"),
+&"Vooruit": SubResource("Animation_jjcdy")
+}
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_0sokx"]
+panorama = ExtResource("3_h5mqm")
+energy_multiplier = 1.67
+
+[sub_resource type="Sky" id="Sky_o804n"]
+sky_material = SubResource("PanoramaSkyMaterial_0sokx")
+
+[sub_resource type="Environment" id="Environment_b8ayr"]
+background_mode = 1
+background_color = Color(0.27314225, 0.27314225, 0.27314222, 1)
+background_energy_multiplier = 0.5
+sky = SubResource("Sky_o804n")
+sky_custom_fov = 145.2
 
 [node name="StartScreen" type="Node3D" unique_id=674047538 node_paths=PackedStringArray("Level1Knop", "Level2Knop", "Level3Knop", "Level4Knop", "TerugStartKnop", "Level1Kleur", "Level2Kleur", "Level3Kleur", "Level4Kleur", "TerugStartKleur", "startKnop", "settingKnop", "quitKnop", "terugKnop", "startKleur", "settingKleur", "quitKleur", "terugKleur", "AnimatieDraaien")]
 script = ExtResource("1_alo1v")
@@ -247,11 +302,6 @@ settingKleur = NodePath("StartMenu/Menu/Settings")
 quitKleur = NodePath("StartMenu/Menu/Quit")
 terugKleur = NodePath("StartMenu/Menu/Terug")
 AnimatieDraaien = NodePath("StartMenu/Animation")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1303609494]
-environment = SubResource("Environment_5ol73")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1305428094]
 
 [node name="StartMenu" type="Node3D" parent="." unique_id=1415149395]
 
@@ -352,9 +402,51 @@ mesh = SubResource("TextMesh_n3tqk")
 transform = Transform3D(0.9999995, 0, 0, 0, 1, 0, 1.1920929e-07, 0, 1, -0.007907093, -0.011108398, 0.012097359)
 shape = SubResource("BoxShape3D_h7bbb")
 
+[node name="SpotLight3D" type="SpotLight3D" parent="StartMenu/Menu" unique_id=176631978]
+transform = Transform3D(1, 0, 0, 0, 0.9989087, -0.046705466, 0, 0.046705466, 0.9989087, 0, 0, -2.1734424)
+light_energy = 9.318
+
 [node name="Animation" type="AnimationPlayer" parent="StartMenu" unique_id=1817279648]
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_lj7eh")
 
 [node name="Camera3D" type="Camera3D" parent="StartMenu" unique_id=2068208189]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7461967, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="StartMenu" unique_id=1000053652]
+transform = Transform3D(1, 0, 0, 0, 0.6132104, 0.7899196, 0, -0.7899196, 0.6132104, 0, 1.4816098, 0)
+light_energy = 7.83
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="StartMenu" unique_id=2135239946]
+transform = Transform3D(0.6015362, -0.08215699, -0.7946096, 0.7988455, 0.061864782, 0.59834653, 0, -0.99469745, 0.102844656, -0.71683997, 1.0016005, 0)
+light_energy = 6.955
+
+[node name="Map1" parent="." unique_id=1568125425 instance=ExtResource("2_12ueu")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, -48.810444, -46)
+
+[node name="Vooruit" type="AnimationPlayer" parent="." unique_id=349230736]
+libraries/ = SubResource("AnimationLibrary_bpvjc")
+autoplay = &"Vooruit"
+
+[node name="Omgeving" type="Node" parent="." unique_id=1099020369]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Omgeving" unique_id=470817168]
+environment = SubResource("Environment_b8ayr")
+
+[node name="Bliksem" type="Node" parent="." unique_id=1218326782]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Bliksem" unique_id=1376263433 node_paths=PackedStringArray("bliksem")]
+transform = Transform3D(1, 0, 0, 0, 0.74747354, 0.66429156, 0, -0.66429156, 0.74747354, -62.45459, 0, 29.82252)
+light_energy = 0.0
+shadow_enabled = true
+script = ExtResource("4_jjcdy")
+bliksem = NodePath("Sprite3D")
+ThunderSounds = [ExtResource("5_bpvjc"), ExtResource("6_td1m4")]
+
+[node name="Sprite3D" type="Sprite3D" parent="Bliksem/DirectionalLight3D" unique_id=1221281533]
+transform = Transform3D(40, 0, 0, 0, 30.314447, -26.096632, 0, 26.096632, 30.314447, 0, -23.064812, 191.62747)
+texture = ExtResource("7_1hokx")
+
+[node name="BliksemSound" type="AudioStreamPlayer3D" parent="Bliksem/DirectionalLight3D/Sprite3D" unique_id=348926785 groups=["audio"]]
+volume_db = 20.0
+max_polyphony = 3

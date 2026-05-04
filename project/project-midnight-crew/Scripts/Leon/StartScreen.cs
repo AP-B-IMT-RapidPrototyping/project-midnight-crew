@@ -286,6 +286,7 @@ public partial class StartScreen : Node3D
 	public void Level1()
 	{
 		GD.Print("Level1");
+		GetTree().ChangeSceneToFile("res://Scenes/Main/main2.scn");
 	}
 
 	public void Level2()
