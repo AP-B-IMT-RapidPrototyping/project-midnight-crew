@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://yn0dopywphr4"]
+
+[ext_resource type="PackedScene" uid="uid://djh3jowrl4a66" path="res://Assets/city/models/floor.gltf" id="1_n5hn5"]
+[ext_resource type="PackedScene" uid="uid://duokw36ywp2qd" path="res://Assets/city/models/sidewalk.gltf" id="2_24n2a"]
+[ext_resource type="PackedScene" uid="uid://bdt84r3thy1qx" path="res://Assets/city/models/building1.gltf" id="3_vcpij"]
+[ext_resource type="PackedScene" uid="uid://bq43rkpke5y7x" path="res://Assets/city/models/building2.gltf" id="4_vlv0k"]
+[ext_resource type="PackedScene" uid="uid://bxgw2l2jb3jdf" path="res://Assets/city/models/building3.gltf" id="5_2shck"]
+[ext_resource type="PackedScene" uid="uid://dxiu8hkj715n3" path="res://Assets/city/models/building4.gltf" id="6_g47q7"]
+[ext_resource type="PackedScene" uid="uid://b4xutuc331ea8" path="res://Assets/city/models/building5.gltf" id="7_d1v7u"]
+[ext_resource type="PackedScene" uid="uid://p0icab4lmm0u" path="res://Assets/city/models/building6.gltf" id="8_ldhmn"]
+[ext_resource type="PackedScene" uid="uid://gb0sf6jvk1j" path="res://Assets/city/models/building7.gltf" id="9_t6fo1"]
+[ext_resource type="PackedScene" uid="uid://c17pa0hgvhqp6" path="res://Assets/city/models/building8.gltf" id="10_x0msr"]
+[ext_resource type="PackedScene" uid="uid://bobrk7lt6rv8k" path="res://Assets/city/models/building9.gltf" id="11_gjaqw"]
+[ext_resource type="PackedScene" uid="uid://c3x3vo22xceq1" path="res://Assets/city/models/building10.gltf" id="12_5s3a4"]
+[ext_resource type="PackedScene" uid="uid://d0d1pe1wt0uoq" path="res://Assets/city/models/building11.gltf" id="13_cwjtu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n5hn5"]
+size = Vector3(31.130493, 81.63074, 29.746338)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_24n2a"]
+size = Vector3(24.49884, 99.30841, 33.37561)
+
+[node name="Map2" type="Node3D" unique_id=1281808349]
+
+[node name="floor" parent="." unique_id=1251733203 instance=ExtResource("1_n5hn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4953699, 9.237373)
+
+[node name="sidewalk" parent="." unique_id=733171490 instance=ExtResource("2_24n2a")]
+
+[node name="Object_18_001" parent="sidewalk" index="0" unique_id=1091536934]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.2538017, -61.574787, 0.61454576, 29.655315)
+
+[node name="Buildings" type="Node3D" parent="." unique_id=1352107912]
+
+[node name="building1" parent="Buildings" unique_id=1362925944 instance=ExtResource("3_vcpij")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -143.2)
+
+[node name="building2" parent="Buildings" unique_id=1971681253 instance=ExtResource("4_vlv0k")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -41, 0, 2)
+
+[node name="building3" parent="Buildings" unique_id=685733775 instance=ExtResource("5_2shck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -21.033493)
+
+[node name="building4" parent="Buildings" unique_id=1679044618 instance=ExtResource("6_g47q7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -143, 0, 72.329216)
+
+[node name="building5" parent="Buildings" unique_id=1964218445 instance=ExtResource("7_d1v7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -143, 0, 72.329216)
+
+[node name="building6" parent="Buildings" unique_id=1750401830 instance=ExtResource("8_ldhmn")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 19, 0, 207.59059)
+
+[node name="building7" parent="Buildings" unique_id=953267515 instance=ExtResource("9_t6fo1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 15.329216)
+
+[node name="building8" parent="Buildings" unique_id=1975805451 instance=ExtResource("10_x0msr")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 0.8155978, 0, -8.742278e-08, 0, -1, -37, 0, 205.59059)
+
+[node name="building9" parent="Buildings" unique_id=1856595777 instance=ExtResource("11_gjaqw")]
+
+[node name="building10" parent="Buildings" unique_id=696511210 instance=ExtResource("12_5s3a4")]
+
+[node name="building11" parent="Buildings" unique_id=310783187 instance=ExtResource("13_cwjtu")]
+transform = Transform3D(-3.934025e-08, 0, 0.9, 0, 0.9, 0, -0.9, 0, -3.934025e-08, -31, 0, -92.46847)
+
+[node name="collision" type="StaticBody3D" parent="Buildings/building11" unique_id=1908004403]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/building11/collision" unique_id=1591557310]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144.97644, 40.315376, -31.537514)
+shape = SubResource("BoxShape3D_n5hn5")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Buildings/building11/collision" unique_id=1790101480]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.361496, 46.554344, -31.937027)
+shape = SubResource("BoxShape3D_24n2a")
+
+[node name="border" type="StaticBody3D" parent="Buildings/building11" unique_id=654016918]
+
+[node name="objects" type="StaticBody3D" parent="Buildings/building11" unique_id=1298154856]
+
+[node name="building12" parent="Buildings" unique_id=716089910 instance=ExtResource("8_ldhmn")]
+transform = Transform3D(7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, -155, 0, -32.999493)
+
+[node name="building13" parent="Buildings" unique_id=1833895387 instance=ExtResource("9_t6fo1")]
+transform = Transform3D(7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, -155, 0, -32.999493)
+
+[editable path="sidewalk"]
