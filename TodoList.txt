@@ -1,0 +1,7 @@
+TODO:
+
+	Ammo counter
+	Reload
+	Recoil limit
+	Extra levels
+	Map vergroten/Rand verbergen

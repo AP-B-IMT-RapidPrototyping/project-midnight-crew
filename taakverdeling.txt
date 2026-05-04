@@ -1,9 +1,0 @@
-Jens:
-	-Map building
-Quinten:
-	-shooting
-Leon:
-	-player/light/omgeving
-Lukas:
-	-npc spawnen en bewegen
-
