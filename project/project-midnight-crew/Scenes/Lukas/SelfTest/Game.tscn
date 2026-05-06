@@ -34,7 +34,7 @@ sky_material = SubResource("PanoramaSkyMaterial_eljl3")
 [sub_resource type="Environment" id="Environment_eljl3"]
 background_mode = 1
 background_color = Color(0.27314225, 0.27314225, 0.27314222, 1)
-background_energy_multiplier = 0.5
+background_energy_multiplier = 1.03
 sky = SubResource("Sky_o804n")
 sky_custom_fov = 145.2
 
