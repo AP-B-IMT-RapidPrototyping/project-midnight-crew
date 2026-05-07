@@ -43,6 +43,8 @@
 [ext_resource type="Texture2D" uid="uid://6gd6e4443p3x" path="res://Assets/Lukas/NPCS/populate_models_1000_frames_4.jpg" id="40_5mjqh"]
 [ext_resource type="Texture2D" uid="uid://cf1l3df7s62bt" path="res://Assets/Lukas/NPCS/populate_models_1000_frames_49.jpg" id="41_16kv7"]
 [ext_resource type="Texture2D" uid="uid://cfki0p8mw4igr" path="res://Assets/Lukas/NPCS/populate_models_1000_frames_10.jpg" id="42_34bvc"]
+[ext_resource type="Script" uid="uid://ck5uq372n84h8" path="res://Scripts/Lukas/Spawn.cs" id="44_c7x5i"]
+[ext_resource type="PackedScene" uid="uid://olksmf7jf50" path="res://Assets/Characters-kit/Models/GLB format/character-i.glb" id="45_dm1qq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ljydq"]
 radius = 0.3671875
@@ -6447,6 +6449,10 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dos10"]
+radius = 0.79296875
+height = 2.694336
+
 [node name="NpCs" type="Node3D" unique_id=1676898705]
 
 [node name="NPC\'s" type="Node3D" parent="." unique_id=998293019]
@@ -7207,3 +7213,146 @@ transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_27mwg")
 skin = SubResource("Skin_dm1qq")
 skeleton = NodePath("..")
+
+[node name="NPC\'s2" type="Node" parent="." unique_id=2000507134]
+
+[node name="NPC\'s" type="Node3D" parent="NPC\'s2" unique_id=2115011818]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -218.03854, 0.23377609, 46.665367)
+script = ExtResource("44_c7x5i")
+SpawnRadius = 100.0
+
+[node name="NPC1" type="CharacterBody3D" parent="NPC\'s2/NPC\'s" unique_id=103826319 groups=["NPC"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.354767, 1.7898808, -3.8286247)
+script = ExtResource("1_hiidd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC\'s2/NPC\'s/NPC1" unique_id=883492472]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3533707, 0)
+shape = SubResource("CapsuleShape3D_dos10")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="NPC\'s2/NPC\'s/NPC1" unique_id=176956841 groups=["NPC"]]
+use_3d_avoidance = true
+
+[node name="character-i2" parent="NPC\'s2/NPC\'s/NPC1" unique_id=1326021196 instance=ExtResource("45_dm1qq")]
+
+[node name="NPC2" type="CharacterBody3D" parent="NPC\'s2/NPC\'s" unique_id=437443820 groups=["NPC"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.790695, 1.7898808, -22.561329)
+script = ExtResource("1_hiidd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC\'s2/NPC\'s/NPC2" unique_id=1859143136]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3533707, 0)
+shape = SubResource("CapsuleShape3D_dos10")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="NPC\'s2/NPC\'s/NPC2" unique_id=1419825154 groups=["NPC"]]
+use_3d_avoidance = true
+
+[node name="character-i2" parent="NPC\'s2/NPC\'s/NPC2" unique_id=2128878066 instance=ExtResource("45_dm1qq")]
+
+[node name="NPC3" type="CharacterBody3D" parent="NPC\'s2/NPC\'s" unique_id=169515638 groups=["NPC"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.444183, 1.7898808, -58.18654)
+script = ExtResource("1_hiidd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC\'s2/NPC\'s/NPC3" unique_id=948258935]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3533707, 0)
+shape = SubResource("CapsuleShape3D_dos10")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="NPC\'s2/NPC\'s/NPC3" unique_id=482728513 groups=["NPC"]]
+use_3d_avoidance = true
+
+[node name="character-i2" parent="NPC\'s2/NPC\'s/NPC3" unique_id=929589429 instance=ExtResource("45_dm1qq")]
+
+[node name="NPC4" type="CharacterBody3D" parent="NPC\'s2/NPC\'s" unique_id=1035695775 groups=["NPC"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.661835, 1.7898808, -39.5659)
+script = ExtResource("1_hiidd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC\'s2/NPC\'s/NPC4" unique_id=870718237]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3533707, 0)
+shape = SubResource("CapsuleShape3D_dos10")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="NPC\'s2/NPC\'s/NPC4" unique_id=98966437 groups=["NPC"]]
+use_3d_avoidance = true
+
+[node name="character-i2" parent="NPC\'s2/NPC\'s/NPC4" unique_id=337986089 instance=ExtResource("45_dm1qq")]
+
+[node name="NPC5" type="CharacterBody3D" parent="NPC\'s2/NPC\'s" unique_id=1868642441 groups=["NPC"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.05374, 1.3461533, -22.283512)
+script = ExtResource("1_hiidd")
+WanderRange = 25.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC\'s2/NPC\'s/NPC5" unique_id=212428633]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3533707, 0)
+shape = SubResource("CapsuleShape3D_dos10")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="NPC\'s2/NPC\'s/NPC5" unique_id=1481708556 groups=["NPC"]]
+use_3d_avoidance = true
+
+[node name="character-i2" parent="NPC\'s2/NPC\'s/NPC5" unique_id=1003483199 instance=ExtResource("45_dm1qq")]
+
+[node name="NPC6" type="CharacterBody3D" parent="NPC\'s2/NPC\'s" unique_id=433226031 groups=["NPC"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.07138, 1.3461533, 0.5263214)
+script = ExtResource("1_hiidd")
+WanderRange = 25.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC\'s2/NPC\'s/NPC6" unique_id=1054488968]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3533707, 0)
+shape = SubResource("CapsuleShape3D_dos10")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="NPC\'s2/NPC\'s/NPC6" unique_id=1402718450 groups=["NPC"]]
+use_3d_avoidance = true
+
+[node name="character-i2" parent="NPC\'s2/NPC\'s/NPC6" unique_id=412898902 instance=ExtResource("45_dm1qq")]
+
+[node name="NPC7" type="CharacterBody3D" parent="NPC\'s2/NPC\'s" unique_id=66392221 groups=["NPC"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.776428, 1.3461533, -1.5988159)
+script = ExtResource("1_hiidd")
+WanderRange = 25.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC\'s2/NPC\'s/NPC7" unique_id=1060668831]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3533707, 0)
+shape = SubResource("CapsuleShape3D_dos10")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="NPC\'s2/NPC\'s/NPC7" unique_id=454152495 groups=["NPC"]]
+use_3d_avoidance = true
+
+[node name="character-i2" parent="NPC\'s2/NPC\'s/NPC7" unique_id=173380625 instance=ExtResource("45_dm1qq")]
+
+[node name="NPC8" type="CharacterBody3D" parent="NPC\'s2/NPC\'s" unique_id=585392752 groups=["NPC"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.550507, 1.3461533, 2.2264366)
+script = ExtResource("1_hiidd")
+WanderRange = 25.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC\'s2/NPC\'s/NPC8" unique_id=1626976440]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3533707, 0)
+shape = SubResource("CapsuleShape3D_dos10")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="NPC\'s2/NPC\'s/NPC8" unique_id=1791800779 groups=["NPC"]]
+use_3d_avoidance = true
+
+[node name="character-i2" parent="NPC\'s2/NPC\'s/NPC8" unique_id=1792137161 instance=ExtResource("45_dm1qq")]
+
+[node name="NPC9" type="CharacterBody3D" parent="NPC\'s2/NPC\'s" unique_id=352751666 groups=["NPC"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.010162, 1.3461533, -59.40262)
+script = ExtResource("1_hiidd")
+WanderRange = 25.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC\'s2/NPC\'s/NPC9" unique_id=1282495354]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3533707, 0)
+shape = SubResource("CapsuleShape3D_dos10")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="NPC\'s2/NPC\'s/NPC9" unique_id=776383883 groups=["NPC"]]
+use_3d_avoidance = true
+
+[node name="character-i2" parent="NPC\'s2/NPC\'s/NPC9" unique_id=948570848 instance=ExtResource("45_dm1qq")]
+
+[node name="NPC10" type="CharacterBody3D" parent="NPC\'s2/NPC\'s" unique_id=885957156 groups=["NPC"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3580933, 1.3461533, -64.07793)
+script = ExtResource("1_hiidd")
+WanderRange = 25.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC\'s2/NPC\'s/NPC10" unique_id=77292060]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3533707, 0)
+shape = SubResource("CapsuleShape3D_dos10")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="NPC\'s2/NPC\'s/NPC10" unique_id=235007115 groups=["NPC"]]
+use_3d_avoidance = true
+
+[node name="character-i2" parent="NPC\'s2/NPC\'s/NPC10" unique_id=29997461 instance=ExtResource("45_dm1qq")]

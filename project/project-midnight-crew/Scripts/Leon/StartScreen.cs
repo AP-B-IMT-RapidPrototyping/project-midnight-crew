@@ -29,7 +29,8 @@ public partial class StartScreen : Node3D
 	
 	public override void _Ready()
 	{
-		if (startKnop != null)
+        Input.MouseMode = Input.MouseModeEnum.Visible;
+        if (startKnop != null)
 		{
 			startKnop.InputEvent += OnStartInput;
 			startKnop.MouseEntered += OnStartHover;
