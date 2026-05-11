@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ij5jm75auubn" path="res://Scripts/Leon/StartScreen.cs" id="1_alo1v"]
 [ext_resource type="PackedScene" uid="uid://cwpmrt4p2phm2" path="res://Scenes/Jens/Map1.tscn" id="2_12ueu"]
+[ext_resource type="FontFile" uid="uid://8j4u62cdbbun" path="res://Assets/Lettertype/The Secretary.ttf" id="2_jjcdy"]
 [ext_resource type="Texture2D" uid="uid://1ef74jdviv34" path="res://Assets/Lukas/nightsky.jpg" id="3_h5mqm"]
 [ext_resource type="Script" uid="uid://be6r2bfqo23gx" path="res://Scripts/Lukas/Bliksem.cs" id="4_jjcdy"]
 [ext_resource type="AudioStream" uid="uid://dsu78jwjhh4iq" path="res://Assets/Lukas/Bliksem1.mp3" id="5_bpvjc"]
@@ -14,9 +15,10 @@
 material = SubResource("StandardMaterial3D_5ol73")
 text = "Start"
 font_size = 8
+depth = 0.0
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_alo1v"]
-size = Vector3(0.18969727, 0.0679245, 0.05493164)
+[sub_resource type="BoxShape3D" id="BoxShape3D_j0ptm"]
+size = Vector3(0.276886, 0.0916481, 0.114868164)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lj7eh"]
 
@@ -25,6 +27,7 @@ material = SubResource("StandardMaterial3D_lj7eh")
 text = "Settings
 "
 font_size = 8
+depth = 0.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_12ueu"]
 size = Vector3(0.31658936, 0.090164185, 0.024169922)
@@ -35,6 +38,7 @@ size = Vector3(0.31658936, 0.090164185, 0.024169922)
 material = SubResource("StandardMaterial3D_n3tqk")
 text = "Quit"
 font_size = 8
+depth = 0.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5ol73"]
 size = Vector3(0.16119385, 0.08306885, 0.107666016)
@@ -46,10 +50,8 @@ material = SubResource("StandardMaterial3D_h7bbb")
 text = "Terug"
 font_size = 8
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_h5mqm"]
-size = Vector3(0.20678711, 0.10180664, 0.08862305)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h5mqm"]
+albedo_color = Color(0, 1, 0, 1)
 
 [sub_resource type="TextMesh" id="TextMesh_jjcdy"]
 material = SubResource("StandardMaterial3D_h5mqm")
@@ -60,6 +62,7 @@ font_size = 8
 size = Vector3(0.5602417, 0.0770874, 0.08911133)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_td1m4"]
+albedo_color = Color(1, 1, 0, 1)
 
 [sub_resource type="TextMesh" id="TextMesh_1hokx"]
 material = SubResource("StandardMaterial3D_td1m4")
@@ -70,24 +73,20 @@ font_size = 8
 size = Vector3(0.2593994, 0.054779053, 0.10406494)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b8ayr"]
+albedo_color = Color(1, 1, 0, 1)
 
 [sub_resource type="TextMesh" id="TextMesh_dahmb"]
 material = SubResource("StandardMaterial3D_b8ayr")
 text = "Level 3"
 font_size = 8
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_j0ptm"]
-size = Vector3(0.276886, 0.0739212, 0.114868164)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rywdt"]
+albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="TextMesh" id="TextMesh_1pjxw"]
 material = SubResource("StandardMaterial3D_rywdt")
 text = "Level 4"
 font_size = 8
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_b2ibr"]
-size = Vector3(0.26135254, 0.0659256, 0.10424805)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_alo1v"]
 
@@ -98,6 +97,20 @@ font_size = 8
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h7bbb"]
 size = Vector3(0.22205353, 0.07788086, 0.13256836)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jjcdy"]
+albedo_color = Color(0.67058825, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.3882353, 0, 0, 1)
+rim_enabled = true
+rim = 0.81
+rim_tint = 0.51
+
+[sub_resource type="TextMesh" id="TextMesh_bpvjc"]
+material = SubResource("StandardMaterial3D_jjcdy")
+text = "Midnight Sniper"
+font = ExtResource("2_jjcdy")
+depth = 0.0
 
 [sub_resource type="Animation" id="Animation_12ueu"]
 length = 2.0
@@ -229,15 +242,100 @@ _data = {
 &"vooruit": SubResource("Animation_n3tqk")
 }
 
+[sub_resource type="Animation" id="Animation_bpvjc"]
+resource_name = "Begin"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 56.646156, 81.7569), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.9898286, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_td1m4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1hokx"]
+_data = {
+&"Begin": SubResource("Animation_bpvjc"),
+&"RESET": SubResource("Animation_td1m4")
+}
+
 [sub_resource type="Animation" id="Animation_h7bbb"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Map1:position")
+tracks/0/path = NodePath("StartMenu:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StartMenu:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Map1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -255,10 +353,10 @@ tracks/0/path = NodePath("Map1:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 19.966667),
+"times": PackedFloat32Array(0, 20),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, -48.810444, -46), Vector3(0, -48.810444, 156)]
+"values": [Vector3(0, -48.810444, -46), Vector3(0, -48.810444, 132.30446)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bpvjc"]
@@ -304,18 +402,19 @@ terugKleur = NodePath("StartMenu/Menu/Terug")
 AnimatieDraaien = NodePath("StartMenu/Animation")
 
 [node name="StartMenu" type="Node3D" parent="." unique_id=1415149395]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
 
 [node name="Menu" type="Node3D" parent="StartMenu" unique_id=1507913195]
 
 [node name="Start" type="MeshInstance3D" parent="StartMenu/Menu" unique_id=953330542]
-transform = Transform3D(0.97204655, 0.047313914, 0.07000146, -0.019050235, 0.99214906, -0.037623398, -0.2340134, 0.11576541, 0.2938354, -0.42516708, 1.0278797, -0.49151343)
+transform = Transform3D(0.97204655, 0.047313914, 0.07000146, -0.019050235, 0.99214906, -0.037623398, -0.2340134, 0.11576541, 0.2938354, -0.39302212, 1.0278797, -0.49151343)
 mesh = SubResource("TextMesh_alo1v")
 
-[node name="Start" type="StaticBody3D" parent="StartMenu/Menu/Start" unique_id=1161371332]
+[node name="Start" type="StaticBody3D" parent="StartMenu/Menu/Start" unique_id=1327463191]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StartMenu/Menu/Start/Start" unique_id=1570351142]
-transform = Transform3D(0.99988335, 6.221235e-07, 6.4074993e-07, 2.9671937e-06, 0.98090816, -3.6507845e-07, 0, -8.523464e-06, 1.002241, 0.0016264617, 0.0010322928, 0.013450146)
-shape = SubResource("BoxShape3D_alo1v")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StartMenu/Menu/Start/Start" unique_id=1191888386]
+transform = Transform3D(1, 5.020411e-10, 0, -1.09139364e-10, 1.0000001, -1.6589183e-09, 0, 0, 1.0000066, 0.005966991, 0.0066426396, 0.022144318)
+shape = SubResource("BoxShape3D_j0ptm")
 
 [node name="Settings" type="MeshInstance3D" parent="StartMenu/Menu" unique_id=1165876537]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.9923319, -0.037623387, 0, 0.123601474, 0.30205858, 0, 1.0088977, -0.492)
@@ -341,11 +440,11 @@ shape = SubResource("BoxShape3D_5ol73")
 transform = Transform3D(-4.3711385e-08, -0.12360147, -0.30205858, 0, 0.99233186, -0.037623387, 0.99999994, -5.4027915e-09, -1.3203401e-08, 1.2983863, 1.009, 0)
 mesh = SubResource("TextMesh_lj7eh")
 
-[node name="Terug" type="StaticBody3D" parent="StartMenu/Menu/Terug" unique_id=2111014363]
+[node name="Terug" type="StaticBody3D" parent="StartMenu/Menu/Terug" unique_id=2017555859]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StartMenu/Menu/Terug/Terug" unique_id=548390977]
-transform = Transform3D(0.9999846, 1.150191e-13, 2.2915003e-13, -4.2188475e-14, 0.9999999, 7.1334005e-17, -6.963319e-13, 2.9802322e-08, 1, -0.010375495, -0.005248964, -0.0050063133)
-shape = SubResource("BoxShape3D_h5mqm")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StartMenu/Menu/Terug/Terug" unique_id=637986968]
+transform = Transform3D(0.99999785, 5.0207305e-10, 4.3520743e-14, -1.0915269e-10, 1.0000001, -1.0803342e-07, 7.1054274e-14, 6.983566e-16, 1.0000066, 0.0059669903, -0.002220869, 0.022144318)
+shape = SubResource("BoxShape3D_j0ptm")
 
 [node name="Level1" type="MeshInstance3D" parent="StartMenu/Menu" unique_id=117571077]
 transform = Transform3D(0.9440198, 0, 0.10041563, 0, 1, 0, -0.3298883, 0, 0.28735292, -0.36596543, 1.0262717, -3.537948)
@@ -381,15 +480,15 @@ transform = Transform3D(1, 5.020411e-10, 0, -1.09139364e-10, 1.0000001, -1.65891
 shape = SubResource("BoxShape3D_j0ptm")
 
 [node name="Level4" type="MeshInstance3D" parent="StartMenu/Menu" unique_id=1861587626]
-transform = Transform3D(0.9505785, -0.00621202, 0.094489954, 0.005865508, 0.9999806, 0.0006239155, -0.3104279, -0.00012762853, 0.2893548, -0.5262091, 0.66320246, -3.4857528)
+transform = Transform3D(0.95057845, -0.0062120203, 0.09448996, 0.005865508, 0.99998057, 0.0006239155, -0.31042787, -0.00012762797, 0.2893548, -0.5262091, 0.66320246, -3.4857528)
 visible = false
 mesh = SubResource("TextMesh_1pjxw")
 
-[node name="Level4" type="StaticBody3D" parent="StartMenu/Menu/Level4" unique_id=1448215040]
+[node name="Level4" type="StaticBody3D" parent="StartMenu/Menu/Level4" unique_id=1982010048]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StartMenu/Menu/Level4/Level4" unique_id=858102804]
-transform = Transform3D(1, -2.3946268e-07, 8.195639e-08, 3.637979e-12, 0.9999636, -1.4551915e-11, 2.3841858e-07, -8.1490725e-10, 0.99999976, -0.0031113625, -0.0003787279, -0.011838913)
-shape = SubResource("BoxShape3D_b2ibr")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StartMenu/Menu/Level4/Level4" unique_id=1399706028]
+transform = Transform3D(1, 5.020411e-10, 0, -1.09139364e-10, 1.0000001, -1.6589183e-09, 0, 0, 1.0000066, 0.005966991, 0.0066426396, 0.022144318)
+shape = SubResource("BoxShape3D_j0ptm")
 
 [node name="Terug_start" type="MeshInstance3D" parent="StartMenu/Menu" unique_id=1629496718]
 transform = Transform3D(0.94380075, 0, -0.10060622, 0, 1, 0, 0.33051434, 0, 0.28728625, 0.4181261, 1.0262717, -3.537948)
@@ -406,20 +505,28 @@ shape = SubResource("BoxShape3D_h7bbb")
 transform = Transform3D(1, 0, 0, 0, 0.9989087, -0.046705466, 0, 0.046705466, 0.9989087, 0, 0, -2.1734424)
 light_energy = 9.318
 
-[node name="Animation" type="AnimationPlayer" parent="StartMenu" unique_id=1817279648]
-root_node = NodePath("../..")
-libraries/ = SubResource("AnimationLibrary_lj7eh")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StartMenu/Menu" unique_id=783444129]
+transform = Transform3D(0.9001306, 0.002708644, -0.00030726392, -0.0024391385, 0.99972564, -0.00011183942, 0.0009076341, 0.00037001446, 0.3044232, 0, 0.70551014, -0.492)
+mesh = SubResource("TextMesh_bpvjc")
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="StartMenu/Menu" unique_id=1000053652]
+transform = Transform3D(1, 0, 0, 0, 0.6132104, 0.7899196, 0, -0.7899196, 0.6132104, 0, 1.4816098, 0)
+light_energy = 7.83
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="StartMenu/Menu" unique_id=2135239946]
+transform = Transform3D(0.6015362, -0.08215699, -0.7946096, 0.7988455, 0.061864782, 0.59834653, 0, -0.99469745, 0.102844656, -0.71683997, 1.0016005, 0)
+light_energy = 6.955
 
 [node name="Camera3D" type="Camera3D" parent="StartMenu" unique_id=2068208189]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7461967, 0)
 
-[node name="SpotLight3D" type="SpotLight3D" parent="StartMenu" unique_id=1000053652]
-transform = Transform3D(1, 0, 0, 0, 0.6132104, 0.7899196, 0, -0.7899196, 0.6132104, 0, 1.4816098, 0)
-light_energy = 7.83
+[node name="Animation" type="AnimationPlayer" parent="StartMenu" unique_id=1817279648]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_lj7eh")
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="StartMenu" unique_id=2135239946]
-transform = Transform3D(0.6015362, -0.08215699, -0.7946096, 0.7988455, 0.061864782, 0.59834653, 0, -0.99469745, 0.102844656, -0.71683997, 1.0016005, 0)
-light_energy = 6.955
+[node name="Begin" type="AnimationPlayer" parent="StartMenu" unique_id=1525957802]
+libraries/ = SubResource("AnimationLibrary_1hokx")
+autoplay = &"Begin"
 
 [node name="Map1" parent="." unique_id=1568125425 instance=ExtResource("2_12ueu")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, -48.810444, -46)

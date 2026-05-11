@@ -26,6 +26,9 @@ public partial class StartScreen : Node3D
 
 	private Color hoverKleur = new Color(0, 0, 0);
 	private Color normalKleur = new Color(1, 1, 1);
+	private Color GroenKleur = new Color(0, 1, 0);
+	private Color GeelKleur = new Color(1, 1, 0);
+	private Color RoodKleur = new Color(1, 0, 0);
 	
 	public override void _Ready()
 	{
@@ -112,19 +115,19 @@ public partial class StartScreen : Node3D
 	
 	//level1kleur hover
 	private void OnLevel1Hover() => VeranderKleur(Level1Kleur, hoverKleur);
-    private void OnLevel1Exit()  => VeranderKleur(Level1Kleur, normalKleur);
+    private void OnLevel1Exit()  => VeranderKleur(Level1Kleur, GroenKleur);
 
 	//level2kleur hover
 	private void OnLevel2Hover() => VeranderKleur(Level2Kleur, hoverKleur);
-    private void OnLevel2Exit()  => VeranderKleur(Level2Kleur, normalKleur);
+    private void OnLevel2Exit()  => VeranderKleur(Level2Kleur, GeelKleur);
 
 	//level3kleur hover
 	private void OnLevel3Hover() => VeranderKleur(Level3Kleur, hoverKleur);
-    private void OnLevel3Exit()  => VeranderKleur(Level3Kleur, normalKleur);
+    private void OnLevel3Exit()  => VeranderKleur(Level3Kleur, GeelKleur);
 
 	//level4kleur hover
 	private void OnLevel4Hover() => VeranderKleur(Level4Kleur, hoverKleur);
-    private void OnLevel4Exit()  => VeranderKleur(Level4Kleur, normalKleur);
+    private void OnLevel4Exit()  => VeranderKleur(Level4Kleur, RoodKleur);
 
 	//terugstartkleur hover
 	private void OnTerugStartHover() => VeranderKleur(TerugStartKleur, hoverKleur);
