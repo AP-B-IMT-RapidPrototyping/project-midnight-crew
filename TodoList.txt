@@ -3,7 +3,6 @@ TODO:
 	Startscherm
 	Ammo counter
 	Reload
-	Fire rate
 	Extra levels
 	Map vergroten/Rand verbergen
 	Target selection
