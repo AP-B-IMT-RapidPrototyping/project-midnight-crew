@@ -1,8 +1,5 @@
 TODO:
 
-	Startscherm
-	Ammo counter
-	Reload
 	Extra levels
 	Map vergroten/Rand verbergen
-	Target selection
+	"return to menu" button
