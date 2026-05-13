@@ -1,0 +1,169 @@
+[gd_scene format=3 uid="uid://cywom1fpe8ki3"]
+
+[ext_resource type="Script" uid="uid://0he3v1a8ktrk" path="res://Scripts/Leon/SettingMain.cs" id="1_rxu7j"]
+
+[sub_resource type="Animation" id="Animation_rxu7j"]
+resource_name = "Animation_DOWN"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Buttons:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.74140835, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_34enk"]
+resource_name = "Animation_UP"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Buttons:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.74140835, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_oirpk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Buttons:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_btcmb"]
+_data = {
+&"Animation_DOWN": SubResource("Animation_rxu7j"),
+&"Animation_UP": SubResource("Animation_34enk"),
+&"RESET": SubResource("Animation_oirpk")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ol73"]
+
+[sub_resource type="TextMesh" id="TextMesh_e676r"]
+material = SubResource("StandardMaterial3D_5ol73")
+text = "Resume
+"
+font_size = 8
+depth = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rxu7j"]
+size = Vector3(0.29846954, 0.08207893, 0.114868164)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lj7eh"]
+
+[sub_resource type="TextMesh" id="TextMesh_34enk"]
+material = SubResource("StandardMaterial3D_lj7eh")
+text = "Settings
+"
+font_size = 8
+depth = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oirpk"]
+size = Vector3(0.31658936, 0.090164185, 0.024169922)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n3tqk"]
+
+[sub_resource type="TextMesh" id="TextMesh_btcmb"]
+material = SubResource("StandardMaterial3D_n3tqk")
+text = "Back to main menu"
+font_size = 8
+depth = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_alm1g"]
+size = Vector3(0.75227356, 0.08306885, 0.107666016)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e676r"]
+
+[sub_resource type="TextMesh" id="TextMesh_rxu7j"]
+material = SubResource("StandardMaterial3D_e676r")
+text = "Quit
+"
+font_size = 8
+depth = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_34enk"]
+size = Vector3(0.17228699, 0.090164185, 0.024169922)
+
+[node name="SettingMain" type="Node3D" unique_id=552825943 node_paths=PackedStringArray("resumeKnop", "settingKnop", "backMainKnop", "quitKnop", "resumeKleur", "settingKleur", "backMainKeur", "quitKleur", "animation", "buttons")]
+script = ExtResource("1_rxu7j")
+resumeKnop = NodePath("Buttons/Resume/Resume")
+settingKnop = NodePath("Buttons/Settings/Settings")
+backMainKnop = NodePath("Buttons/BackMain/BackMain")
+quitKnop = NodePath("Buttons/Quit/Quit")
+resumeKleur = NodePath("Buttons/Resume")
+settingKleur = NodePath("Buttons/Settings")
+backMainKeur = NodePath("Buttons/BackMain")
+quitKleur = NodePath("Buttons/Quit")
+animation = NodePath("AnimationUP")
+buttons = NodePath("Buttons")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1902546403]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.94597673, 0)
+
+[node name="AnimationUP" type="AnimationPlayer" parent="." unique_id=454818442]
+libraries/ = SubResource("AnimationLibrary_btcmb")
+
+[node name="Buttons" type="Node3D" parent="." unique_id=41760928]
+visible = false
+
+[node name="Resume" type="MeshInstance3D" parent="Buttons" unique_id=1927024291]
+transform = Transform3D(0.9999998, 0, 0, 0, 0.9923319, -0.037623394, 0, 0.12360147, 0.30205867, 0, 1.2106104, -0.492)
+mesh = SubResource("TextMesh_e676r")
+
+[node name="Resume" type="StaticBody3D" parent="Buttons/Resume" unique_id=174616025]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buttons/Resume/Resume" unique_id=1031338608]
+transform = Transform3D(1, 5.020411e-10, 0, -1.0913943e-10, 1.0000001, -1.0058284e-07, 2.4286129e-17, 0, 1.0000066, -0.0048247883, 0.0018575191, 0.02214408)
+shape = SubResource("BoxShape3D_rxu7j")
+
+[node name="Settings" type="MeshInstance3D" parent="Buttons" unique_id=1216268097]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.9923319, -0.037623387, 0, 0.123601474, 0.30205858, 0, 1.0364985, -0.492)
+mesh = SubResource("TextMesh_34enk")
+
+[node name="Settings" type="StaticBody3D" parent="Buttons/Settings" unique_id=747752269]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buttons/Settings/Settings" unique_id=1387540243]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000014, 0.006988529, -0.0022497773, 0.025206327)
+shape = SubResource("BoxShape3D_oirpk")
+
+[node name="BackMain" type="MeshInstance3D" parent="Buttons" unique_id=292468400]
+transform = Transform3D(0.9999996, 0, 0, 0, 0.99999994, 0, 0, 0, 0.30439264, 0, 0.8556769, -0.492)
+mesh = SubResource("TextMesh_btcmb")
+
+[node name="BackMain" type="StaticBody3D" parent="Buttons/BackMain" unique_id=910487408]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buttons/BackMain/BackMain" unique_id=1674710736]
+transform = Transform3D(1, 1.8626741e-08, 0, 1.1175871e-08, 0.99999285, 2.4586916e-07, 5.9604645e-08, 4.7683716e-07, 1.0000008, 0.0015181609, -0.0013129115, 0.0015842915)
+shape = SubResource("BoxShape3D_alm1g")
+
+[node name="Quit" type="MeshInstance3D" parent="Buttons" unique_id=978063371]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99233186, 0.037623387, 0, -0.12360147, 0.30205858, 0, 0.6886041, -0.492)
+mesh = SubResource("TextMesh_rxu7j")
+
+[node name="Quit" type="StaticBody3D" parent="Buttons/Quit" unique_id=1848369170]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buttons/Quit/Quit" unique_id=130139463]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000014, 0.0008468667, -0.002249539, 0.025206327)
+shape = SubResource("BoxShape3D_34enk")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Buttons" unique_id=1354755923]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17787737, 0.43528438, 2.2650661)
+light_energy = 6.0
+spot_angle = 21.381495

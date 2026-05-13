@@ -9,10 +9,10 @@
 [ext_resource type="AudioStream" uid="uid://dy18m0curl4e6" path="res://Assets/Lukas/Bliksem2.mp3" id="6_td1m4"]
 [ext_resource type="Texture2D" uid="uid://dp0snvvbp6ird" path="res://Assets/Lukas/lightning-bolt-png-16.png" id="7_1hokx"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ol73"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bpvjc"]
 
 [sub_resource type="TextMesh" id="TextMesh_alo1v"]
-material = SubResource("StandardMaterial3D_5ol73")
+material = SubResource("StandardMaterial3D_bpvjc")
 text = "Start"
 font_size = 8
 depth = 0.0
@@ -20,10 +20,10 @@ depth = 0.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_j0ptm"]
 size = Vector3(0.276886, 0.0916481, 0.114868164)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lj7eh"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1hokx"]
 
 [sub_resource type="TextMesh" id="TextMesh_12ueu"]
-material = SubResource("StandardMaterial3D_lj7eh")
+material = SubResource("StandardMaterial3D_1hokx")
 text = "Settings
 "
 font_size = 8
@@ -32,10 +32,10 @@ depth = 0.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_12ueu"]
 size = Vector3(0.31658936, 0.090164185, 0.024169922)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n3tqk"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0sokx"]
 
 [sub_resource type="TextMesh" id="TextMesh_5ol73"]
-material = SubResource("StandardMaterial3D_n3tqk")
+material = SubResource("StandardMaterial3D_0sokx")
 text = "Quit"
 font_size = 8
 depth = 0.0
@@ -511,7 +511,7 @@ mesh = SubResource("TextMesh_bpvjc")
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="StartMenu/Menu" unique_id=1000053652]
 transform = Transform3D(1, 0, 0, 0, 0.6132104, 0.7899196, 0, -0.7899196, 0.6132104, 0, 1.4816098, 0)
-light_energy = 7.83
+light_energy = 18.185
 
 [node name="SpotLight3D3" type="SpotLight3D" parent="StartMenu/Menu" unique_id=2135239946]
 transform = Transform3D(0.6015362, -0.08215699, -0.7946096, 0.7988455, 0.061864782, 0.59834653, 0, -0.99469745, 0.102844656, -0.71683997, 1.0016005, 0)
