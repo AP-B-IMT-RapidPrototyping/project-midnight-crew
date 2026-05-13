@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://b8tmmix70abgv"]
+
+[ext_resource type="PackedScene" uid="uid://djh3jowrl4a66" path="res://Assets/city/models/floor.gltf" id="1_5jbvb"]
+[ext_resource type="PackedScene" uid="uid://duokw36ywp2qd" path="res://Assets/city/models/sidewalk.gltf" id="2_iylg3"]
+
+[node name="TutorialMap" type="Node3D" unique_id=2140490864]
+
+[node name="floor" parent="." unique_id=1251733203 instance=ExtResource("1_5jbvb")]
+
+[node name="sidewalk" parent="." unique_id=733171490 instance=ExtResource("2_iylg3")]
