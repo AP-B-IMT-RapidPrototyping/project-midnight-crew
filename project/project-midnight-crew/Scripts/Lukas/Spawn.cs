@@ -4,20 +4,19 @@ using System.Collections.Generic;
 
 public partial class Spawn : Node3D
 {
-    [Export] public float SpawnRadius = 50.0f;
-    [Export] public float RotationSpeed = 2.0f; // Snelheid van het draaien
+    [Export] public Vector3 MapSize = new Vector3(300, 0, 300); // De totale grootte van je speelveld
+    [Export] public float RotationSpeed = 2.0f;
 
-    private MeshInstance3D _hudMesh; // Referentie opslaan om later te draaien
+    private MeshInstance3D _hudMesh;
 
     public override void _Ready()
     {
-        GetTree().CreateTimer(0.2f).Timeout += VerdeelNPCs;
+        // Iets langere delay zodat de NavigationServer zeker alle regio's heeft geladen
+        GetTree().CreateTimer(0.3f).Timeout += VerdeelNPCs;
     }
 
-    // _Process wordt elke frame aangeroepen
     public override void _Process(double delta)
     {
-        // Als de HUD mesh bestaat, draai hem rond de Y-as
         if (IsInstanceValid(_hudMesh))
         {
             _hudMesh.RotateY((float)(RotationSpeed * delta));
@@ -27,6 +26,8 @@ public partial class Spawn : Node3D
     private void VerdeelNPCs()
     {
         var nodesInGroup = GetTree().GetNodesInGroup("NPC");
+        if (nodesInGroup.Count == 0) return;
+
         RandomNumberGenerator rng = new RandomNumberGenerator();
         rng.Randomize();
 
@@ -37,6 +38,7 @@ public partial class Spawn : Node3D
             if (node is CharacterBody3D npc)
             {
                 echteNPCs.Add(npc);
+
                 var agent = npc.GetNodeOrNull<NavigationAgent3D>("NavigationAgent3D");
                 if (agent == null) continue;
 
@@ -44,26 +46,33 @@ public partial class Spawn : Node3D
                 Vector3 spawnPoint = Vector3.Zero;
                 int pogingen = 0;
 
-                while (spawnPoint == Vector3.Zero && pogingen < 10)
+                // OPTIMALISATIE: We zoeken nu over de gehele MapSize breedte/lengte
+                while (spawnPoint == Vector3.Zero && pogingen < 15)
                 {
                     Vector3 randomPos = new Vector3(
-                        rng.RandfRange(-SpawnRadius, SpawnRadius),
-                        1.0f,
-                        rng.RandfRange(-SpawnRadius, SpawnRadius)
+                        rng.RandfRange(-MapSize.X / 2, MapSize.X / 2),
+                        5.0f, // Start iets hoger om clipping te voorkomen
+                        rng.RandfRange(-MapSize.Z / 2, MapSize.Z / 2)
                     );
+
+                    // Vind het dichtstbijzijnde punt op de daadwerkelijke NavMesh
                     spawnPoint = NavigationServer3D.MapGetClosestPoint(mapRid, randomPos);
                     pogingen++;
                 }
 
                 if (spawnPoint != Vector3.Zero)
                 {
-                    npc.GlobalPosition = spawnPoint + new Vector3(0, 0.5f, 0);
+                    npc.GlobalPosition = spawnPoint + new Vector3(0, 0.2f, 0);
+                    // Forceer update van de agent
                     agent.SetNavigationMap(mapRid);
-                    if (npc.HasMethod("PickNewTarget")) npc.CallDeferred("PickNewTarget");
+
+                    if (npc.HasMethod("PickNewTarget"))
+                        npc.CallDeferred("PickNewTarget");
                 }
             }
         }
 
+        // Target selectie
         if (echteNPCs.Count > 0)
         {
             int randomIndex = rng.RandiRange(0, echteNPCs.Count - 1);
@@ -86,14 +95,13 @@ public partial class Spawn : Node3D
 
         if (targetMeshNode != null && targetMeshNode.Mesh != null)
         {
-            _hudMesh = new MeshInstance3D(); // Sla op in de variabele buiten de functie
+            _hudMesh = new MeshInstance3D();
             _hudMesh.Mesh = targetMeshNode.Mesh;
             _hudMesh.Name = "HUD_TargetPreview";
 
             camera.AddChild(_hudMesh);
 
-            // Jouw exacte waarden
-            _hudMesh.Position = new Vector3(-0.250f, -0.125f, -0.325f);
+            _hudMesh.Position = new Vector3(-0.225f, -0.125f, -0.325f);
             _hudMesh.Scale = new Vector3(0.001f, 0.001f, 0.001f);
 
             StandardMaterial3D hudMat = new StandardMaterial3D();

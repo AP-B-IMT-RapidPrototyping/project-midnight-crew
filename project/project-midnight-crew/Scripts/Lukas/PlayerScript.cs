@@ -26,7 +26,9 @@ public partial class PlayerScript : CharacterBody3D
 
     private Camera3D _camera;
     private SpotLight3D _flashlight;
-    private TextureRect _scopeUI;
+    [Export] private Panel _scopeUI;
+    private Label _Target;
+    private TextureRect _TargetBack;
     private Node3D _sniperModel;
     private Vector3 _baseCameraPos;
 
@@ -46,7 +48,9 @@ public partial class PlayerScript : CharacterBody3D
         _sniperModel = _camera.GetNode<Node3D>("Sniper");
         _aimSound = GetNode<AudioStreamPlayer3D>("AimSound");
 
-        _scopeUI = GetTree().Root.FindChild("Scope", true, false) as TextureRect;
+        //_scopeUI = GetTree().Root.FindChild("Scope", true, false) as TextureRect;
+        _Target = GetTree().Root.FindChild("Target", true, false) as Label;
+        _TargetBack = GetTree().Root.FindChild("TargetBack", true, false) as TextureRect;
         if (_scopeUI != null) _scopeUI.Visible = false;
 
         Input.MouseMode = Input.MouseModeEnum.Captured;
@@ -93,12 +97,21 @@ public partial class PlayerScript : CharacterBody3D
         {
             _camera.Fov = Mathf.Lerp(_camera.Fov, ZoomFov, AimLerpSpeed);
             if (_scopeUI != null) _scopeUI.Visible = true;
+
+            if (_Target != null) _Target.Visible = false;
+            if (_TargetBack != null) _TargetBack.Visible = false;
+
             if (_sniperModel != null) _sniperModel.Visible = false;
         }
         else
         {
             _camera.Fov = Mathf.Lerp(_camera.Fov, DefaultFov, AimLerpSpeed);
             if (_scopeUI != null) _scopeUI.Visible = false;
+
+
+            if (_Target != null) _Target.Visible = true;
+            if (_TargetBack != null) _TargetBack.Visible = true;
+
             if (_sniperModel != null) _sniperModel.Visible = true;
         }
 

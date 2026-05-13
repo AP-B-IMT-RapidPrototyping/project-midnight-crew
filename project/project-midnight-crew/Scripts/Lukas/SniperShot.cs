@@ -113,8 +113,20 @@ public partial class SniperShot : Node3D
     {
         _isGameOver = true;
 
+        // --- FIX: Reset de tijd en audio naar normaal voordat de animatie begint ---
+        Engine.TimeScale = 1.0f;
+        var audioNodes = GetTree().GetNodesInGroup("audio");
+        foreach (Node node in audioNodes)
+        {
+            if (IsInstanceValid(node)) node.Set("pitch_scale", 1.0f);
+        }
+        // -----------------------------------------------------------------------
+
         Tween slowTween = GetTree().CreateTween();
+        // Gebruik ProcessMode 3 (Always) zodat de tween doorgaat als de game pauzeert
         slowTween.SetProcessMode((Tween.TweenProcessMode)3);
+
+        // De animatie die de wereld langzaam vertraagt na de fout
         slowTween.TweenMethod(Callable.From<float>(UpdateGlobalSpeed), 1.0f, 0.01f, 2.0f)
                  .SetTrans(Tween.TransitionType.Quad)
                  .SetEase(Tween.EaseType.Out);
@@ -134,6 +146,7 @@ public partial class SniperShot : Node3D
                 }
 
                 GetTree().Paused = true;
+                // Wacht op een timer die ook doorloopt tijdens pauze
                 await ToSignal(GetTree().CreateTimer(2.5f, true), SceneTreeTimer.SignalName.Timeout);
 
                 GetTree().Paused = false;
