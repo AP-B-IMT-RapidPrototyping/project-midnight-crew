@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://b8tmmix70abgv"]
+
+[ext_resource type="PackedScene" uid="uid://djh3jowrl4a66" path="res://Assets/city/models/floor.gltf" id="1_5jbvb"]
+[ext_resource type="PackedScene" uid="uid://duokw36ywp2qd" path="res://Assets/city/models/sidewalk.gltf" id="2_iylg3"]
+[ext_resource type="PackedScene" uid="uid://dk2eunicr5gcc" path="res://Assets/tutorial city/tutorial_models/tutorial_building1.gltf" id="3_5s8tg"]
+[ext_resource type="PackedScene" uid="uid://pe7cixg75a4w" path="res://Assets/tutorial city/tutorial_models/tutorial_building2.gltf" id="4_ug2md"]
+[ext_resource type="PackedScene" uid="uid://ctehnohtm03xk" path="res://Assets/tutorial city/tutorial_models/tutorial_building3.gltf" id="5_4n15a"]
+[ext_resource type="PackedScene" uid="uid://map3bpwxol37" path="res://Assets/tutorial city/tutorial_models/tutorial_building4.gltf" id="6_u2sdl"]
+[ext_resource type="PackedScene" uid="uid://t5mbeh2x3qbe" path="res://Assets/tutorial city/tutorial_models/tutorial_building5.gltf" id="7_xwgct"]
+[ext_resource type="PackedScene" uid="uid://2dkjt0sdl8de" path="res://Assets/tutorial city/tutorial_models/tutorial_building6.gltf" id="8_gmv1a"]
+[ext_resource type="PackedScene" uid="uid://d11njx1785qxs" path="res://Assets/tutorial city/tutorial_models/tutorial_building7.gltf" id="9_unowj"]
+[ext_resource type="PackedScene" uid="uid://oco5yghwj4h7" path="res://Assets/tutorial city/tutorial_models/tutorial_building8.gltf" id="10_j2mlt"]
+[ext_resource type="PackedScene" uid="uid://cqaxmqw0cw2na" path="res://Assets/tutorial city/tutorial_models/tutorial_building9.gltf" id="11_8ty2w"]
+[ext_resource type="PackedScene" uid="uid://clw7l0firbsls" path="res://Assets/tutorial city/tutorial_models/tutorial_building10.gltf" id="12_1ft7a"]
+[ext_resource type="PackedScene" uid="uid://dhpw5s5ykkiwy" path="res://Assets/tutorial city/tutorial_models/tutorial_building11.gltf" id="13_4c2yu"]
+[ext_resource type="PackedScene" uid="uid://cgfon8qjnqu3q" path="res://Assets/tutorial city/tutorial_models/tutorial_building12.gltf" id="14_3ijto"]
+[ext_resource type="PackedScene" uid="uid://jt842r4hktw6" path="res://Assets/tutorial city/tutorial_models/tutorial_building13.gltf" id="15_wksje"]
+
+[node name="TutorialMap" type="Node3D" unique_id=2140490864]
+
+[node name="floor" parent="." unique_id=1251733203 instance=ExtResource("1_5jbvb")]
+
+[node name="sidewalk" parent="." unique_id=733171490 instance=ExtResource("2_iylg3")]
+
+[node name="tutorial_building1" parent="." unique_id=1731011950 instance=ExtResource("3_5s8tg")]
+transform = Transform3D(-3.4969112e-08, 0, -0.8, 0, 0.8, 0, 0.8, 0, -3.4969112e-08, -11, 18.8, 19.7)
+
+[node name="tutorial_building2" parent="." unique_id=1100455784 instance=ExtResource("4_ug2md")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -123.7, 10.6, 44.5)
+
+[node name="tutorial_building3" parent="." unique_id=1959876937 instance=ExtResource("5_4n15a")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -116, 11, -30)
+
+[node name="tutorial_building4" parent="." unique_id=26115194 instance=ExtResource("6_u2sdl")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -55.5, 18.8, -20.5)
+
+[node name="tutorial_building5" parent="." unique_id=301446845 instance=ExtResource("7_xwgct")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -6.6, 24, -16.7)
+
+[node name="tutorial_building6" parent="." unique_id=163009703 instance=ExtResource("8_gmv1a")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -65, 7.3, 18.2)
+
+[node name="tutorial_building7" parent="." unique_id=1818986779 instance=ExtResource("9_unowj")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -114, 17, 83)
+
+[node name="tutorial_building8" parent="." unique_id=1012681510 instance=ExtResource("10_j2mlt")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -16, 16, 80)
+
+[node name="tutorial_building9" parent="." unique_id=296318839 instance=ExtResource("11_8ty2w")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -135, 8, 82)
+
+[node name="tutorial_building10" parent="." unique_id=2079569958 instance=ExtResource("12_1ft7a")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -112.4, 23, 22)
+
+[node name="tutorial_building11" parent="." unique_id=2021231848 instance=ExtResource("13_4c2yu")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -54, 18.4, 81)
+
+[node name="tutorial_building12" parent="." unique_id=1521772308 instance=ExtResource("14_3ijto")]
+transform = Transform3D(-0.7, 0, -6.119594e-08, 0, 0.7, 0, 6.119594e-08, 0, -0.7, -50.6, 9, 41.2)
+
+[node name="tutorial_building13" parent="." unique_id=162918780 instance=ExtResource("15_wksje")]
+transform = Transform3D(-0.7, 0, -6.119594e-08, 0, 0.7, 0, 6.119594e-08, 0, -0.7, -13.1, 12.5, 41.9)
