@@ -1,15 +1,27 @@
 using Godot;
 using System;
-using System.Collections.Generic; // Nodig voor de List
+using System.Collections.Generic;
 
 public partial class Spawn : Node3D
 {
     [Export] public float SpawnRadius = 50.0f;
+    [Export] public float RotationSpeed = 2.0f; // Snelheid van het draaien
+
+    private MeshInstance3D _hudMesh; // Referentie opslaan om later te draaien
 
     public override void _Ready()
     {
-        // Wacht even tot alles geladen is
         GetTree().CreateTimer(0.2f).Timeout += VerdeelNPCs;
+    }
+
+    // _Process wordt elke frame aangeroepen
+    public override void _Process(double delta)
+    {
+        // Als de HUD mesh bestaat, draai hem rond de Y-as
+        if (IsInstanceValid(_hudMesh))
+        {
+            _hudMesh.RotateY((float)(RotationSpeed * delta));
+        }
     }
 
     private void VerdeelNPCs()
@@ -18,18 +30,13 @@ public partial class Spawn : Node3D
         RandomNumberGenerator rng = new RandomNumberGenerator();
         rng.Randomize();
 
-        // We maken een tijdelijke lijst aan om alleen de echte lichamen in op te slaan
         List<CharacterBody3D> echteNPCs = new List<CharacterBody3D>();
-
-        GD.Print($"Systeem: Start verdelen van {nodesInGroup.Count} nodes gevonden in groep 'NPC'...");
 
         foreach (Node node in nodesInGroup)
         {
             if (node is CharacterBody3D npc)
             {
-                // Voeg toe aan onze lijst met kandidaten voor het target
                 echteNPCs.Add(npc);
-
                 var agent = npc.GetNodeOrNull<NavigationAgent3D>("NavigationAgent3D");
                 if (agent == null) continue;
 
@@ -44,7 +51,6 @@ public partial class Spawn : Node3D
                         1.0f,
                         rng.RandfRange(-SpawnRadius, SpawnRadius)
                     );
-
                     spawnPoint = NavigationServer3D.MapGetClosestPoint(mapRid, randomPos);
                     pogingen++;
                 }
@@ -53,48 +59,54 @@ public partial class Spawn : Node3D
                 {
                     npc.GlobalPosition = spawnPoint + new Vector3(0, 0.5f, 0);
                     agent.SetNavigationMap(mapRid);
-
-                    if (npc.HasMethod("PickNewTarget"))
-                    {
-                        npc.CallDeferred("PickNewTarget");
-                    }
+                    if (npc.HasMethod("PickNewTarget")) npc.CallDeferred("PickNewTarget");
                 }
             }
         }
 
-        // --- TARGET SELECTIE UIT DE GEFILTERDE LIJST ---
         if (echteNPCs.Count > 0)
         {
             int randomIndex = rng.RandiRange(0, echteNPCs.Count - 1);
             CharacterBody3D target = echteNPCs[randomIndex];
-
             target.AddToGroup("Target");
-
-            GD.Print("------------------------------------------");
-            GD.Print($"MISSIE GEGENEREERD");
-            GD.Print($"Totaal aantal burgers: {echteNPCs.Count}");
-            GD.Print($"Huidig Doelwit: {target.Name}");
-            GD.Print("------------------------------------------");
-
-            // Haal de // hieronder weg als je het target altijd wilt zien tijdens het testen:
-            MaakTargetZichtbaar(target);
-        }
-        else
-        {
-            GD.PrintErr("FOUT: Geen CharacterBody3D gevonden in groep 'NPC'. Check je groepen!");
+            MaakTargetHUD(target);
         }
     }
 
-    private void MaakTargetZichtbaar(CharacterBody3D target)
+    private void MaakTargetHUD(CharacterBody3D target)
     {
+        Camera3D camera = GetViewport().GetCamera3D();
+        if (camera == null) return;
+
+        MeshInstance3D targetMeshNode = null;
         foreach (var child in target.GetChildren())
         {
-            if (child is MeshInstance3D mesh)
+            if (child is MeshInstance3D m) { targetMeshNode = m; break; }
+        }
+
+        if (targetMeshNode != null && targetMeshNode.Mesh != null)
+        {
+            _hudMesh = new MeshInstance3D(); // Sla op in de variabele buiten de functie
+            _hudMesh.Mesh = targetMeshNode.Mesh;
+            _hudMesh.Name = "HUD_TargetPreview";
+
+            camera.AddChild(_hudMesh);
+
+            // Jouw exacte waarden
+            _hudMesh.Position = new Vector3(-0.250f, -0.125f, -0.325f);
+            _hudMesh.Scale = new Vector3(0.001f, 0.001f, 0.001f);
+
+            StandardMaterial3D hudMat = new StandardMaterial3D();
+            if (targetMeshNode.GetActiveMaterial(0) is StandardMaterial3D origMat)
             {
-                var mat = new StandardMaterial3D();
-                mat.AlbedoColor = new Color(1, 0, 0); // Rood
-                mesh.MaterialOverride = mat;
+                hudMat.AlbedoColor = origMat.AlbedoColor;
+                hudMat.AlbedoTexture = origMat.AlbedoTexture;
             }
+
+            //hudMat.NoDepthTest = true;
+            hudMat.ShadingMode = StandardMaterial3D.ShadingModeEnum.Unshaded;
+            _hudMesh.MaterialOverride = hudMat;
+            _hudMesh.Layers = 2;
         }
     }
 }
