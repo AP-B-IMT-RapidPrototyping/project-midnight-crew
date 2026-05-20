@@ -24,11 +24,16 @@ public partial class PlayerScript : CharacterBody3D
     [ExportGroup("Zaklamp")]
     [Export] public float FlashlightEnergy = 1.5f;
 
+    [ExportGroup("UI Koppelingen")]
+    [Export] private Panel _scopeUI;
+    [Export] private Label _Target;
+    [Export] private TextureRect _TargetBack;
+
     private Camera3D _camera;
     private SpotLight3D _flashlight;
-    [Export] private Panel _scopeUI;
-    private Label _Target;
-    private TextureRect _TargetBack;
+    // [Export] private Panel _scopeUI;
+    // private Label _Target;
+    // private TextureRect _TargetBack;
     private Node3D _sniperModel;
     private Vector3 _baseCameraPos;
 
@@ -49,21 +54,23 @@ public partial class PlayerScript : CharacterBody3D
         _aimSound = GetNode<AudioStreamPlayer3D>("AimSound");
 
         //_scopeUI = GetTree().Root.FindChild("Scope", true, false) as TextureRect;
-        _Target = GetTree().Root.FindChild("Target", true, false) as Label;
-        _TargetBack = GetTree().Root.FindChild("TargetBack", true, false) as TextureRect;
-        if (_scopeUI != null) _scopeUI.Visible = false;
+        // _Target = GetTree().Root.FindChild("Target", true, false) as Label;
+        // _TargetBack = GetTree().Root.FindChild("TargetBack", true, false) as TextureRect;
+        // if (_scopeUI != null) _scopeUI.Visible = false;
 
         Input.MouseMode = Input.MouseModeEnum.Captured;
     }
 
     public override void _Input(InputEvent @event)
     {
-        if (@event.IsActionPressed("ui_cancel"))
+        //Blokkeer input wnr game is gepauzeerd
+        if (SettingMain.IsGepauzeerd) return;
+        /*if (@event.IsActionPressed("ui_cancel"))
         {
             Input.MouseMode = Input.MouseMode == Input.MouseModeEnum.Captured
                 ? Input.MouseModeEnum.Visible
                 : Input.MouseModeEnum.Captured;
-        }
+        }*/
 
         if (@event.IsActionPressed("flashLight"))
         {
@@ -81,6 +88,15 @@ public partial class PlayerScript : CharacterBody3D
 
     public override void _PhysicsProcess(double delta)
     {
+        //Blokkeer bewegen wnr game is gepauzeerd
+        if (SettingMain.IsGepauzeerd)
+        {
+            // Zorg dat de speler direct stilstaat en niet wegglijdt tijdens het pauzeren
+            Velocity = Vector3.Zero;
+            MoveAndSlide();
+            return; 
+        }
+
         bool isCurrentlyAiming = Input.IsActionPressed("aim");
         // NIEUW: Check of we sprinten (alleen als we niet mikken)
         bool isSprinting = Input.IsActionPressed("sprint") && !isCurrentlyAiming;
@@ -131,7 +147,6 @@ public partial class PlayerScript : CharacterBody3D
         Vector2 inputDir = Input.GetVector("move_left", "move_right", "move_forward", "move_backward");
         Vector3 direction = (Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
 
-        // NIEUW: Bereken de huidige snelheid (Speed * multiplier als we sprinten)
         float currentMaxSpeed = isSprinting ? Speed * SprintMultiplier : Speed;
 
         if (direction != Vector3.Zero)
@@ -149,7 +164,6 @@ public partial class PlayerScript : CharacterBody3D
         MoveAndSlide();
 
         // --- HEAD BOBBING ---
-        // NIEUW: Bobbing gaat sneller als we sprinten
         float bobMult = isCurrentlyAiming ? 0.1f : (isSprinting ? 1.5f : 1.0f);
         Vector3 targetBobPos = _baseCameraPos;
 
@@ -166,6 +180,9 @@ public partial class PlayerScript : CharacterBody3D
 
     public void ApplyRecoil(float strength, float time)
     {
+        //Geen terugslag animatie tijdens pauze
+        if (SettingMain.IsGepauzeerd) return;
+
         Tween tween = GetTree().CreateTween();
         float recoilInRad = Mathf.DegToRad(strength * 5f);
         float targetRot = RotationX + recoilInRad;

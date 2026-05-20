@@ -3,6 +3,7 @@ using System;
 
 public partial class SettingMain : Node3D
 {
+	public static bool IsGepauzeerd { get; private set; } = false;
 	[Export] private StaticBody3D resumeKnop;
 	[Export] private StaticBody3D settingKnop;
 	[Export] private StaticBody3D backMainKnop;
@@ -13,6 +14,7 @@ public partial class SettingMain : Node3D
 	[Export] private MeshInstance3D backMainKeur;
 	[Export] private MeshInstance3D quitKleur;
 	[Export] private AnimationPlayer animation;
+	[Export] private AnimationPlayer animationSniper;
 	[Export] private Node3D buttons;
 	private int _teller = 0;
 
@@ -22,6 +24,7 @@ public partial class SettingMain : Node3D
 	public override void _Ready()
 	{
 		Input.MouseMode = Input.MouseModeEnum.Visible;
+		Input.MouseMode = Input.MouseModeEnum.Captured;
 		if (resumeKnop != null)
 		{
 			resumeKnop.InputEvent += OnResumeInput;
@@ -58,14 +61,23 @@ public partial class SettingMain : Node3D
         {
 			if(_teller == 0)
 			{
+				Input.MouseMode = Input.MouseModeEnum.Visible;
 				buttons.Visible = true;
 				animation.Play("Animation_DOWN");
+				animationSniper.Play("Sniper-move-down");
 				_teller++;
+
+				IsGepauzeerd = true;
 			}
 			else
 			{
+				IsGepauzeerd = false;
+				Input.MouseMode = Input.MouseModeEnum.Hidden;
+				Input.MouseMode = Input.MouseModeEnum.Captured;
 			    animation.Play("Animation_UP");
+				animationSniper.Play("Sniper-move-up");
 				await ToSignal(animation, "animation_finished");
+				
 				buttons.Visible = false;
 				_teller = 0;
 			}	
@@ -144,11 +156,17 @@ public partial class SettingMain : Node3D
         }
     }
 
-	public void Resume()
+	public async void Resume()
 	{
+		IsGepauzeerd = false;
 		GD.Print("Resume");
 		Input.MouseMode = Input.MouseModeEnum.Hidden;
-		animation.Play("Animation_UP");
+		Input.MouseMode = Input.MouseModeEnum.Captured;
+		animationSniper.Play("Sniper-move-up");
+		animation.Play("Animation_UP");	
+		await ToSignal(animation, "animation_finished");
+		buttons.Visible = false;
+		_teller = 0;
 	}
 
 	public void Setting()
