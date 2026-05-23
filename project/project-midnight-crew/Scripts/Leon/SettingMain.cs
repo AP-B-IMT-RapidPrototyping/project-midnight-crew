@@ -4,6 +4,8 @@ using System;
 public partial class SettingMain : Node3D
 {
 	public static bool IsGepauzeerd { get; private set; } = false;
+	[Export] private Node3D startMain;
+	[Export] private Camera3D settingmainCamera;
 	[Export] private StaticBody3D resumeKnop;
 	[Export] private StaticBody3D settingKnop;
 	[Export] private StaticBody3D backMainKnop;
@@ -16,6 +18,7 @@ public partial class SettingMain : Node3D
 	[Export] private AnimationPlayer animation;
 	[Export] private AnimationPlayer animationSniper;
 	[Export] private Node3D buttons;
+	[Export] private Label labelSlow;
 	private int _teller = 0;
 
 	private Color hoverKleur = new Color(0, 0, 0);
@@ -57,6 +60,11 @@ public partial class SettingMain : Node3D
 
 	async public override void _Input(InputEvent @event)
     {
+		if (!this.Visible)
+        {
+            return;
+        }
+
         if (@event.IsActionPressed("ui_cancel"))
         {
 			if(_teller == 0)
@@ -176,8 +184,12 @@ public partial class SettingMain : Node3D
 
 	public void BackMain()
 	{
+		labelSlow.Visible = false;
 		GD.Print("Back to main menu");
-		GetTree().ChangeSceneToFile("res://Scenes/Leon/StartScreen.tscn");
+		//GetTree().ChangeSceneToFile("res://Scenes/Leon/StartScreen.tscn");
+		settingmainCamera.Current = false;
+		this.Visible = false;
+		startMain.Visible = true;
 	}
 
 	public void Quit()

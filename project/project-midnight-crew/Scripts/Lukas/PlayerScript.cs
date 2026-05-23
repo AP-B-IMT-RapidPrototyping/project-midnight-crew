@@ -64,7 +64,7 @@ public partial class PlayerScript : CharacterBody3D
     public override void _Input(InputEvent @event)
     {
         //Blokkeer input wnr game is gepauzeerd
-        if (SettingMain.IsGepauzeerd) return;
+        if (SettingMain.IsGepauzeerd || !GetNode<Node3D>("/root/Main/SettingMain").Visible) return;
         /*if (@event.IsActionPressed("ui_cancel"))
         {
             Input.MouseMode = Input.MouseMode == Input.MouseModeEnum.Captured
@@ -88,17 +88,36 @@ public partial class PlayerScript : CharacterBody3D
 
     public override void _PhysicsProcess(double delta)
     {
+        if (!GetNode<Node3D>("/root/Main/SettingMain").Visible)
+        {
+            Velocity = Vector3.Zero;
+            MoveAndSlide();
+            
+            // Verberg de UI zolang we in het menu zijn
+            if (_scopeUI != null) _scopeUI.Visible = false;
+            if (_Target != null) _Target.Visible = false;      // <-- In mijn vorige bericht stond hier per ongeluk 'true'!
+            if (_TargetBack != null) _TargetBack.Visible = false;
+            
+            return; 
+        }
+
         //Blokkeer bewegen wnr game is gepauzeerd
-        if (SettingMain.IsGepauzeerd)
+        if (SettingMain.IsGepauzeerd || !GetNode<Node3D>("/root/Main/SettingMain").Visible)
         {
             // Zorg dat de speler direct stilstaat en niet wegglijdt tijdens het pauzeren
             Velocity = Vector3.Zero;
             MoveAndSlide();
+
+            // Forceer de camera en UI uit de 'aim' stand, anders blijft de scope hangen!
+            _camera.Fov = DefaultFov;
+            if (_scopeUI != null) _scopeUI.Visible = false;
+            if (_Target != null) _Target.Visible = true;
+            if (_TargetBack != null) _TargetBack.Visible = true;
+            //if (_sniperModel != null) _sniperModel.Visible = true;
             return; 
         }
 
         bool isCurrentlyAiming = Input.IsActionPressed("aim");
-        // NIEUW: Check of we sprinten (alleen als we niet mikken)
         bool isSprinting = Input.IsActionPressed("sprint") && !isCurrentlyAiming;
 
         // --- AIM GELUID ---
