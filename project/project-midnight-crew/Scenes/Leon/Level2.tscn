@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://8v2kv0abnsm8"]
+
+[ext_resource type="PackedScene" uid="uid://yn0dopywphr4" path="res://Scenes/Jens/Map2.tscn" id="1_rv2n4"]
+[ext_resource type="PackedScene" uid="uid://6akswafpvjhm" path="res://Assets/Plaza_Ahualulco.fbx" id="2_hiapu"]
+
+[node name="Level2" type="Node3D" unique_id=350679768]
+
+[node name="Map2" parent="." unique_id=1281808349 instance=ExtResource("1_rv2n4")]
+
+[node name="Plaza_Ahualulco" parent="." unique_id=44685932 instance=ExtResource("2_hiapu")]
+transform = Transform3D(1.9670122e-05, 0, 149.99998, 0, 149.99998, 0, -149.99998, 0, 1.9670122e-05, -47, 0.55578804, 36)

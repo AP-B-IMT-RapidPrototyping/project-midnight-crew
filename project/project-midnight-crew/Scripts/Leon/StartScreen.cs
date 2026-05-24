@@ -29,6 +29,7 @@ public partial class StartScreen : Node3D
 	[Export] private Label labelSlow;
 	[Export] private Control gameUI;
 	[Export] public Spawn npcSpawner;
+	[Export] private AnimationPlayer levels;
 
 
 	private Color hoverKleur = new Color(0, 0, 0);
@@ -335,6 +336,7 @@ public partial class StartScreen : Node3D
 
 	public void Level1()
 	{
+		levels.Play("levelTest");
 		labelSlow.Visible = true;
 		GD.Print("Level1");
 		//GetTree().ChangeSceneToFile("res://Scenes/Main/main2.scn");
@@ -348,6 +350,16 @@ public partial class StartScreen : Node3D
 
 	public void Level2()
 	{
+		levels.Play("level2");
+
+		labelSlow.Visible = true;
+		startscreenCamera.Current = false;
+		settingmainCamera.Current = true;
+		this.Visible = false;
+		settingmain.Visible = true;
+		Input.MouseMode = Input.MouseModeEnum.Visible;
+		Input.MouseMode = Input.MouseModeEnum.Captured;
+		
 		GD.Print("Level2");
 	}
 
