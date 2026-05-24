@@ -29,6 +29,7 @@ NPC=""
 audio=""
 Target=""
 Player=""
+speler=""
 
 [input]
 

@@ -190,7 +190,6 @@ public partial class SettingMain : Node3D
 		animation.Stop();
     	animationSniper.Stop();
 
-		//GetTree().ChangeSceneToFile("res://Scenes/Leon/StartScreen.tscn");
 		settingmainCamera.Current = false;
 		this.Visible = false;
 		startMain.Visible = true;
@@ -198,6 +197,10 @@ public partial class SettingMain : Node3D
 		_teller = 0;
     	IsGepauzeerd = false;
     	buttons.Visible = false;
+
+		GetTree().Paused = false;
+		Input.MouseMode = Input.MouseModeEnum.Visible;
+		GD.Print("Terug naar menu");
 	}
 
 	public void Quit()

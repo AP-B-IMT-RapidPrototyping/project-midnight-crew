@@ -127,8 +127,11 @@ public partial class SniperShot : Node3D
 
         // Wacht 3 seconden
         await ToSignal(GetTree().CreateTimer(3.0f), SceneTreeTimer.SignalName.Timeout);
-        
-        if (_successLabel != null) _successLabel.Visible = false; // Verberg de succes tekst
+        GD.Print("Level herladen voor een schone start...");
+        Input.MouseMode = Input.MouseModeEnum.Visible;
+
+
+        /*if (_successLabel != null) _successLabel.Visible = false; // Verberg de succes tekst
         if (labelSlow != null) labelSlow.Visible = false;        // Verberg 'Target' tekst
         if (slowbar != null) slowbar.Visible = false;            // Verberg slowmobalk
         if (Target != null) Target.Visible = false;
@@ -136,12 +139,9 @@ public partial class SniperShot : Node3D
         settingmainCamera.Current = false;
         this.Visible = false;
         startMain.Visible = true;
+        Input.MouseMode = Input.MouseModeEnum.Visible;*/
 
-        // Switch naar het startscherm
-        GD.Print("Switching naar startscherm...");
-        //GetTree().ChangeSceneToFile("res://Scenes/Leon/StartScreen.tscn");
-
-        Input.MouseMode = Input.MouseModeEnum.Visible;
+        GetTree().ReloadCurrentScene();
     }
 
     // --- BESTAANDE VERLIES-FUNCTIE ---

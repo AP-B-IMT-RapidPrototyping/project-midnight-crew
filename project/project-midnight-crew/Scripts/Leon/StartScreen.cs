@@ -263,41 +263,9 @@ public partial class StartScreen : Node3D
         }
     }
 
-	public void ResetAllGameplay()
-	{
-		// 1. Verwijder alle oude NPC's (deze worden door de Spawner weer opnieuw geplaatst)
-		var nodesInGroup = GetTree().GetNodesInGroup("NPC");
-		foreach (Node node in nodesInGroup)
-		{
-			node.QueueFree();
-		}
-		
-		// 2. Verwijder eventuele 'Target' resten
-		var targets = GetTree().GetNodesInGroup("Target");
-		foreach (Node node in targets)
-		{
-			node.QueueFree();
-		}
-
-		// 3. Verberg de UI elementen
-		if (gameUI != null) gameUI.Visible = false;
-		
-		// 4. Reset de labels die achtergebleven kunnen zijn
-		var successLabel = GetNodeOrNull<Label>("/root/Main/Control/Fail_Hit/SuccesLabel");
-		if (successLabel != null) successLabel.Visible = false;
-		
-		var failLabel = GetNodeOrNull<Label>("/root/Main/Control/Fail_Hit/FailLabel");
-		if (failLabel != null) failLabel.Visible = false;
-	}
-
 	public void TerugNaarMenu()
 	{
-    // Alles opruimen zodat je in het menu een leeg, schoon beeld hebt
-    ResetAllGameplay();
-    
-    // Menu zichtbaar maken
-    this.Visible = true;
-    settingmainCamera.Current = true;
+		GetTree().ReloadCurrentScene();
 	}
 	
 	public void Start()
@@ -344,31 +312,31 @@ public partial class StartScreen : Node3D
 
 	public void Level1()
 	{
+		var speler = GetTree().GetFirstNodeInGroup("Speler") as PlayerScript;
 		var globalData = GetNode<GlobalData>("/root/GlobalData");
 		globalData.HuidigSpeelLevel = 1;
 
+		startscreenCamera.Current = false;
+		settingmainCamera.Current = true;
+		this.Visible = false;
+		settingmain.Visible = true;
+
+		Input.MouseMode = Input.MouseModeEnum.Captured;
+
 		if (echteSpeler != null && startPuntLevel1 != null)
 		{
+			//Speler op juiste positie zetten
 			echteSpeler.GlobalPosition = startPuntLevel1.GlobalPosition;
 			
-			// Zorg dat de speler in de juiste richting kijkt
+			//Speler in juiste richting zetten
 			echteSpeler.GlobalRotation = startPuntLevel1.GlobalRotation;
 			
 			// Reset de snelheid zodat hij niet doorglijdt van de vorige speelsessie
 			echteSpeler.Velocity = Vector3.Zero; 
 		}
 
-		// 2. Start de rest van je UI en game (dit stond al goed!)
 		labelSlow.Visible = true;
 		GD.Print("Level1");
-		
-		startscreenCamera.Current = false;
-		settingmainCamera.Current = true;
-		
-		this.Visible = false;
-		settingmain.Visible = true; // Dit maakt het spel/pauzemenu weer actief
-		
-		Input.MouseMode = Input.MouseModeEnum.Captured;
 	}
 
 	public void Level2()
