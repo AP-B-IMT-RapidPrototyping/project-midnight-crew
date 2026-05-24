@@ -344,6 +344,9 @@ public partial class StartScreen : Node3D
 
 	public void Level1()
 	{
+		var globalData = GetNode<GlobalData>("/root/GlobalData");
+		globalData.HuidigSpeelLevel = 1;
+
 		if (echteSpeler != null && startPuntLevel1 != null)
 		{
 			echteSpeler.GlobalPosition = startPuntLevel1.GlobalPosition;
@@ -370,26 +373,27 @@ public partial class StartScreen : Node3D
 
 	public void Level2()
 	{
+
+		var globalData = GetNode<GlobalData>("/root/GlobalData");
+		if (globalData.MaxVrijgespeeldLevel < 2)
+		{
+			GD.Print("Je moet eerst Level 1 halen!");
+			return; 
+		}
+		globalData.HuidigSpeelLevel = 2;
 		if (echteSpeler != null && startPuntLevel2 != null)
 		{
 			echteSpeler.GlobalPosition = startPuntLevel2.GlobalPosition;
-			
-			// Zorg dat de speler in de juiste richting kijkt
 			echteSpeler.GlobalRotation = startPuntLevel2.GlobalRotation;
-			
-			// Reset de snelheid zodat hij niet doorglijdt van de vorige speelsessie
 			echteSpeler.Velocity = Vector3.Zero; 
 		}
 
-		// 2. Start de rest van je UI en game (dit stond al goed!)
-		labelSlow.Visible = true;
 		GD.Print("Level2");
-		
+		labelSlow.Visible = true;
 		startscreenCamera.Current = false;
 		settingmainCamera.Current = true;
-		
 		this.Visible = false;
-		settingmain.Visible = true; // Dit maakt het spel/pauzemenu weer actief
+		settingmain.Visible = true; 
 		
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 	}

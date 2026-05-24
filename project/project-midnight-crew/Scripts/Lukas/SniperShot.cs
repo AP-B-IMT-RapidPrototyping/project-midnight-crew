@@ -105,11 +105,26 @@ public partial class SniperShot : Node3D
     {
         _isGameOver = true; // Zorgt dat de speler niet meer kan schieten
 
+        var globalData = GetNode<GlobalData>("/root/GlobalData");
+        int actiefLevel = 1;
+
+        if(globalData != null)
+        {
+            actiefLevel = globalData.HuidigSpeelLevel;
+            int volgendLevel = actiefLevel + 1;
+
+            if (globalData.MaxVrijgespeeldLevel < volgendLevel)
+            {
+                globalData.MaxVrijgespeeldLevel = volgendLevel;
+            }
+        }
+
         if (_successLabel != null)
         {
             _successLabel.Text = "MISSION SUCCESS";
             _successLabel.Visible = true;
         }
+
         // Wacht 3 seconden
         await ToSignal(GetTree().CreateTimer(3.0f), SceneTreeTimer.SignalName.Timeout);
         

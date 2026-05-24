@@ -15,6 +15,10 @@ run/main_scene="uid://dgch1qlv45sv3"
 config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GlobalData="*uid://bj4pwo431sll8"
+
 [dotnet]
 
 project/assembly_name="Project Midnight Crew"
