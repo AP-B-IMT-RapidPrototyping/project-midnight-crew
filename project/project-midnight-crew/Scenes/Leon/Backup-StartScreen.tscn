@@ -1,7 +1,13 @@
-[gd_scene format=3 uid="uid://7bi4a3fyo3yp"]
+[gd_scene format=3 uid="uid://c3804gyx6xj1h"]
 
-[ext_resource type="Script" uid="uid://ij5jm75auubn" path="res://Scripts/Leon/StartScreen.cs" id="1_alo1v"]
-[ext_resource type="FontFile" uid="uid://8j4u62cdbbun" path="res://Assets/Lettertype/The Secretary.ttf" id="2_jjcdy"]
+[ext_resource type="Script" uid="uid://ij5jm75auubn" path="res://Scripts/Leon/StartScreen.cs" id="1_02fxh"]
+[ext_resource type="FontFile" uid="uid://8j4u62cdbbun" path="res://Assets/Lettertype/The Secretary.ttf" id="2_8mb5g"]
+[ext_resource type="PackedScene" uid="uid://cwpmrt4p2phm2" path="res://Scenes/Jens/Map1.tscn" id="3_npc7i"]
+[ext_resource type="Texture2D" uid="uid://1ef74jdviv34" path="res://Assets/Lukas/nightsky.jpg" id="4_5chs8"]
+[ext_resource type="Script" uid="uid://be6r2bfqo23gx" path="res://Scripts/Lukas/Bliksem.cs" id="5_ow4fn"]
+[ext_resource type="AudioStream" uid="uid://dsu78jwjhh4iq" path="res://Assets/Lukas/Bliksem1.mp3" id="6_i7c72"]
+[ext_resource type="AudioStream" uid="uid://dy18m0curl4e6" path="res://Assets/Lukas/Bliksem2.mp3" id="7_o5h8l"]
+[ext_resource type="Texture2D" uid="uid://dp0snvvbp6ird" path="res://Assets/Lukas/lightning-bolt-png-16.png" id="8_yd3lb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bpvjc"]
 
@@ -103,7 +109,7 @@ rim_tint = 0.51
 [sub_resource type="TextMesh" id="TextMesh_bpvjc"]
 material = SubResource("StandardMaterial3D_jjcdy")
 text = "Midnight Sniper"
-font = ExtResource("2_jjcdy")
+font = ExtResource("2_8mb5g")
 depth = 0.0
 
 [sub_resource type="Animation" id="Animation_12ueu"]
@@ -236,9 +242,145 @@ _data = {
 &"vooruit": SubResource("Animation_n3tqk")
 }
 
-[node name="StartScreen" type="Node3D" unique_id=674047538 node_paths=PackedStringArray("startscreenCamera", "Level1Knop", "Level2Knop", "Level3Knop", "Level4Knop", "TerugStartKnop", "Level1Kleur", "Level2Kleur", "Level3Kleur", "Level4Kleur", "TerugStartKleur", "startKnop", "settingKnop", "quitKnop", "terugKnop", "startKleur", "settingKleur", "quitKleur", "terugKleur", "AnimatieDraaien")]
-script = ExtResource("1_alo1v")
-startscreenCamera = NodePath("StartMenu/Camera3D")
+[sub_resource type="Animation" id="Animation_bpvjc"]
+resource_name = "Begin"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 56.646156, 81.7569), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.9898286, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_td1m4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1hokx"]
+_data = {
+&"Begin": SubResource("Animation_bpvjc"),
+&"RESET": SubResource("Animation_td1m4")
+}
+
+[sub_resource type="Animation" id="Animation_h7bbb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StartMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StartMenu:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Map1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -48.810444, -46)]
+}
+
+[sub_resource type="Animation" id="Animation_jjcdy"]
+resource_name = "Vooruit"
+length = 20.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Map1:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -48.810444, -46), Vector3(0, -48.810444, 132.30446)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bpvjc"]
+_data = {
+&"RESET": SubResource("Animation_h7bbb"),
+&"Vooruit": SubResource("Animation_jjcdy")
+}
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_0sokx"]
+panorama = ExtResource("4_5chs8")
+energy_multiplier = 1.67
+
+[sub_resource type="Sky" id="Sky_o804n"]
+sky_material = SubResource("PanoramaSkyMaterial_0sokx")
+
+[sub_resource type="Environment" id="Environment_b8ayr"]
+background_mode = 1
+background_color = Color(0.27314225, 0.27314225, 0.27314222, 1)
+background_energy_multiplier = 0.5
+sky = SubResource("Sky_o804n")
+sky_custom_fov = 145.2
+
+[node name="StartScreen" type="Node3D" unique_id=674047538 node_paths=PackedStringArray("Level1Knop", "Level2Knop", "Level3Knop", "Level4Knop", "TerugStartKnop", "Level1Kleur", "Level2Kleur", "Level3Kleur", "Level4Kleur", "TerugStartKleur", "startKnop", "settingKnop", "quitKnop", "terugKnop", "startKleur", "settingKleur", "quitKleur", "terugKleur", "AnimatieDraaien")]
+script = ExtResource("1_02fxh")
 Level1Knop = NodePath("StartMenu/Menu/Level1/Level1")
 Level2Knop = NodePath("StartMenu/Menu/Level2/Level2")
 Level3Knop = NodePath("StartMenu/Menu/Level3/Level3")
@@ -260,7 +402,7 @@ terugKleur = NodePath("StartMenu/Menu/Terug")
 AnimatieDraaien = NodePath("StartMenu/Animation")
 
 [node name="StartMenu" type="Node3D" parent="." unique_id=1415149395]
-transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, 0, 7.390854, 3.9256287)
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
 
 [node name="Menu" type="Node3D" parent="StartMenu" unique_id=1507913195]
 
@@ -377,8 +519,41 @@ light_energy = 6.955
 
 [node name="Camera3D" type="Camera3D" parent="StartMenu" unique_id=2068208189]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7461967, 0)
-current = true
 
 [node name="Animation" type="AnimationPlayer" parent="StartMenu" unique_id=1817279648]
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_lj7eh")
+
+[node name="Begin" type="AnimationPlayer" parent="StartMenu" unique_id=1525957802]
+libraries/ = SubResource("AnimationLibrary_1hokx")
+autoplay = &"Begin"
+
+[node name="Map1" parent="." unique_id=1568125425 instance=ExtResource("3_npc7i")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, -48.810444, -46)
+
+[node name="Vooruit" type="AnimationPlayer" parent="." unique_id=349230736]
+libraries/ = SubResource("AnimationLibrary_bpvjc")
+autoplay = &"Vooruit"
+
+[node name="Omgeving" type="Node" parent="." unique_id=1099020369]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Omgeving" unique_id=470817168]
+environment = SubResource("Environment_b8ayr")
+
+[node name="Bliksem" type="Node" parent="." unique_id=1218326782]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Bliksem" unique_id=1376263433 node_paths=PackedStringArray("bliksem")]
+transform = Transform3D(1, 0, 0, 0, 0.74747354, 0.66429156, 0, -0.66429156, 0.74747354, -62.45459, 0, 29.82252)
+light_energy = 0.0
+shadow_enabled = true
+script = ExtResource("5_ow4fn")
+bliksem = NodePath("Sprite3D")
+ThunderSounds = [ExtResource("6_i7c72"), ExtResource("7_o5h8l")]
+
+[node name="Sprite3D" type="Sprite3D" parent="Bliksem/DirectionalLight3D" unique_id=1221281533]
+transform = Transform3D(40, 0, 0, 0, 30.314447, -26.096632, 0, 26.096632, 30.314447, 0, -23.064812, 191.62747)
+texture = ExtResource("8_yd3lb")
+
+[node name="BliksemSound" type="AudioStreamPlayer3D" parent="Bliksem/DirectionalLight3D/Sprite3D" unique_id=348926785 groups=["audio"]]
+volume_db = 20.0
+max_polyphony = 3

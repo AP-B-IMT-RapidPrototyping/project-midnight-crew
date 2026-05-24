@@ -84,8 +84,8 @@ public partial class Spawn : Node3D
 
     private void MaakTargetHUD(CharacterBody3D target)
     {
-        Camera3D camera = GetViewport().GetCamera3D();
-        if (camera == null) return;
+        var playerCam = GetNodeOrNull<Camera3D>("/root/Main/SettingMain/Player/CharacterBody3D/Camera3D");
+        if (playerCam == null) return;
 
         MeshInstance3D targetMeshNode = null;
         foreach (var child in target.GetChildren())
@@ -99,7 +99,7 @@ public partial class Spawn : Node3D
             _hudMesh.Mesh = targetMeshNode.Mesh;
             _hudMesh.Name = "HUD_TargetPreview";
 
-            camera.AddChild(_hudMesh);
+            playerCam.AddChild(_hudMesh);
 
             _hudMesh.Position = new Vector3(-0.225f, -0.125f, -0.325f);
             _hudMesh.Scale = new Vector3(0.001f, 0.001f, 0.001f);

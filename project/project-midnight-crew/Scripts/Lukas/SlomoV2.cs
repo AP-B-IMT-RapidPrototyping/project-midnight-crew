@@ -32,7 +32,6 @@ public partial class SlomoV2 : Node
         {
             SlomoBar.MaxValue = MaxSlomoTime;
             SlomoBar.Value = _currentSlomoEnergy;
-            SlomoBar.Visible = true;
             SlomoBar.ShowPercentage = false;
         }
     }
@@ -98,7 +97,8 @@ public partial class SlomoV2 : Node
     private void UpdateUI()
     {
         if (SlomoBar == null) return;
-
+        
+        SlomoBar.Visible = GetNode<Node3D>("/root/Main/SettingMain").Visible;
         SlomoBar.Value = _currentSlomoEnergy;
 
         // Haal de StyleBox van de achtergrond op

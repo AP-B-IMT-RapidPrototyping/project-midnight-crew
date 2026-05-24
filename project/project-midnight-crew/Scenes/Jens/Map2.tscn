@@ -2037,6 +2037,7 @@ size = Vector3(31.130493, 81.63074, 29.746338)
 [sub_resource type="BoxShape3D" id="BoxShape3D_24n2a"]
 size = Vector3(24.49884, 96.486206, 33.37561)
 
+<<<<<<< HEAD
 [sub_resource type="BoxShape3D" id="BoxShape3D_qxuxa"]
 size = Vector3(6.0346107, 8.969254, 5.9835815)
 
@@ -2175,6 +2176,8 @@ radius = 1.9575195
 height = 4.7941895
 radius = 1.9575195
 
+=======
+>>>>>>> 9fe74e5105b5d5f8827aee8cabfc3f6d9323139f
 [node name="Map2" type="Node3D" unique_id=1281808349]
 
 [node name="floor" parent="." unique_id=1251733203 instance=ExtResource("1_n5hn5")]
@@ -2182,7 +2185,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4953699, 9.237373)
 
 [node name="sidewalk" parent="." unique_id=733171490 instance=ExtResource("2_24n2a")]
 
-[node name="Object_18_001" parent="sidewalk" index="0" unique_id=1091536934]
+[node name="Object_18_001" parent="sidewalk" index="0" unique_id=1058467983]
 transform = Transform3D(1.1, 0, 0, 0, 1, 0, 0, 0, 1.2538017, -50.574787, 0.61454576, 32.162918)
 
 [node name="Buildings" type="Node3D" parent="." unique_id=1352107912]
@@ -2357,6 +2360,7 @@ shape = SubResource("BoxShape3D_24n2a")
 
 [node name="border" type="StaticBody3D" parent="Buildings/building11" unique_id=654016918]
 
+<<<<<<< HEAD
 [node name="objects" type="StaticBody3D" parent="Buildings/building11" unique_id=1298154856]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/building11/objects" unique_id=599643231]
@@ -2539,6 +2543,8 @@ shape = SubResource("CylinderShape3D_oyipv")
 transform = Transform3D(0.9998344, 0, 5.471179e-13, 0, 0.99999857, 0, -5.471179e-13, 0, 0.9998344, -123.23432, 104.80484, -37.355392)
 shape = SubResource("CylinderShape3D_inicm")
 
+=======
+>>>>>>> 9fe74e5105b5d5f8827aee8cabfc3f6d9323139f
 [node name="building12" parent="Buildings" unique_id=716089910 instance=ExtResource("8_ldhmn")]
 transform = Transform3D(8.3047695e-08, 0, 1.1, 0, 1.1, 0, -1.1, 0, 8.3047695e-08, -150.59999, 0, -32.999493)
 

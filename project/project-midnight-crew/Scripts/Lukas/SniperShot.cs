@@ -9,6 +9,12 @@ public partial class SniperShot : Node3D
     [ExportGroup("Recoil Instellingen")]
     [Export] public float RecoilAmount = 0.4f;
     [Export] public float RecoilTime = 0.12f;
+    [Export] private Label labelSlow;
+    [Export] private Node3D startMain;
+    [Export] private Camera3D settingmainCamera;
+    [Export] private ProgressBar slowbar;
+    [Export] private Label Target;
+    
 
     // UI Nodes
     private Label _failLabel;    // We noemen deze even FailLabel voor de duidelijkheid
@@ -35,6 +41,10 @@ public partial class SniperShot : Node3D
 
     public override void _Input(InputEvent @event)
     {
+        if(SettingMain.IsGepauzeerd || !GetNode<Node3D>("/root/Main/SettingMain").Visible)
+        {
+            return;
+        }
         if (_isGameOver) return;
 
         if (@event.IsActionPressed("shoot") && _canShoot)
@@ -102,10 +112,21 @@ public partial class SniperShot : Node3D
         }
         // Wacht 3 seconden
         await ToSignal(GetTree().CreateTimer(3.0f), SceneTreeTimer.SignalName.Timeout);
+        
+        if (_successLabel != null) _successLabel.Visible = false; // Verberg de succes tekst
+        if (labelSlow != null) labelSlow.Visible = false;        // Verberg 'Target' tekst
+        if (slowbar != null) slowbar.Visible = false;            // Verberg slowmobalk
+        if (Target != null) Target.Visible = false;
+
+        settingmainCamera.Current = false;
+        this.Visible = false;
+        startMain.Visible = true;
 
         // Switch naar het startscherm
         GD.Print("Switching naar startscherm...");
-        GetTree().ChangeSceneToFile("res://Scenes/Leon/StartScreen.tscn");
+        //GetTree().ChangeSceneToFile("res://Scenes/Leon/StartScreen.tscn");
+
+        Input.MouseMode = Input.MouseModeEnum.Visible;
     }
 
     // --- BESTAANDE VERLIES-FUNCTIE ---
