@@ -83,7 +83,7 @@ public partial class SniperShot : Node3D
                 return;
             }
             // --- EEN BURGER GERAAKT ---
-            else if (hitObject.IsInGroup("NPC"))
+            else if (hitObject.IsInGroup("NPC") || hitObject.IsInGroup("NPC2"))
             {
                 TriggerMissionFailed();
                 hitObject.QueueFree();
