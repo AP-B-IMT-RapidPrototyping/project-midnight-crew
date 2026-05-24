@@ -186,10 +186,18 @@ public partial class SettingMain : Node3D
 	{
 		labelSlow.Visible = false;
 		GD.Print("Back to main menu");
+
+		animation.Stop();
+    	animationSniper.Stop();
+
 		//GetTree().ChangeSceneToFile("res://Scenes/Leon/StartScreen.tscn");
 		settingmainCamera.Current = false;
 		this.Visible = false;
 		startMain.Visible = true;
+
+		_teller = 0;
+    	IsGepauzeerd = false;
+    	buttons.Visible = false;
 	}
 
 	public void Quit()
