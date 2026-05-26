@@ -266,7 +266,6 @@ public partial class StartScreen : Node3D
 
     public void TerugNaarMenu()
     {
-        // 🔥 Reset het huidige speellevel naar 0 zodat er niks spawnt bij het herladen!
         var globalData = GetNode<GlobalData>("/root/GlobalData");
         if (globalData != null) globalData.HuidigSpeelLevel = 0;
 
@@ -337,7 +336,6 @@ public partial class StartScreen : Node3D
         labelSlow.Visible = true;
         GD.Print("Level1");
 
-        // 🔥 NIEUW: Vertel alle spawners in de wereld dat ze nu moeten checken of ze mogen starten!
         GetTree().CallGroup("Spawners", "CheckEnStartSpawn");
     }
 
@@ -373,7 +371,7 @@ public partial class StartScreen : Node3D
     public void Level3()
 	{
 		var globalData = GetNode<GlobalData>("/root/GlobalData");
-        if (globalData.MaxVrijgespeeldLevel < 1)
+        if (globalData.MaxVrijgespeeldLevel < 3)
         {
             GD.Print("Je moet eerst Level 2 halen!");
             return;

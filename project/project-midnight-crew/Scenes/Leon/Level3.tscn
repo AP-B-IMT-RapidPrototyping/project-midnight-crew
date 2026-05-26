@@ -52,6 +52,12 @@ size = Vector3(1, 1, 22.966827)
 [sub_resource type="BoxShape3D" id="BoxShape3D_vl2k8"]
 size = Vector3(29.057251, 6.6240845, 0.3491211)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_al4ae"]
+size = Vector3(1, 1, 2.0773926)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3xsew"]
+size = Vector3(1.7573242, 1, 1.085083)
+
 [node name="Level3" type="Node3D" unique_id=857363825]
 
 [node name="building2" parent="." unique_id=614226949 instance=ExtResource("1_al4ae")]
@@ -218,6 +224,20 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -76.
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building8/Muur4" unique_id=1002356707]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2323608, 2.119995, -0.45904922)
 shape = SubResource("BoxShape3D_vl2k8")
+
+[node name="Raam2" type="StaticBody3D" parent="building8" unique_id=1859229873]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.22371, 101.90549, 94.30472)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="building8/Raam2" unique_id=761268384]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12953949, 0.665802, -0.009887695)
+shape = SubResource("BoxShape3D_al4ae")
+
+[node name="Bak6" type="StaticBody3D" parent="building8" unique_id=786947947]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.0208, 102.53651, 78.19979)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="building8/Bak6" unique_id=505102817]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.40600586, 1.0095825, 0.042541504)
+shape = SubResource("BoxShape3D_3xsew")
 
 [node name="building9" parent="." unique_id=1975293843 instance=ExtResource("10_4igx0")]
 
