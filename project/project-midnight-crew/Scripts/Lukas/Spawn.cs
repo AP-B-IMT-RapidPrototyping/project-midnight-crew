@@ -16,26 +16,27 @@ public partial class Spawn : Node3D
 
     public override void _Ready()
     {
-        // We halen eerst de GlobalData singleton op via de root van de scene tree
+        // 🔥 We voegen deze spawner toe aan een groep zodat het StartScreen hem makkelijk kan triggeren
+        AddToGroup("Spawners");
+        GD.Print($"[SPAWNER] Level {GekoppeldLevel} staat stand-by op het startscherm...");
+    }
+
+    // 🔥 Deze functie wordt pas aangeroepen zodra je ECHT op een levelknop klikt!
+    public void CheckEnStartSpawn()
+    {
         var globalData = GetNodeOrNull<GlobalData>("/root/GlobalData");
 
         if (globalData != null)
         {
-            // CHECK: Mag deze specifieke spawner draaien voor het huidige level?
             if (globalData.HuidigSpeelLevel == GekoppeldLevel)
             {
-                GD.Print($"[SPAWNER] Level {GekoppeldLevel} is actief. NPCs worden verdeeld...");
-                // Delay zodat de NavigationServer tijd heeft om alle regio's correct te registreren
+                GD.Print($"[SPAWNER] Level {GekoppeldLevel} NU geactiveerd door knop! NPCs worden verdeeld...");
                 GetTree().CreateTimer(0.3f).Timeout += VerdeelNPCs;
             }
             else
             {
-                GD.Print($"[SPAWNER] Level {GekoppeldLevel} is inactief (Huidig level is {globalData.HuidigSpeelLevel}). Spawner doet niks.");
+                GD.Print($"[SPAWNER] Level {GekoppeldLevel} hoeft niks te doen voor huidige level {globalData.HuidigSpeelLevel}.");
             }
-        }
-        else
-        {
-            GD.PrintErr("FOUT: 'GlobalData' Autoload/Singleton kon niet worden gevonden! Check je Projectinstellingen.");
         }
     }
 

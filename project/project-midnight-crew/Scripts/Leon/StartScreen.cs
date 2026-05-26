@@ -263,12 +263,16 @@ public partial class StartScreen : Node3D
         }
     }
 
-	public void TerugNaarMenu()
-	{
-		GetTree().ReloadCurrentScene();
-	}
-	
-	public void Start()
+    public void TerugNaarMenu()
+    {
+        // 🔥 Reset het huidige speellevel naar 0 zodat er niks spawnt bij het herladen!
+        var globalData = GetNode<GlobalData>("/root/GlobalData");
+        if (globalData != null) globalData.HuidigSpeelLevel = 0;
+
+        GetTree().ReloadCurrentScene();
+    }
+
+    public void Start()
 	{
 		GD.Print("Start");
 
@@ -310,63 +314,63 @@ public partial class StartScreen : Node3D
 		GD.Print("Terug");
 	}
 
-	public void Level1()
-	{
-		var speler = GetTree().GetFirstNodeInGroup("Speler") as PlayerScript;
-		var globalData = GetNode<GlobalData>("/root/GlobalData");
-		globalData.HuidigSpeelLevel = 1;
+    public void Level1()
+    {
+        var globalData = GetNode<GlobalData>("/root/GlobalData");
+        globalData.HuidigSpeelLevel = 1;
 
-		startscreenCamera.Current = false;
-		settingmainCamera.Current = true;
-		this.Visible = false;
-		settingmain.Visible = true;
+        startscreenCamera.Current = false;
+        settingmainCamera.Current = true;
+        this.Visible = false;
+        settingmain.Visible = true;
 
-		Input.MouseMode = Input.MouseModeEnum.Captured;
+        Input.MouseMode = Input.MouseModeEnum.Captured;
 
-		if (echteSpeler != null && startPuntLevel1 != null)
-		{
-			//Speler op juiste positie zetten
-			echteSpeler.GlobalPosition = startPuntLevel1.GlobalPosition;
-			
-			//Speler in juiste richting zetten
-			echteSpeler.GlobalRotation = startPuntLevel1.GlobalRotation;
-			
-			// Reset de snelheid zodat hij niet doorglijdt van de vorige speelsessie
-			echteSpeler.Velocity = Vector3.Zero; 
-		}
+        if (echteSpeler != null && startPuntLevel1 != null)
+        {
+            echteSpeler.GlobalPosition = startPuntLevel1.GlobalPosition;
+            echteSpeler.GlobalRotation = startPuntLevel1.GlobalRotation;
+            echteSpeler.Velocity = Vector3.Zero;
+        }
 
-		labelSlow.Visible = true;
-		GD.Print("Level1");
-	}
+        labelSlow.Visible = true;
+        GD.Print("Level1");
 
-	public void Level2()
-	{
+        // 🔥 NIEUW: Vertel alle spawners in de wereld dat ze nu moeten checken of ze mogen starten!
+        GetTree().CallGroup("Spawners", "CheckEnStartSpawn");
+    }
 
-		var globalData = GetNode<GlobalData>("/root/GlobalData");
-		if (globalData.MaxVrijgespeeldLevel < 2)
-		{
-			GD.Print("Je moet eerst Level 1 halen!");
-			return; 
-		}
-		globalData.HuidigSpeelLevel = 2;
-		if (echteSpeler != null && startPuntLevel2 != null)
-		{
-			echteSpeler.GlobalPosition = startPuntLevel2.GlobalPosition;
-			echteSpeler.GlobalRotation = startPuntLevel2.GlobalRotation;
-			echteSpeler.Velocity = Vector3.Zero; 
-		}
+    public void Level2()
+    {
+        var globalData = GetNode<GlobalData>("/root/GlobalData");
+        if (globalData.MaxVrijgespeeldLevel < 2)
+        {
+            GD.Print("Je moet eerst Level 1 halen!");
+            return;
+        }
+        globalData.HuidigSpeelLevel = 2;
 
-		GD.Print("Level2");
-		labelSlow.Visible = true;
-		startscreenCamera.Current = false;
-		settingmainCamera.Current = true;
-		this.Visible = false;
-		settingmain.Visible = true; 
-		
-		Input.MouseMode = Input.MouseModeEnum.Captured;
-	}
+        if (echteSpeler != null && startPuntLevel2 != null)
+        {
+            echteSpeler.GlobalPosition = startPuntLevel2.GlobalPosition;
+            echteSpeler.GlobalRotation = startPuntLevel2.GlobalRotation;
+            echteSpeler.Velocity = Vector3.Zero;
+        }
 
-	public void Level3()
+        GD.Print("Level2");
+        labelSlow.Visible = true;
+        startscreenCamera.Current = false;
+        settingmainCamera.Current = true;
+        this.Visible = false;
+        settingmain.Visible = true;
+
+        Input.MouseMode = Input.MouseModeEnum.Captured;
+
+        // 🔥 NIEUW: Vertel alle spawners in de wereld dat ze nu moeten checken of ze mogen starten!
+        GetTree().CallGroup("Spawners", "CheckEnStartSpawn");
+    }
+
+    public void Level3()
 	{
 		GD.Print("Level3");
 	}

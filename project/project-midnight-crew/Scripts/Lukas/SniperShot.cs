@@ -106,16 +106,13 @@ public partial class SniperShot : Node3D
         _isGameOver = true; // Zorgt dat de speler niet meer kan schieten
 
         var globalData = GetNode<GlobalData>("/root/GlobalData");
-        int actiefLevel = 1;
+        int actiefLevel = globalData.HuidigSpeelLevel;
 
         if(globalData != null)
         {
-            actiefLevel = globalData.HuidigSpeelLevel;
-            int volgendLevel = actiefLevel + 1;
-
-            if (globalData.MaxVrijgespeeldLevel < volgendLevel)
+            if (globalData.MaxVrijgespeeldLevel == globalData.HuidigSpeelLevel)
             {
-                globalData.MaxVrijgespeeldLevel = volgendLevel;
+                globalData.MaxVrijgespeeldLevel++;
             }
         }
 

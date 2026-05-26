@@ -201,6 +201,7 @@ public partial class SettingMain : Node3D
 		GetTree().Paused = false;
 		Input.MouseMode = Input.MouseModeEnum.Visible;
 		GD.Print("Terug naar menu");
+		GetTree().ReloadCurrentScene();
 	}
 
 	public void Quit()
