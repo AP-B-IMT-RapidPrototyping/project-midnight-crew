@@ -34,6 +34,9 @@ NPC2=""
 "Level 1 SPAWN"=""
 "Level 2 SPAWN"=""
 Spawn=""
+"Level 3 SPAWN"=""
+NPC3=""
+Hittable=""
 
 [input]
 

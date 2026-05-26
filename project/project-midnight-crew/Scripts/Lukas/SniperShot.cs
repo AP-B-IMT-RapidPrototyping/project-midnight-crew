@@ -14,7 +14,7 @@ public partial class SniperShot : Node3D
     [Export] private Camera3D settingmainCamera;
     [Export] private ProgressBar slowbar;
     [Export] private Label Target;
-    
+
 
     // UI Nodes
     private Label _failLabel;    // We noemen deze even FailLabel voor de duidelijkheid
@@ -41,7 +41,7 @@ public partial class SniperShot : Node3D
 
     public override void _Input(InputEvent @event)
     {
-        if(SettingMain.IsGepauzeerd || !GetNode<Node3D>("/root/Main/SettingMain").Visible)
+        if (SettingMain.IsGepauzeerd || !GetNode<Node3D>("/root/Main/SettingMain").Visible)
         {
             return;
         }
@@ -58,6 +58,9 @@ public partial class SniperShot : Node3D
         _canShoot = false;
         if (_shootSound != null) _shootSound.Play();
 
+        // 🔥 MAAK DE MUZZLE FLASH AAN 🔥
+        MaakMuzzleFlash();
+
         ApplyVisualRecoil();
 
         Camera3D camera = GetViewport().GetCamera3D();
@@ -65,10 +68,21 @@ public partial class SniperShot : Node3D
 
         var spaceState = GetWorld3D().DirectSpaceState;
         var camDirection = -camera.GlobalTransform.Basis.Z;
-        var camQuery = PhysicsRayQueryParameters3D.Create(camera.GlobalPosition, camera.GlobalPosition + camDirection * Range);
+        Vector3 targetEndPosition = camera.GlobalPosition + camDirection * Range; // Standaard eindpunt als we niks raken
+
+        var camQuery = PhysicsRayQueryParameters3D.Create(camera.GlobalPosition, targetEndPosition);
         camQuery.CollisionMask = 1;
 
         var result = spaceState.IntersectRay(camQuery);
+
+        // Als we iets raken, updaten we het eindpunt naar de exacte inslagpositie
+        if (result.Count > 0)
+        {
+            targetEndPosition = (Vector3)result["position"];
+        }
+
+        // MAAK DE BULLET TRAIL AAN
+        MaakBulletTrail(_barrelLoc.GlobalPosition, targetEndPosition);
 
         if (result.Count > 0)
         {
@@ -83,7 +97,7 @@ public partial class SniperShot : Node3D
                 return;
             }
             // --- EEN BURGER GERAAKT ---
-            else if (hitObject.IsInGroup("NPC") || hitObject.IsInGroup("NPC2"))
+            else if (hitObject.IsInGroup("Hittable"))
             {
                 TriggerMissionFailed();
                 hitObject.QueueFree();
@@ -100,15 +114,85 @@ public partial class SniperShot : Node3D
         _canShoot = true;
     }
 
+    // 🔥 NIEUWE METHODE VOOR DE FLITSER 🔥
+    private void MaakMuzzleFlash()
+    {
+        if (_barrelLoc == null) return;
+
+        // 1. Maak een dynamic light aan die de omgeving heel even oplicht
+        OmniLight3D flashLight = new OmniLight3D();
+        flashLight.LightColor = new Color(1.0f, 0.6f, 0.2f); // Oranje/gele gloed
+        flashLight.LightEnergy = 8.0f;                       // Lekkere felle flits
+        flashLight.OmniRange = 10.0f;                        // Bereik van het licht
+        _barrelLoc.AddChild(flashLight);                     // Hang hem direct aan de loop
+
+        // 2. Maak een klein 3D bolletje/vlammetje aan de loop
+        MeshInstance3D flashMesh = new MeshInstance3D();
+        SphereMesh sphere = new SphereMesh();
+        sphere.Radius = 0.08f;
+        sphere.Height = 0.16f; // Iets langer dan breed voor een vlamvorm
+        flashMesh.Mesh = sphere;
+
+        // Geef de vlam een gloeiend onbelicht materiaal
+        StandardMaterial3D flashMat = new StandardMaterial3D();
+        flashMat.AlbedoColor = new Color(1.0f, 0.8f, 0.3f);
+        flashMat.ShadingMode = StandardMaterial3D.ShadingModeEnum.Unshaded;
+        flashMesh.MaterialOverride = flashMat;
+        _barrelLoc.AddChild(flashMesh);
+
+        // Pas de positie aan zodat hij net iets vóór de loop zweeft
+        flashMesh.Position = new Vector3(0, 0, -0.2f);
+
+        // 3. Laat alles binnen 0.05 seconden supersnel verdwijnen via een Tween
+        Tween flashTween = GetTree().CreateTween();
+        flashTween.SetParallel(true); // Laat de animaties tegelijkertijd lopen
+
+        // Dim het licht en krimp het vlammetje
+        flashTween.TweenProperty(flashLight, "light_energy", 0.0f, 0.06f);
+        flashTween.TweenProperty(flashMesh, "scale", Vector3.Zero, 0.06f);
+
+        // Ruim de nodes netjes op zodra de flits voorbij is
+        flashTween.Chain().TweenCallback(Callable.From(() =>
+        {
+            flashLight.QueueFree();
+            flashMesh.QueueFree();
+        }));
+    }
+
+    private void MaakBulletTrail(Vector3 start, Vector3 einde)
+    {
+        MeshInstance3D trail = new MeshInstance3D();
+        BoxMesh boxMesh = new BoxMesh();
+        boxMesh.Size = new Vector3(0.03f, 0.03f, start.DistanceTo(einde));
+        trail.Mesh = boxMesh;
+
+        StandardMaterial3D mat = new StandardMaterial3D();
+        mat.AlbedoColor = new Color(1f, 0.9f, 0.4f);
+        mat.ShadingMode = StandardMaterial3D.ShadingModeEnum.Unshaded;
+        trail.MaterialOverride = mat;
+
+        GetTree().Root.AddChild(trail);
+
+        trail.GlobalPosition = (start + einde) / 2.0f;
+        trail.LookAtFromPosition(trail.GlobalPosition, einde, Vector3.Up);
+
+        Tween tween = GetTree().CreateTween();
+        tween.TweenProperty(trail, "scale", new Vector3(0f, 0f, 1f), 0.15f)
+             .SetTrans(Tween.TransitionType.Quad)
+             .SetEase(Tween.EaseType.Out);
+
+        tween.Finished += () => trail.QueueFree();
+    }
+
     // --- NIEUWE WIN-FUNCTIE ---
     private async void TriggerMissionSuccess()
     {
-        _isGameOver = true; // Zorgt dat de speler niet meer kan schieten
+        _isGameOver = true;
 
         var globalData = GetNode<GlobalData>("/root/GlobalData");
         int actiefLevel = globalData.HuidigSpeelLevel;
 
-        if(globalData != null)
+        if (globalData != null)
         {
             if (globalData.MaxVrijgespeeldLevel == globalData.HuidigSpeelLevel)
             {
@@ -122,21 +206,9 @@ public partial class SniperShot : Node3D
             _successLabel.Visible = true;
         }
 
-        // Wacht 3 seconden
         await ToSignal(GetTree().CreateTimer(3.0f), SceneTreeTimer.SignalName.Timeout);
         GD.Print("Level herladen voor een schone start...");
         Input.MouseMode = Input.MouseModeEnum.Visible;
-
-
-        /*if (_successLabel != null) _successLabel.Visible = false; // Verberg de succes tekst
-        if (labelSlow != null) labelSlow.Visible = false;        // Verberg 'Target' tekst
-        if (slowbar != null) slowbar.Visible = false;            // Verberg slowmobalk
-        if (Target != null) Target.Visible = false;
-
-        settingmainCamera.Current = false;
-        this.Visible = false;
-        startMain.Visible = true;
-        Input.MouseMode = Input.MouseModeEnum.Visible;*/
 
         GetTree().ReloadCurrentScene();
     }
@@ -146,20 +218,16 @@ public partial class SniperShot : Node3D
     {
         _isGameOver = true;
 
-        // --- FIX: Reset de tijd en audio naar normaal voordat de animatie begint ---
         Engine.TimeScale = 1.0f;
         var audioNodes = GetTree().GetNodesInGroup("audio");
         foreach (Node node in audioNodes)
         {
             if (IsInstanceValid(node)) node.Set("pitch_scale", 1.0f);
         }
-        // -----------------------------------------------------------------------
 
         Tween slowTween = GetTree().CreateTween();
-        // Gebruik ProcessMode 3 (Always) zodat de tween doorgaat als de game pauzeert
         slowTween.SetProcessMode((Tween.TweenProcessMode)3);
 
-        // De animatie die de wereld langzaam vertraagt na de fout
         slowTween.TweenMethod(Callable.From<float>(UpdateGlobalSpeed), 1.0f, 0.01f, 2.0f)
                  .SetTrans(Tween.TransitionType.Quad)
                  .SetEase(Tween.EaseType.Out);
@@ -179,7 +247,6 @@ public partial class SniperShot : Node3D
                 }
 
                 GetTree().Paused = true;
-                // Wacht op een timer die ook doorloopt tijdens pauze
                 await ToSignal(GetTree().CreateTimer(2.5f, true), SceneTreeTimer.SignalName.Timeout);
 
                 GetTree().Paused = false;
@@ -191,7 +258,6 @@ public partial class SniperShot : Node3D
 
     private void UpdateGlobalSpeed(float value)
     {
-        //Engine.TimeScale = value;
         var audioNodes = GetTree().GetNodesInGroup("audio");
         foreach (Node node in audioNodes)
         {

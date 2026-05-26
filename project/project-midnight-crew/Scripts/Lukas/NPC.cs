@@ -104,6 +104,10 @@ public partial class NPC : CharacterBody3D
         {
             targetSpawnGroup = "Level 2 SPAWN";
         }
+        if (IsInGroup("NPC3"))
+        {
+            targetSpawnGroup = "Level 3 SPAWN";
+        }
 
         var targetRegions = GetTree().GetNodesInGroup(targetSpawnGroup);
         Rid targetRegionRid = new Rid();

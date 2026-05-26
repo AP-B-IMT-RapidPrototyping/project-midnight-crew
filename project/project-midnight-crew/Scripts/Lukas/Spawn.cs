@@ -8,20 +8,18 @@ public partial class Spawn : Node3D
     [Export] public float RotationSpeed = 2.0f;
 
     // --- NIEUWE EXPORTS ---
-    [Export] public int GekoppeldLevel = 1;                    // Stel dit in per spawner (1 of 2)
-    [Export] public string TargetNpcGroup = "NPC";             // "NPC" voor level 1, "NPC2" voor level 2
+    [Export] public int GekoppeldLevel = 1;                     // Stel dit in per spawner (1 of 2)
+    [Export] public string TargetNpcGroup = "NPC";              // "NPC" voor level 1, "NPC2" voor level 2
     [Export] public string TargetSpawnGroup = "Level 1 SPAWN"; // "Level 1 SPAWN", "Level 2 SPAWN"
 
     private MeshInstance3D _hudMesh;
 
     public override void _Ready()
     {
-        // 🔥 We voegen deze spawner toe aan een groep zodat het StartScreen hem makkelijk kan triggeren
         AddToGroup("Spawners");
         GD.Print($"[SPAWNER] Level {GekoppeldLevel} staat stand-by op het startscherm...");
     }
 
-    // 🔥 Deze functie wordt pas aangeroepen zodra je ECHT op een levelknop klikt!
     public void CheckEnStartSpawn()
     {
         var globalData = GetNodeOrNull<GlobalData>("/root/GlobalData");
@@ -51,21 +49,24 @@ public partial class Spawn : Node3D
     private void VerdeelNPCs()
     {
         var nodesInGroup = GetTree().GetNodesInGroup(TargetNpcGroup);
-        if (nodesInGroup.Count == 0) return;
+        int npcCount = nodesInGroup.Count;
+        if (npcCount == 0) return;
 
         var targetRegions = GetTree().GetNodesInGroup(TargetSpawnGroup);
+        NavigationRegion3D actieveRegionNode = null;
         Rid targetRegionRid = new Rid();
 
         foreach (Node node in targetRegions)
         {
             if (node is NavigationRegion3D region)
             {
+                actieveRegionNode = region;
                 targetRegionRid = region.GetRid();
                 break;
             }
         }
 
-        if (targetRegionRid.IsValid == false)
+        if (targetRegionRid.IsValid == false || actieveRegionNode == null)
         {
             GD.PrintErr($"FOUT: Geen NavigationRegion3D gevonden in de groep '{TargetSpawnGroup}'!");
             return;
@@ -75,6 +76,24 @@ public partial class Spawn : Node3D
         rng.Randomize();
 
         List<CharacterBody3D> echteNPCs = new List<CharacterBody3D>();
+
+        // --- 🔥 AUTOMATISCHE DAKEN-DETECTIE VOOR LEVEL 3 🔥 ---
+        List<StaticBody3D> gevondenDaken = new List<StaticBody3D>();
+
+        // We kijken naar alle nodes die ONDER de NavigationRegion3D staan
+        if (GekoppeldLevel == 3)
+        {
+            foreach (Node child in actieveRegionNode.GetChildren())
+            {
+                if (child is StaticBody3D dak)
+                {
+                    gevondenDaken.Add(dak);
+                }
+            }
+        }
+
+        bool gebruikDakSysteem = (GekoppeldLevel == 3 && gevondenDaken.Count > 0);
+        int dakIndex = 0;
 
         foreach (Node node in nodesInGroup)
         {
@@ -87,27 +106,53 @@ public partial class Spawn : Node3D
 
                 Rid mapRid = agent.GetNavigationMap();
                 Vector3 spawnPoint = Vector3.Zero;
-                int pogingen = 0;
 
-                while (spawnPoint == Vector3.Zero && pogingen < 30)
+                if (gebruikDakSysteem)
                 {
-                    Vector3 randomPos = new Vector3(
-                        rng.RandfRange(-MapSize.X / 2, MapSize.X / 2),
-                        5.0f,
-                        rng.RandfRange(-MapSize.Z / 2, MapSize.Z / 2)
-                    );
+                    // Verdeel ze verplicht over de gevonden StaticBodies (daken)
+                    StaticBody3D gekozenDak = (dakIndex < gevondenDaken.Count)
+                        ? gevondenDaken[dakIndex]
+                        : gevondenDaken[rng.RandiRange(0, gevondenDaken.Count - 1)];
 
-                    Vector3 testPoint = NavigationServer3D.MapGetClosestPoint(mapRid, randomPos);
-                    Rid gekozenRegionRid = NavigationServer3D.MapGetClosestPointOwner(mapRid, testPoint);
+                    dakIndex++;
 
-                    if (gekozenRegionRid == targetRegionRid)
+                    // We pakken de positie van het dak en snappen deze naar de NavMesh die erbovenop ligt
+                    Vector3 dakPositie = gekozenDak.GlobalPosition;
+
+                    // Omdat de pivot (het middelpunt) van je daken soms op de grond of in het midden van het model zit,
+                    // zorgen we ervoor dat de Y-hoogte hoog genoeg start (bijv. 5 meter) om op de NavMesh te snappen.
+                    dakPositie.Y = 5.0f;
+
+                    Vector3 testPoint = NavigationServer3D.MapGetClosestPoint(mapRid, dakPositie);
+
+                    // Geef ze een heel kleine afwijking zodat ze niet exact op dezelfde pixel spawnen
+                    float jitterX = rng.RandfRange(-1.5f, 1.5f);
+                    float jitterZ = rng.RandfRange(-1.5f, 1.5f);
+
+                    Vector3 gecorrigeerdPunt = testPoint + new Vector3(jitterX, 0, jitterZ);
+                    spawnPoint = NavigationServer3D.MapGetClosestPoint(mapRid, gecorrigeerdPunt);
+                }
+                else
+                {
+                    // --- OUDE METHODE (Voor Level 1 & 2): Grid/Random verdeling ---
+                    int pogingen = 0;
+                    while (spawnPoint == Vector3.Zero && pogingen < 30)
                     {
-                        spawnPoint = testPoint;
+                        Vector3 randomPos = new Vector3(
+                            rng.RandfRange(-MapSize.X / 2, MapSize.X / 2),
+                            5.0f,
+                            rng.RandfRange(-MapSize.Z / 2, MapSize.Z / 2)
+                        );
+                        Vector3 testPoint = NavigationServer3D.MapGetClosestPoint(mapRid, randomPos);
+                        if (NavigationServer3D.MapGetClosestPointOwner(mapRid, testPoint) == targetRegionRid)
+                        {
+                            spawnPoint = testPoint;
+                        }
+                        pogingen++;
                     }
-
-                    pogingen++;
                 }
 
+                // Spawn de NPC op de gevonden plek
                 if (spawnPoint != Vector3.Zero)
                 {
                     npc.GlobalPosition = spawnPoint + new Vector3(0, 0.2f, 0);
@@ -118,12 +163,12 @@ public partial class Spawn : Node3D
                 }
                 else
                 {
-                    GD.Print($"NPC {npc.Name} kon niet spawnen op {TargetSpawnGroup} binnen het aantal pogingen.");
+                    GD.Print($"NPC {npc.Name} kon echt nergens spawnen.");
                 }
             }
         }
 
-        // Target selectie (Gebeurt nu automatisch alleen in de actieve spawner)
+        // Target selectie
         if (echteNPCs.Count > 0)
         {
             int randomIndex = rng.RandiRange(0, echteNPCs.Count - 1);
