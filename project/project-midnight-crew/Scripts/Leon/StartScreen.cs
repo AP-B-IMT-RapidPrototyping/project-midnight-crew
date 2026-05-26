@@ -31,6 +31,7 @@ public partial class StartScreen : Node3D
 	[Export] public Spawn npcSpawner;
 	[Export] private Marker3D startPuntLevel1;
 	[Export] private Marker3D startPuntLevel2;
+	[Export] private Marker3D startPuntLevel3;
 	[Export] private PlayerScript echteSpeler;
 
 
@@ -366,13 +367,36 @@ public partial class StartScreen : Node3D
 
         Input.MouseMode = Input.MouseModeEnum.Captured;
 
-        // 🔥 NIEUW: Vertel alle spawners in de wereld dat ze nu moeten checken of ze mogen starten!
         GetTree().CallGroup("Spawners", "CheckEnStartSpawn");
     }
 
     public void Level3()
 	{
+		var globalData = GetNode<GlobalData>("/root/GlobalData");
+        if (globalData.MaxVrijgespeeldLevel < 1)
+        {
+            GD.Print("Je moet eerst Level 2 halen!");
+            return;
+        }
+        globalData.HuidigSpeelLevel = 3;
+
+        if (echteSpeler != null && startPuntLevel3 != null)
+        {
+            echteSpeler.GlobalPosition = startPuntLevel3.GlobalPosition;
+            echteSpeler.GlobalRotation = startPuntLevel3.GlobalRotation;
+            echteSpeler.Velocity = Vector3.Zero;
+        }
+
 		GD.Print("Level3");
+        labelSlow.Visible = true;
+        startscreenCamera.Current = false;
+        settingmainCamera.Current = true;
+        this.Visible = false;
+        settingmain.Visible = true;
+
+        Input.MouseMode = Input.MouseModeEnum.Captured;
+
+        GetTree().CallGroup("Spawners", "CheckEnStartSpawn");
 	}
 
 	public void Level4()
