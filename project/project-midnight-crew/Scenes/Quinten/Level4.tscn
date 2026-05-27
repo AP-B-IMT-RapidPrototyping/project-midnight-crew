@@ -46,6 +46,7 @@
 [ext_resource type="PackedScene" uid="uid://j2x37bocwde6" path="res://Assets/city/models/building12.gltf" id="44_ujyuh"]
 [ext_resource type="PackedScene" uid="uid://bq43rkpke5y7x" path="res://Assets/city/models/building2.gltf" id="45_xrvlv"]
 [ext_resource type="PackedScene" uid="uid://b4xutuc331ea8" path="res://Assets/city/models/building5.gltf" id="46_7o8bp"]
+[ext_resource type="PackedScene" uid="uid://cklrumsv6o785" path="res://Assets/Quinten/subway_entrance_v2.glb" id="47_ynar0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cx278"]
 resource_name = "firescape"
@@ -2848,7 +2849,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -147
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.024193, 1.1133881, -106.299866)
 
 [node name="building8" parent="." unique_id=1999236076 instance=ExtResource("42_dyq02")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.48715, 1.1699181, -171.79874)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.48715, -0.33008194, -171.79874)
 
 [node name="building10" parent="." unique_id=782098771 instance=ExtResource("43_h7unx")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -50.317524, 0.4118805, -26.379623)
@@ -2867,3 +2868,15 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 78.9
 
 [node name="building13" parent="." unique_id=1934795151 instance=ExtResource("41_ynar0")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -126.67971, 1.1133728, -93.809235)
+
+[node name="Sketchfab_Scene" parent="." unique_id=1844043946 instance=ExtResource("47_ynar0")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 78.24474, 0.3777526, 47.446167)
+
+[node name="Sketchfab_Scene2" parent="." unique_id=95276762 instance=ExtResource("47_ynar0")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 14.244743, 0.3777526, 105.44617)
+
+[node name="Sketchfab_Scene3" parent="." unique_id=216838757 instance=ExtResource("47_ynar0")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -66.75526, 0.3777526, 12.446167)
+
+[node name="Sketchfab_Scene4" parent="." unique_id=2034897142 instance=ExtResource("47_ynar0")]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -13.755257, 0.3777526, -43.553833)
