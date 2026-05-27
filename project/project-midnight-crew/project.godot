@@ -37,6 +37,11 @@ Spawn=""
 "Level 3 SPAWN"=""
 NPC3=""
 Hittable=""
+NPCtut=""
+"Tutorial SPAWN"=""
+"Level 4 SPAWN"=""
+NPC4=""
+Sniper=""
 
 [input]
 

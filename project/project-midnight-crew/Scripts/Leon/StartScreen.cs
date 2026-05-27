@@ -401,7 +401,7 @@ public partial class StartScreen : Node3D
 	public void Level4()
 	{
         var globalData = GetNode<GlobalData>("/root/GlobalData");
-        if (globalData.MaxVrijgespeeldLevel < 4)
+        if (globalData.MaxVrijgespeeldLevel < 1)
         {
             GD.Print("Je moet eerst Level 3 halen!");
             return;

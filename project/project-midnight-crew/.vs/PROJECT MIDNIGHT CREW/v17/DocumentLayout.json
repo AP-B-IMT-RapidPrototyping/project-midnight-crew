@@ -3,36 +3,48 @@
   "WorkspaceRootPath": "D:\\AP\\1ste jaar\\Vakken\\Rapid Prototyping\\Midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|d:\\ap\\1ste jaar\\vakken\\rapid prototyping\\midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\scripts\\leon\\settingmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|solutionrelative:scripts\\leon\\settingmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\AP\\1ste jaar\\Vakken\\Rapid Prototyping\\Midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\Scenes\\Leon\\NPCEnd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Scenes\\Leon\\NPCEnd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|d:\\ap\\1ste jaar\\vakken\\rapid prototyping\\midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\scripts\\leon\\startscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|solutionrelative:scripts\\leon\\startscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\AP\\1ste jaar\\Vakken\\Rapid Prototyping\\Midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\Scenes\\Leon\\Eindzone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Scenes\\Leon\\Eindzone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|d:\\ap\\1ste jaar\\vakken\\rapid prototyping\\midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\scripts\\lukas\\snipershot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|solutionrelative:scripts\\lukas\\snipershot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|d:\\ap\\1ste jaar\\vakken\\rapid prototyping\\midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\scripts\\lukas\\spawn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|solutionrelative:scripts\\lukas\\spawn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|d:\\ap\\1ste jaar\\vakken\\rapid prototyping\\midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\scripts\\lukas\\playerscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|solutionrelative:scripts\\lukas\\playerscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|d:\\ap\\1ste jaar\\vakken\\rapid prototyping\\midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\scripts\\lukas\\npc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|solutionrelative:scripts\\lukas\\npc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|d:\\ap\\1ste jaar\\vakken\\rapid prototyping\\midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\scripts\\leon\\globaldata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|solutionrelative:scripts\\leon\\globaldata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|d:\\ap\\1ste jaar\\vakken\\rapid prototyping\\midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\scripts\\lukas\\spawn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|solutionrelative:scripts\\lukas\\spawn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|d:\\ap\\1ste jaar\\vakken\\rapid prototyping\\midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\scripts\\lukas\\playerscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|solutionrelative:scripts\\lukas\\playerscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|d:\\ap\\1ste jaar\\vakken\\rapid prototyping\\midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\scripts\\leon\\startscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|solutionrelative:scripts\\leon\\startscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|d:\\ap\\1ste jaar\\vakken\\rapid prototyping\\midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\scripts\\lukas\\slomov2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|solutionrelative:scripts\\lukas\\slomov2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|d:\\ap\\1ste jaar\\vakken\\rapid prototyping\\midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\scenes\\leon\\tutorialnpc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|solutionrelative:scenes\\leon\\tutorialnpc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|d:\\ap\\1ste jaar\\vakken\\rapid prototyping\\midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\scripts\\leon\\settingmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|solutionrelative:scripts\\leon\\settingmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|d:\\ap\\1ste jaar\\vakken\\rapid prototyping\\midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\scripts\\leon\\globaldata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|solutionrelative:scripts\\leon\\globaldata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5A637F22-9531-4208-BE61-1025E0E0F667}|Project Midnight Crew.csproj|d:\\ap\\1ste jaar\\vakken\\rapid prototyping\\midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\scripts\\lukas\\bliksem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -46,57 +58,85 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Eindzone.cs",
+              "DocumentMoniker": "D:\\AP\\1ste jaar\\Vakken\\Rapid Prototyping\\Midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\Scenes\\Leon\\Eindzone.cs",
+              "RelativeDocumentMoniker": "Scenes\\Leon\\Eindzone.cs",
+              "ToolTip": "D:\\AP\\1ste jaar\\Vakken\\Rapid Prototyping\\Midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\Scenes\\Leon\\Eindzone.cs",
+              "RelativeToolTip": "Scenes\\Leon\\Eindzone.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-27T22:30:19.668Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "NPCEnd.cs",
+              "DocumentMoniker": "D:\\AP\\1ste jaar\\Vakken\\Rapid Prototyping\\Midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\Scenes\\Leon\\NPCEnd.cs",
+              "RelativeDocumentMoniker": "Scenes\\Leon\\NPCEnd.cs",
+              "ToolTip": "D:\\AP\\1ste jaar\\Vakken\\Rapid Prototyping\\Midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\Scenes\\Leon\\NPCEnd.cs",
+              "RelativeToolTip": "Scenes\\Leon\\NPCEnd.cs",
+              "ViewState": "AgIAAJgAAAAAAAAAAAAIwK8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-27T22:17:45.132Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "TutorialNPC.cs",
+              "DocumentMoniker": "D:\\AP\\1ste jaar\\Vakken\\Rapid Prototyping\\Midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\Scenes\\Leon\\TutorialNPC.cs",
+              "RelativeDocumentMoniker": "Scenes\\Leon\\TutorialNPC.cs",
+              "ToolTip": "D:\\AP\\1ste jaar\\Vakken\\Rapid Prototyping\\Midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\Scenes\\Leon\\TutorialNPC.cs",
+              "RelativeToolTip": "Scenes\\Leon\\TutorialNPC.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-27T21:11:01.443Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "SettingMain.cs",
               "DocumentMoniker": "D:\\AP\\1ste jaar\\Vakken\\Rapid Prototyping\\Midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\Scripts\\Leon\\SettingMain.cs",
               "RelativeDocumentMoniker": "Scripts\\Leon\\SettingMain.cs",
               "ToolTip": "D:\\AP\\1ste jaar\\Vakken\\Rapid Prototyping\\Midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\Scripts\\Leon\\SettingMain.cs",
               "RelativeToolTip": "Scripts\\Leon\\SettingMain.cs",
-              "ViewState": "AgIAAFwAAAAAAAAAAAAAAGsAAABIAAAAAAAAAA==",
+              "ViewState": "AgIAAFgAAAAAAAAAAMBUwGsAAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-26T13:19:06.889Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "GlobalData.cs",
-              "DocumentMoniker": "D:\\AP\\1ste jaar\\Vakken\\Rapid Prototyping\\Midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\Scripts\\Leon\\GlobalData.cs",
-              "RelativeDocumentMoniker": "Scripts\\Leon\\GlobalData.cs",
-              "ToolTip": "D:\\AP\\1ste jaar\\Vakken\\Rapid Prototyping\\Midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\Scripts\\Leon\\GlobalData.cs",
-              "RelativeToolTip": "Scripts\\Leon\\GlobalData.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-24T22:58:24.031Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "StartScreen.cs",
               "DocumentMoniker": "D:\\AP\\1ste jaar\\Vakken\\Rapid Prototyping\\Midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\Scripts\\Leon\\StartScreen.cs",
               "RelativeDocumentMoniker": "Scripts\\Leon\\StartScreen.cs",
               "ToolTip": "D:\\AP\\1ste jaar\\Vakken\\Rapid Prototyping\\Midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\Scripts\\Leon\\StartScreen.cs",
               "RelativeToolTip": "Scripts\\Leon\\StartScreen.cs",
-              "ViewState": "AgIAAG8BAAAAAAAAAAAcwHQBAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAAIwBAAAAAAAAAAAiwJMBAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-07T19:12:01.998Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Spawn.cs",
               "DocumentMoniker": "D:\\AP\\1ste jaar\\Vakken\\Rapid Prototyping\\Midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\Scripts\\Lukas\\Spawn.cs",
               "RelativeDocumentMoniker": "Scripts\\Lukas\\Spawn.cs",
               "ToolTip": "D:\\AP\\1ste jaar\\Vakken\\Rapid Prototyping\\Midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\Scripts\\Lukas\\Spawn.cs",
               "RelativeToolTip": "Scripts\\Lukas\\Spawn.cs",
-              "ViewState": "AgIAAJYAAAAAAAAAAAAcwLMAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAJMAAAAAAAAAAAAkwKUAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-07T18:01:16.246Z"
+              "WhenOpened": "2026-05-07T18:01:16.246Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -106,13 +146,14 @@
               "RelativeDocumentMoniker": "Scripts\\Lukas\\SlomoV2.cs",
               "ToolTip": "D:\\AP\\1ste jaar\\Vakken\\Rapid Prototyping\\Midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\Scripts\\Lukas\\SlomoV2.cs",
               "RelativeToolTip": "Scripts\\Lukas\\SlomoV2.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAIwJUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-03T12:07:00.911Z"
+              "WhenOpened": "2026-05-03T12:07:00.911Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "Bliksem.cs",
               "DocumentMoniker": "D:\\AP\\1ste jaar\\Vakken\\Rapid Prototyping\\Midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\Scripts\\Lukas\\Bliksem.cs",
               "RelativeDocumentMoniker": "Scripts\\Lukas\\Bliksem.cs",
@@ -124,15 +165,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "PlayerScript.cs",
               "DocumentMoniker": "D:\\AP\\1ste jaar\\Vakken\\Rapid Prototyping\\Midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\Scripts\\Lukas\\PlayerScript.cs",
               "RelativeDocumentMoniker": "Scripts\\Lukas\\PlayerScript.cs",
               "ToolTip": "D:\\AP\\1ste jaar\\Vakken\\Rapid Prototyping\\Midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\Scripts\\Lukas\\PlayerScript.cs",
               "RelativeToolTip": "Scripts\\Lukas\\PlayerScript.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAL8AAAAAAAAAAADwv80AAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-28T11:04:10.647Z"
+              "WhenOpened": "2026-04-28T11:04:10.647Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -142,10 +184,22 @@
               "RelativeDocumentMoniker": "Scripts\\Lukas\\SniperShot.cs",
               "ToolTip": "D:\\AP\\1ste jaar\\Vakken\\Rapid Prototyping\\Midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\Scripts\\Lukas\\SniperShot.cs",
               "RelativeToolTip": "Scripts\\Lukas\\SniperShot.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAOIAAAAAAAAAAAAgwOkAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-28T10:45:18.425Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "GlobalData.cs",
+              "DocumentMoniker": "D:\\AP\\1ste jaar\\Vakken\\Rapid Prototyping\\Midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\Scripts\\Leon\\GlobalData.cs",
+              "RelativeDocumentMoniker": "Scripts\\Leon\\GlobalData.cs",
+              "ToolTip": "D:\\AP\\1ste jaar\\Vakken\\Rapid Prototyping\\Midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\Scripts\\Leon\\GlobalData.cs",
+              "RelativeToolTip": "Scripts\\Leon\\GlobalData.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-24T22:58:24.031Z"
             },
             {
               "$type": "Document",
@@ -155,9 +209,10 @@
               "RelativeDocumentMoniker": "Scripts\\Lukas\\NPC.cs",
               "ToolTip": "D:\\AP\\1ste jaar\\Vakken\\Rapid Prototyping\\Midnight crew\\project-midnight-crew\\project\\project-midnight-crew\\Scripts\\Lukas\\NPC.cs",
               "RelativeToolTip": "Scripts\\Lukas\\NPC.cs",
-              "ViewState": "AgIAAIgAAAAAAAAAAAAcwKUAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-22T08:14:23.863Z"
+              "WhenOpened": "2026-04-22T08:14:23.863Z",
+              "EditorCaption": ""
             }
           ]
         }
