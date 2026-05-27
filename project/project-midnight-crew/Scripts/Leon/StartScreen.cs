@@ -32,6 +32,7 @@ public partial class StartScreen : Node3D
 	[Export] private Marker3D startPuntLevel1;
 	[Export] private Marker3D startPuntLevel2;
 	[Export] private Marker3D startPuntLevel3;
+    [Export] private Marker3D startPuntLevel4;
 	[Export] private PlayerScript echteSpeler;
 
 
@@ -399,7 +400,31 @@ public partial class StartScreen : Node3D
 
 	public void Level4()
 	{
+        var globalData = GetNode<GlobalData>("/root/GlobalData");
+        if (globalData.MaxVrijgespeeldLevel < 4)
+        {
+            GD.Print("Je moet eerst Level 3 halen!");
+            return;
+        }
+        globalData.HuidigSpeelLevel = 4;
+
+        if (echteSpeler != null && startPuntLevel4 != null)
+        {
+            echteSpeler.GlobalPosition = startPuntLevel4.GlobalPosition;
+            echteSpeler.GlobalRotation = startPuntLevel4.GlobalRotation;
+            echteSpeler.Velocity = Vector3.Zero;
+        }
+
 		GD.Print("Level4");
+        labelSlow.Visible = true;
+        startscreenCamera.Current = false;
+        settingmainCamera.Current = true;
+        this.Visible = false;
+        settingmain.Visible = true;
+
+        Input.MouseMode = Input.MouseModeEnum.Captured;
+
+        GetTree().CallGroup("Spawners", "CheckEnStartSpawn");
 	}
 
 	public async void TerugStart()
