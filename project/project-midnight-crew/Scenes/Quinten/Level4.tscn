@@ -2819,16 +2819,6 @@ shape = SubResource("CylinderShape3D_8xr5i")
 
 [node name="Navigation" type="Node3D" parent="Level2-map" unique_id=302583164]
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Level2-map/Navigation" unique_id=337334443 groups=["Level 2 SPAWN"]]
-transform = Transform3D(0.9196106, 0, 0, 0, 1, 0, 0, 0, 2.246507, -58.131668, -0.4548607, 48.44209)
-navigation_mesh = SubResource("NavigationMesh_x267q")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Level2-map/Navigation/NavigationRegion3D" unique_id=1389881685]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level2-map/Navigation/NavigationRegion3D/StaticBody3D" unique_id=1292731484]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8027039, 0.3667388, -7.806469)
-shape = SubResource("BoxShape3D_pf2xr")
-
 [node name="NavigationRegion3D2" type="NavigationRegion3D" parent="Level2-map/Navigation" unique_id=37087411 groups=["Level 2 SPAWN"]]
 transform = Transform3D(-4.0197456e-08, 0, 2.8271425, 0, 1, 0, -0.9196106, 0, -1.2357832e-07, -41.249237, -0.4548607, 26.457104)
 navigation_mesh = SubResource("NavigationMesh_x267q")
