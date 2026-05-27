@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckghbowbmti5c"
-path.s3tc="res://.godot/imported/Tut-Deel1.png-269d0e06c1338be5a708acfc7831734f.s3tc.ctex"
+uid="uid://c1gnq141vilwm"
+path.s3tc="res://.godot/imported/Tut-Deel3.png-aab0b1bb5279f6535a63a4404f4e43d5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/2D-Afbeeldingen/Tut-Deel1.png"
-dest_files=["res://.godot/imported/Tut-Deel1.png-269d0e06c1338be5a708acfc7831734f.s3tc.ctex"]
+source_file="res://Assets/2D-Afbeeldingen/Tut-Deel3.png"
+dest_files=["res://.godot/imported/Tut-Deel3.png-aab0b1bb5279f6535a63a4404f4e43d5.s3tc.ctex"]
 
 [params]
 
