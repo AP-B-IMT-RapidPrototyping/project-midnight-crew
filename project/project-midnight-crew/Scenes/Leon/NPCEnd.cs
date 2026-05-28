@@ -31,10 +31,17 @@ public partial class NPCEnd : CharacterBody3D
         _agent.TargetDesiredDistance = 0.8f;
         _lastPosition = GlobalPosition;
 
-        // 🔥 CONNECT HET AVOIDANCE SIGNAAL 🔥
+        // Connect het avoidance signaal
         _agent.VelocityComputed += OnVelocityComputed;
 
-        // Start direct met de route berekenen
+        // 🔥 OPLOSSING: Bereken de route NIET direct, maar wacht tot het allereerste physics frame klaar is.
+        // Dit geeft de NavigationServer3D de tijd om te synchroniseren.
+        Callable.From(ActorReady).CallDeferred();
+    }
+
+    private void ActorReady()
+    {
+        // Nu is de map 100% zeker gesynchroniseerd en veilig te bevragen!
         UpdateRouteNaarDoel();
     }
 

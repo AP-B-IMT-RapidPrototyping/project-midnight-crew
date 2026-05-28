@@ -28,8 +28,16 @@ public partial class Spawn : Node3D
         {
             if (globalData.HuidigSpeelLevel == GekoppeldLevel)
             {
-                GD.Print($"[SPAWNER] Level {GekoppeldLevel} NU geactiveerd door knop! NPCs worden verdeeld...");
-                GetTree().CreateTimer(0.3f).Timeout += VerdeelNPCs;
+                if (GekoppeldLevel == 4)
+                {
+                    GD.Print($"[SPAWNER] Level 4 geactiveerd! Wacht 10 seconden met spawnen van NPCs...");
+                    GetTree().CreateTimer(10.0f).Timeout += VerdeelNPCs; // 10 seconden vertraging
+                }
+                else
+                {
+                    GD.Print($"[SPAWNER] Level {GekoppeldLevel} NU geactiveerd door knop! NPCs worden verdeeld...");
+                    GetTree().CreateTimer(0.3f).Timeout += VerdeelNPCs;  // Oude vertraging voor levels 1, 2, 3
+                }
             }
             else
             {
@@ -77,10 +85,9 @@ public partial class Spawn : Node3D
 
         List<CharacterBody3D> echteNPCs = new List<CharacterBody3D>();
 
-        // --- 🔥 AUTOMATISCHE DAKEN-DETECTIE VOOR LEVEL 3 🔥 ---
+        // --- AUTOMATISCHE DAKEN-DETECTIE VOOR LEVEL 3 ---
         List<StaticBody3D> gevondenDaken = new List<StaticBody3D>();
 
-        // We kijken naar alle nodes die ONDER de NavigationRegion3D staan
         if (GekoppeldLevel == 3)
         {
             foreach (Node child in actieveRegionNode.GetChildren())
@@ -89,6 +96,21 @@ public partial class Spawn : Node3D
                 {
                     gevondenDaken.Add(dak);
                 }
+            }
+        }
+
+        // --- 🔥 VEILIGE AREA3D-DETECTIE VIA GROEP VOOR LEVEL 4 🔥 ---
+        Area3D spawnAreaLevel4 = null;
+        if (GekoppeldLevel == 4)
+        {
+            var areaNodes = GetTree().GetNodesInGroup("SpawnAreaLevel4");
+            if (areaNodes.Count > 0 && areaNodes[0] is Area3D gevondenArea)
+            {
+                spawnAreaLevel4 = gevondenArea;
+            }
+            else
+            {
+                GD.PrintErr("WAARSCHUWING: Level 4 actief, maar Area3D in groep 'SpawnAreaLevel4' niet gevonden!");
             }
         }
 
@@ -109,23 +131,17 @@ public partial class Spawn : Node3D
 
                 if (gebruikDakSysteem)
                 {
-                    // Verdeel ze verplicht over de gevonden StaticBodies (daken)
                     StaticBody3D gekozenDak = (dakIndex < gevondenDaken.Count)
                         ? gevondenDaken[dakIndex]
                         : gevondenDaken[rng.RandiRange(0, gevondenDaken.Count - 1)];
 
                     dakIndex++;
 
-                    // We pakken de positie van het dak en snappen deze naar de NavMesh die erbovenop ligt
                     Vector3 dakPositie = gekozenDak.GlobalPosition;
-
-                    // Omdat de pivot (het middelpunt) van je daken soms op de grond of in het midden van het model zit,
-                    // zorgen we ervoor dat de Y-hoogte hoog genoeg start (bijv. 5 meter) om op de NavMesh te snappen.
                     dakPositie.Y = 5.0f;
 
                     Vector3 testPoint = NavigationServer3D.MapGetClosestPoint(mapRid, dakPositie);
 
-                    // Geef ze een heel kleine afwijking zodat ze niet exact op dezelfde pixel spawnen
                     float jitterX = rng.RandfRange(-1.5f, 1.5f);
                     float jitterZ = rng.RandfRange(-1.5f, 1.5f);
 
@@ -134,19 +150,66 @@ public partial class Spawn : Node3D
                 }
                 else
                 {
-                    // --- OUDE METHODE (Voor Level 1 & 2): Grid/Random verdeling ---
+                    // --- GEOPTIMALISEERDE METHODE (Voor Level 1, 2, Tutorial & 4) ---
                     int pogingen = 0;
-                    while (spawnPoint == Vector3.Zero && pogingen < 30)
+                    int maxPogingen = (GekoppeldLevel == 4) ? 300 : 60; // Verhoogd naar 300 voor kleinere areas
+
+                    while (spawnPoint == Vector3.Zero && pogingen < maxPogingen)
                     {
                         Vector3 randomPos = new Vector3(
                             rng.RandfRange(-MapSize.X / 2, MapSize.X / 2),
                             5.0f,
                             rng.RandfRange(-MapSize.Z / 2, MapSize.Z / 2)
                         );
-                        Vector3 testPoint = NavigationServer3D.MapGetClosestPoint(mapRid, randomPos);
-                        if (NavigationServer3D.MapGetClosestPointOwner(mapRid, testPoint) == targetRegionRid)
+
+                        Vector3 globaleTestPos = GlobalPosition + randomPos;
+                        Vector3 testPoint = NavigationServer3D.MapGetClosestPoint(mapRid, globaleTestPos);
+
+                        if (testPoint != Vector3.Zero)
                         {
-                            spawnPoint = testPoint;
+                            Rid gevondenOwner = NavigationServer3D.MapGetClosestPointOwner(mapRid, testPoint);
+                            bool isGeldigPunt = false;
+
+                            if (gevondenOwner == targetRegionRid)
+                            {
+                                isGeldigPunt = true;
+                            }
+                            else if (gevondenOwner.IsValid == false && globaleTestPos.DistanceTo(testPoint) < 15.0f)
+                            {
+                                isGeldigPunt = true;
+                            }
+
+                            // --- CHECK VOOR LEVEL 4 AREA ---
+                            if (isGeldigPunt && GekoppeldLevel == 4 && spawnAreaLevel4 != null)
+                            {
+                                var spaceState = GetWorld3D().DirectSpaceState;
+                                var query = new PhysicsPointQueryParameters3D();
+                                query.Position = testPoint + new Vector3(0, 0.5f, 0);
+                                query.CollideWithAreas = true;
+                                query.CollideWithBodies = false;
+
+                                var resultaten = spaceState.IntersectPoint(query);
+                                bool bevindtZichInArea = false;
+
+                                foreach (var resultaat in resultaten)
+                                {
+                                    if (resultaat.ContainsKey("collider") && resultaat["collider"].As<Area3D>() == spawnAreaLevel4)
+                                    {
+                                        bevindtZichInArea = true;
+                                        break;
+                                    }
+                                }
+
+                                if (!bevindtZichInArea)
+                                {
+                                    isGeldigPunt = false; // Buiten de area? Afkeuren!
+                                }
+                            }
+
+                            if (isGeldigPunt)
+                            {
+                                spawnPoint = testPoint;
+                            }
                         }
                         pogingen++;
                     }
@@ -163,7 +226,7 @@ public partial class Spawn : Node3D
                 }
                 else
                 {
-                    GD.Print($"NPC {npc.Name} kon echt nergens spawnen.");
+                    GD.Print($"NPC {npc.Name} kon echt nergens spawnen in Level 4 area.");
                 }
             }
         }
