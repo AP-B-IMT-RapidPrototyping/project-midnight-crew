@@ -99,14 +99,26 @@ public partial class Spawn : Node3D
             }
         }
 
-        // --- 🔥 VEILIGE AREA3D-DETECTIE VIA GROEP VOOR LEVEL 4 🔥 ---
+        // --- VEILIGE AREA3D-DETECTIE VIA GROEP VOOR LEVEL 4 ---
         Area3D spawnAreaLevel4 = null;
+        CollisionShape3D areaShapeLevel4 = null;
+
         if (GekoppeldLevel == 4)
         {
             var areaNodes = GetTree().GetNodesInGroup("SpawnAreaLevel4");
             if (areaNodes.Count > 0 && areaNodes[0] is Area3D gevondenArea)
             {
                 spawnAreaLevel4 = gevondenArea;
+
+                // Zoek de CollisionShape3D om de exacte grenzen te bepalen
+                foreach (var child in spawnAreaLevel4.GetChildren())
+                {
+                    if (child is CollisionShape3D shape)
+                    {
+                        areaShapeLevel4 = shape;
+                        break;
+                    }
+                }
             }
             else
             {
@@ -152,17 +164,39 @@ public partial class Spawn : Node3D
                 {
                     // --- GEOPTIMALISEERDE METHODE (Voor Level 1, 2, Tutorial & 4) ---
                     int pogingen = 0;
-                    int maxPogingen = (GekoppeldLevel == 4) ? 300 : 60; // Verhoogd naar 300 voor kleinere areas
+                    int maxPogingen = 60;
 
                     while (spawnPoint == Vector3.Zero && pogingen < maxPogingen)
                     {
-                        Vector3 randomPos = new Vector3(
-                            rng.RandfRange(-MapSize.X / 2, MapSize.X / 2),
-                            5.0f,
-                            rng.RandfRange(-MapSize.Z / 2, MapSize.Z / 2)
-                        );
+                        Vector3 globaleTestPos = Vector3.Zero;
 
-                        Vector3 globaleTestPos = GlobalPosition + randomPos;
+                        // 🔥 SPECIFIEKE LOGIEK VOOR LEVEL 4: GEPAST BINNEN DE AREA BOUNDS 🔥
+                        if (GekoppeldLevel == 4 && spawnAreaLevel4 != null && areaShapeLevel4 != null && areaShapeLevel4.Shape is BoxShape3D boxShape)
+                        {
+                            Vector3 extents = boxShape.Size; // Krijg de grootte van de Box collidier
+
+                            // Genereer een punt exact binnen de Box collider van de area
+                            Vector3 localRandomPos = new Vector3(
+                                rng.RandfRange(-extents.X / 2f, extents.X / 2f),
+                                0,
+                                rng.RandfRange(-extents.Z / 2f, extents.Z / 2f)
+                            );
+
+                            // Vertaal het lokale punt van de shape naar de globale wereldpositie
+                            globaleTestPos = areaShapeLevel4.GlobalTransform * localRandomPos;
+                            globaleTestPos.Y = areaShapeLevel4.GlobalPosition.Y; // Behoud de hoogte van de area
+                        }
+                        else
+                        {
+                            // Oude methode voor de overige levels (op basis van MapSize rond de spawner)
+                            Vector3 randomPos = new Vector3(
+                                rng.RandfRange(-MapSize.X / 2, MapSize.X / 2),
+                                5.0f,
+                                rng.RandfRange(-MapSize.Z / 2, MapSize.Z / 2)
+                            );
+                            globaleTestPos = GlobalPosition + randomPos;
+                        }
+
                         Vector3 testPoint = NavigationServer3D.MapGetClosestPoint(mapRid, globaleTestPos);
 
                         if (testPoint != Vector3.Zero)
@@ -179,7 +213,7 @@ public partial class Spawn : Node3D
                                 isGeldigPunt = true;
                             }
 
-                            // --- CHECK VOOR LEVEL 4 AREA ---
+                            // Dubbele check voor Level 4: Valt het punt daadwerkelijk in de area?
                             if (isGeldigPunt && GekoppeldLevel == 4 && spawnAreaLevel4 != null)
                             {
                                 var spaceState = GetWorld3D().DirectSpaceState;
@@ -202,7 +236,7 @@ public partial class Spawn : Node3D
 
                                 if (!bevindtZichInArea)
                                 {
-                                    isGeldigPunt = false; // Buiten de area? Afkeuren!
+                                    isGeldigPunt = false;
                                 }
                             }
 
@@ -226,7 +260,7 @@ public partial class Spawn : Node3D
                 }
                 else
                 {
-                    GD.Print($"NPC {npc.Name} kon echt nergens spawnen in Level 4 area.");
+                    GD.Print($"NPC {npc.Name} kon echt nergens spawnen.");
                 }
             }
         }
