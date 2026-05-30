@@ -11,11 +11,13 @@ public partial class StartScreen : Node3D
 	[Export] private StaticBody3D Level2Knop;	
 	[Export] private StaticBody3D Level3Knop;	
 	[Export] private StaticBody3D Level4Knop;
+    [Export] private StaticBody3D GeheimLevelKnop;
 	[Export] private StaticBody3D TerugStartKnop;	
 	[Export] private MeshInstance3D Level1Kleur;
 	[Export] private MeshInstance3D Level2Kleur;	
 	[Export] private MeshInstance3D Level3Kleur;	
 	[Export] private MeshInstance3D Level4Kleur;
+    [Export] private MeshInstance3D GeheimLevelKleur;
 	[Export] private MeshInstance3D TerugStartKleur;	
 	[Export] private StaticBody3D startKnop;
 	[Export] private StaticBody3D settingKnop;
@@ -33,6 +35,7 @@ public partial class StartScreen : Node3D
 	[Export] private Marker3D startPuntLevel2;
 	[Export] private Marker3D startPuntLevel3;
     [Export] private Marker3D startPuntLevel4;
+    [Export] private Marker3D startGeheimLevel;
 	[Export] private PlayerScript echteSpeler;
 
 
@@ -116,6 +119,13 @@ public partial class StartScreen : Node3D
 			TerugStartKnop.MouseEntered += OnTerugStartHover;
             TerugStartKnop.MouseExited += OnTerugStartExit;
 		} 
+
+        if (GeheimLevelKnop != null)
+		{
+			GeheimLevelKnop.InputEvent += OnGeheimLevelInput;
+			GeheimLevelKnop.MouseEntered += OnGeheimLevelHover;
+            GeheimLevelKnop.MouseExited += OnGeheimLevelExit;
+		} 
 	}
 
 	//startkleur hover
@@ -153,6 +163,8 @@ public partial class StartScreen : Node3D
 	//terugstartkleur hover
 	private void OnTerugStartHover() => VeranderKleur(TerugStartKleur, hoverKleur);
     private void OnTerugStartExit()  => VeranderKleur(TerugStartKleur, normalKleur);
+    private void OnGeheimLevelHover() => VeranderKleur(GeheimLevelKleur, hoverKleur);
+    private void OnGeheimLevelExit()  => VeranderKleur(GeheimLevelKleur, normalKleur);
 
 	private void VeranderKleur(MeshInstance3D mesh, Color kleur)
     {
@@ -261,6 +273,17 @@ public partial class StartScreen : Node3D
             if (mouseEvent.Pressed && mouseEvent.ButtonIndex == MouseButton.Left)
             {
                 TerugStart();
+            }
+        }
+    }
+
+    private void OnGeheimLevelInput(Node camera, InputEvent @event, Vector3 position, Vector3 normal, long shapeIdx)
+    {
+        if (@event is InputEventMouseButton mouseEvent)
+        {
+            if (mouseEvent.Pressed && mouseEvent.ButtonIndex == MouseButton.Left)
+            {
+                GeheimLevel();
             }
         }
     }
@@ -443,5 +466,26 @@ public partial class StartScreen : Node3D
 			Level4Kleur.Visible = false;
 			TerugStartKleur.Visible = false;
 		}
+	}
+
+    public void GeheimLevel()
+	{
+        if (echteSpeler != null && startGeheimLevel != null)
+        {
+            echteSpeler.GlobalPosition = startGeheimLevel.GlobalPosition;
+            echteSpeler.GlobalRotation = startGeheimLevel.GlobalRotation;
+            echteSpeler.Velocity = Vector3.Zero;
+        }
+
+		GD.Print("Level4");
+        labelSlow.Visible = true;
+        startscreenCamera.Current = false;
+        settingmainCamera.Current = true;
+        this.Visible = false;
+        settingmain.Visible = true;
+
+        Input.MouseMode = Input.MouseModeEnum.Captured;
+
+        GetTree().CallGroup("Spawners", "CheckEnStartSpawn");
 	}
 }

@@ -92,6 +92,16 @@ font_size = 8
 [sub_resource type="BoxShape3D" id="BoxShape3D_h7bbb"]
 size = Vector3(0.22205353, 0.07788086, 0.13256836)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_12ueu"]
+
+[sub_resource type="TextMesh" id="TextMesh_h7bbb"]
+material = SubResource("StandardMaterial3D_12ueu")
+text = "Geheim level :0"
+font_size = 8
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h5mqm"]
+size = Vector3(0.5945358, 0.10418701, 0.07019043)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jjcdy"]
 albedo_color = Color(0.67058825, 0, 0, 1)
 emission_enabled = true
@@ -236,18 +246,20 @@ _data = {
 &"vooruit": SubResource("Animation_n3tqk")
 }
 
-[node name="StartScreen" type="Node3D" unique_id=674047538 node_paths=PackedStringArray("startscreenCamera", "Level1Knop", "Level2Knop", "Level3Knop", "Level4Knop", "TerugStartKnop", "Level1Kleur", "Level2Kleur", "Level3Kleur", "Level4Kleur", "TerugStartKleur", "startKnop", "settingKnop", "quitKnop", "terugKnop", "startKleur", "settingKleur", "quitKleur", "terugKleur", "AnimatieDraaien")]
+[node name="StartScreen" type="Node3D" unique_id=674047538 node_paths=PackedStringArray("startscreenCamera", "Level1Knop", "Level2Knop", "Level3Knop", "Level4Knop", "GeheimLevelKnop", "TerugStartKnop", "Level1Kleur", "Level2Kleur", "Level3Kleur", "Level4Kleur", "GeheimLevelKleur", "TerugStartKleur", "startKnop", "settingKnop", "quitKnop", "terugKnop", "startKleur", "settingKleur", "quitKleur", "terugKleur", "AnimatieDraaien")]
 script = ExtResource("1_alo1v")
 startscreenCamera = NodePath("StartMenu/Camera3D")
 Level1Knop = NodePath("StartMenu/Menu/Level1/Level1")
 Level2Knop = NodePath("StartMenu/Menu/Level2/Level2")
 Level3Knop = NodePath("StartMenu/Menu/Level3/Level3")
 Level4Knop = NodePath("StartMenu/Menu/Level4/Level4")
+GeheimLevelKnop = NodePath("StartMenu/Menu/GeheimLevel/GeheimLevel")
 TerugStartKnop = NodePath("StartMenu/Menu/Terug_start/Terug_start")
 Level1Kleur = NodePath("StartMenu/Menu/Level1")
 Level2Kleur = NodePath("StartMenu/Menu/Level2")
 Level3Kleur = NodePath("StartMenu/Menu/Level3")
 Level4Kleur = NodePath("StartMenu/Menu/Level4")
+GeheimLevelKleur = NodePath("StartMenu/Menu/GeheimLevel")
 TerugStartKleur = NodePath("StartMenu/Menu/Terug_start")
 startKnop = NodePath("StartMenu/Menu/Start/Start")
 settingKnop = NodePath("StartMenu/Menu/Settings/Settings")
@@ -359,11 +371,21 @@ mesh = SubResource("TextMesh_n3tqk")
 transform = Transform3D(0.9999995, 0, 0, 0, 1, 0, 1.1920929e-07, 0, 1, -0.007907093, -0.011108398, 0.012097359)
 shape = SubResource("BoxShape3D_h7bbb")
 
+[node name="GeheimLevel" type="MeshInstance3D" parent="StartMenu/Menu" unique_id=205652810]
+transform = Transform3D(-4.3540698e-08, -0.08828583, -0.3892996, -3.8590966e-09, 0.9960952, -0.034504373, 1, 0, -1.7083536e-08, 1.304, 0.8870001, 0)
+mesh = SubResource("TextMesh_h7bbb")
+
+[node name="GeheimLevel" type="StaticBody3D" parent="StartMenu/Menu/GeheimLevel" unique_id=1020985245]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StartMenu/Menu/GeheimLevel/GeheimLevel" unique_id=1026901216]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0025138855, 0.00045728683, 0.0014038086)
+shape = SubResource("BoxShape3D_h5mqm")
+
 [node name="SpotLight3D" type="SpotLight3D" parent="StartMenu/Menu" unique_id=176631978]
 transform = Transform3D(1, 0, 0, 0, 0.9989087, -0.046705466, 0, 0.046705466, 0.9989087, 0, 0, -2.1734424)
 light_energy = 9.318
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StartMenu/Menu" unique_id=783444129]
+[node name="Titel" type="MeshInstance3D" parent="StartMenu/Menu" unique_id=783444129]
 transform = Transform3D(0.9001306, 0.002708644, -0.00030726392, -0.0024391385, 0.99972564, -0.00011183942, 0.0009076341, 0.00037001446, 0.3044232, 0, 0.70551014, -0.492)
 mesh = SubResource("TextMesh_bpvjc")
 
