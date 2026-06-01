@@ -470,6 +470,9 @@ public partial class StartScreen : Node3D
 
     public void GeheimLevel()
 	{
+        var globalData = GetNode<GlobalData>("/root/GlobalData");
+        globalData.HuidigSpeelLevel = 5;
+
         if (echteSpeler != null && startGeheimLevel != null)
         {
             echteSpeler.GlobalPosition = startGeheimLevel.GlobalPosition;
@@ -477,7 +480,7 @@ public partial class StartScreen : Node3D
             echteSpeler.Velocity = Vector3.Zero;
         }
 
-		GD.Print("Level4");
+		GD.Print("Level5");
         labelSlow.Visible = true;
         startscreenCamera.Current = false;
         settingmainCamera.Current = true;
