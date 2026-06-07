@@ -31,7 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://lxkajy4u2eth" path="res://Assets/city/textures/Image_61.jpg" id="23_8yfwm"]
 [ext_resource type="PackedScene" uid="uid://b8n645rkgttfw" path="res://Assets/reversible_chalkboard.glb" id="24_3812m"]
 [ext_resource type="Texture2D" uid="uid://ckghbowbmti5c" path="res://Assets/2D-Afbeeldingen/Tut-Deel1.png" id="25_gclfh"]
-[ext_resource type="Texture2D" uid="uid://bjwvtkp0aytwm" path="res://Assets/2D-Afbeeldingen/Tut-Deel2.png" id="27_gclfh"]
+[ext_resource type="Texture2D" uid="uid://b86lgpt2xfuyc" path="res://Assets/2D-Afbeeldingen/Tut-Deel2 (2).png" id="27_2fit5"]
 [ext_resource type="Texture2D" uid="uid://db3wce8gq1uaa" path="res://Assets/2D-Afbeeldingen/Logo.png" id="34_0wspw"]
 [ext_resource type="Texture2D" uid="uid://c1gnq141vilwm" path="res://Assets/2D-Afbeeldingen/Tut-Deel3.png" id="34_2fit5"]
 
@@ -1021,8 +1021,8 @@ text = "Tip -->"
 font_size = 100
 
 [node name="Sprite3D" type="Sprite3D" parent="building6/Sketchfab_Scene" unique_id=1568911740]
-transform = Transform3D(-4.4703484e-08, 0, 0.9, 0, 0.81, 0, -0.9, 0, -4.4703484e-08, 0.2524414, 7.1572113, -0.00075531006)
-texture = ExtResource("27_gclfh")
+transform = Transform3D(-4.4703484e-08, 0, 0.9, 0, 0.81, 0, -0.9, 0, -4.4703484e-08, 0.08364105, 7.1572113, 0.04311371)
+texture = ExtResource("27_2fit5")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="building6/Sketchfab_Scene/Sprite3D" unique_id=994731810]
 transform = Transform3D(1.0000007, 0, -1.4901161e-08, 0, 1.0000006, 0, 1.4901161e-08, 0, 1.0000007, 3.7060623, -4.092911, -1.377533)
