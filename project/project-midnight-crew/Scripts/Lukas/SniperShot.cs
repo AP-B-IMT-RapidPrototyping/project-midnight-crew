@@ -104,6 +104,24 @@ public partial class SniperShot : Node3D
                 return;
             }
         }
+        if (result.Count > 0)
+        {
+            // Haal de collider op (dit is de StaticBody3D)
+            var geraaktObject = result["collider"].AsGodotObject();
+
+            if (geraaktObject is Node3D colliderNode)
+            {
+                // We kijken naar de ouder (GetParent()) van de StaticBody3D, want daar staat ons script op!
+                var ouderNode = colliderNode.GetParent();
+
+                // Controleer of de ouder inderdaad de TutorialNPC is
+                if (ouderNode is TutorialNPC tutorialNpc)
+                {
+                    // Roep de functie aan om de NPC te laten verdwijnen
+                    tutorialNpc.NeemSchade();
+                }
+            }
+        }
 
         // Normale herlaad cyclus
         await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
@@ -214,7 +232,7 @@ public partial class SniperShot : Node3D
     }
 
     // --- BESTAANDE VERLIES-FUNCTIE ---
-    private void TriggerMissionFailed()
+    public void TriggerMissionFailed()
     {
         _isGameOver = true;
 

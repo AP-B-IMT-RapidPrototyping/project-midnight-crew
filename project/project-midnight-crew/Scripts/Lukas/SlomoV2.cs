@@ -16,6 +16,9 @@ public partial class SlomoV2 : Node
     private bool _isSlomoActive = false;
     private float _flickerTime = 0.0f; // Voor het flikker effect
 
+    // 🔥 NIEUW: Onthoudt of we in de "oplaad-fase" zitten omdat de balk écht leeg is gegaan
+    private bool _moetOpladen = false;
+
     public override void _Ready()
     {
         _currentSlomoEnergy = MaxSlomoTime;
@@ -41,30 +44,52 @@ public partial class SlomoV2 : Node
         if (_isSlomoActive)
         {
             _currentSlomoEnergy = (float)slowMoTimer.TimeLeft;
-            if (Input.IsActionJustPressed("SlowTime")) SetSlowMo(false);
+
+            // Als de energie tijdens het gebruik onder of gelijk aan 0 komt -> Forceer opladen
+            if (_currentSlomoEnergy <= 0.0f)
+            {
+                _currentSlomoEnergy = 0.0f;
+                _moetOpladen = true;
+                SetSlowMo(false);
+            }
+            else if (Input.IsActionJustPressed("SlowTime"))
+            {
+                SetSlowMo(false);
+            }
         }
         else
         {
-            if (_currentSlomoEnergy < MaxSlomoTime)
+            // 🔥 LOGICA VOOR HET OPLADEN 🔥
+            if (_moetOpladen)
             {
                 _currentSlomoEnergy += RechargeRate * (float)delta;
-                if (_currentSlomoEnergy > MaxSlomoTime) _currentSlomoEnergy = MaxSlomoTime;
-
-                // Tel op voor het flikkeren
                 _flickerTime += (float)delta * 10.0f;
+
+                // Pas als hij VOLLEDIG vol is, stoppen we met opladen en mag hij weer gebruikt worden
+                if (_currentSlomoEnergy >= MaxSlomoTime)
+                {
+                    _currentSlomoEnergy = MaxSlomoTime;
+                    _moetOpladen = false; // Oplaad-fase klaar!
+                    _flickerTime = 0;
+                }
             }
             else
             {
-                _flickerTime = 0; // Reset als hij vol is
+                _flickerTime = 0; // Geen flikkering als hij halverwege stilstaat
             }
 
-            if (Input.IsActionJustPressed("SlowTime") && _currentSlomoEnergy >= MaxSlomoTime)
+            // Je mag de slomo aanzetten als je op de knop drukt, zolang je NIET in de verplichte oplaad-fase zit én er energie is
+            if (Input.IsActionJustPressed("SlowTime") && !_moetOpladen && _currentSlomoEnergy > 0.0f)
             {
                 SetSlowMo(true);
             }
         }
 
-        if (timerAfgelopen) SetSlowMo(false);
+        if (timerAfgelopen)
+        {
+            _moetOpladen = true; // Timer afgelopen betekent dat hij leeg is -> opladen!
+            SetSlowMo(false);
+        }
 
         UpdateUI();
     }
@@ -97,30 +122,28 @@ public partial class SlomoV2 : Node
     private void UpdateUI()
     {
         if (SlomoBar == null) return;
-        
+
         SlomoBar.Visible = GetNode<Node3D>("/root/Main/SettingMain").Visible;
         SlomoBar.Value = _currentSlomoEnergy;
 
-        // Haal de StyleBox van de achtergrond op
         var bgStyle = SlomoBar.GetThemeStylebox("background") as StyleBoxFlat;
 
         if (bgStyle != null)
         {
-            if (_currentSlomoEnergy < MaxSlomoTime && !_isSlomoActive)
+            // 🔥 De balk flikkert nu ALLEEN als hij daadwerkelijk aan het opladen is
+            if (_moetOpladen)
             {
                 // --- OPLAAD EFFECT ---
-                // We gebruiken Sinus voor een vloeiende flikkering tussen 0.3 en 1.0 helderheid
                 float pulse = (Mathf.Sin(_flickerTime) + 1.0f) / 2.0f;
                 Color flickerRed = new Color(1.0f, 0.0f, 0.0f, 0.3f + (pulse * 0.7f));
 
                 bgStyle.BorderColor = flickerRed;
-                // Zet de border width aan voor het geval die uit stond
                 bgStyle.SetBorderWidthAll(2);
             }
             else
             {
-                // --- VOL OF ACTIEF (Normaal) ---
-                bgStyle.BorderColor = new Color(1, 1, 1, 0.5f); // Subtiel wit/grijs
+                // --- VOL, REEDS LEEGGLOPEN OF ACTIEF (Normaal) ---
+                bgStyle.BorderColor = new Color(1, 1, 1, 0.5f);
             }
         }
     }

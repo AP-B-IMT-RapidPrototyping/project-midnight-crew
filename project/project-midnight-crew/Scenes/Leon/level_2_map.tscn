@@ -377,6 +377,8 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -39,
 transform = Transform3D(-6.119594e-06, 0, -140, 0, 140, 0, 140, 0, -6.119594e-06, -65, 0, 28.30045)
 
 [node name="Grond" type="StaticBody3D" parent="Plaza_Ahualulco" unique_id=339082773]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plaza_Ahualulco/Grond" unique_id=1266875446]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.28788477, 0)
@@ -384,6 +386,8 @@ shape = SubResource("BoxShape3D_jhomm")
 
 [node name="Bak1" type="StaticBody3D" parent="Plaza_Ahualulco" unique_id=1695128110]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.059890717, 0, 0.04406768)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plaza_Ahualulco/Bak1" unique_id=327867636]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0104673505, 0.027145386, -0.031560898)
@@ -391,6 +395,8 @@ shape = SubResource("BoxShape3D_nebb3")
 
 [node name="Bak2" type="StaticBody3D" parent="Plaza_Ahualulco" unique_id=617351869]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06670192, -0.0010792459, -0.061272323)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plaza_Ahualulco/Bak2" unique_id=374266728]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.003200531, 0.039184585, -0.00856787)
@@ -398,6 +404,8 @@ shape = SubResource("BoxShape3D_wng3s")
 
 [node name="Bak3" type="StaticBody3D" parent="Plaza_Ahualulco" unique_id=973061689]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0580087, 0, -0.075231135)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plaza_Ahualulco/Bak3" unique_id=312319669]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009704575, 0.021492004, -0.019123137)
@@ -405,6 +413,8 @@ shape = SubResource("BoxShape3D_1207t")
 
 [node name="Bak4" type="StaticBody3D" parent="Plaza_Ahualulco" unique_id=893538609]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11264209, 0, -0.075231194)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plaza_Ahualulco/Bak4" unique_id=90786334]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009704575, 0.021492004, -0.019123137)
@@ -412,6 +422,8 @@ shape = SubResource("BoxShape3D_1207t")
 
 [node name="Bak5" type="StaticBody3D" parent="Plaza_Ahualulco" unique_id=1329558767]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.110302955, 0, 0.029999852)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plaza_Ahualulco/Bak5" unique_id=1731391585]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010452256, 0.021492004, -0.019123137)
@@ -419,6 +431,8 @@ shape = SubResource("BoxShape3D_1207t")
 
 [node name="Bak6" type="StaticBody3D" parent="Plaza_Ahualulco" unique_id=1559204980]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.056719393, 0, 0.03314507)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plaza_Ahualulco/Bak6" unique_id=1070350242]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010452256, 0.021492004, -0.019123137)
@@ -426,6 +440,8 @@ shape = SubResource("BoxShape3D_1207t")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Plaza_Ahualulco" unique_id=1174030414]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.04322031)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plaza_Ahualulco/StaticBody3D" unique_id=685420454]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007853299, 0.028964465, 0.0027269423)

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bpvm0pfyrwtnd"]
+
+[ext_resource type="PackedScene" uid="uid://nm7k2ub1c57o" path="res://Assets/car_on_fire__animation.glb" id="1_cdoll"]
+
+[node name="Sketchfab_Scene" unique_id=89552370 instance=ExtResource("1_cdoll")]
+
+[node name="Object_2" parent="Sketchfab_model/sketchfab_timeframe" parent_id_path=PackedInt32Array(1783879252) index="0" unique_id=1433437275]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[node name="Object_5" parent="Sketchfab_model/sketchfab_timeframe" parent_id_path=PackedInt32Array(1783879252) index="1" unique_id=10804870]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[node name="Object_8" parent="Sketchfab_model/sketchfab_timeframe" parent_id_path=PackedInt32Array(1783879252) index="2" unique_id=774895671]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[node name="Object_11" parent="Sketchfab_model/sketchfab_timeframe" parent_id_path=PackedInt32Array(1783879252) index="3" unique_id=1697483300]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[node name="Object_14" parent="Sketchfab_model/sketchfab_timeframe" parent_id_path=PackedInt32Array(1783879252) index="4" unique_id=991586669]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[node name="Object_17" parent="Sketchfab_model/sketchfab_timeframe" parent_id_path=PackedInt32Array(1783879252) index="5" unique_id=1278134311]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[node name="Object_20" parent="Sketchfab_model/sketchfab_timeframe" parent_id_path=PackedInt32Array(1783879252) index="6" unique_id=919504654]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[node name="AnimationPlayer" parent="." index="1" unique_id=1807458150]
+autoplay = &"Burn it!"

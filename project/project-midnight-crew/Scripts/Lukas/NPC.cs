@@ -100,6 +100,10 @@ public partial class NPC : CharacterBody3D
 
         // --- STAP 1: Zoek de juiste regio op basis van de groep van deze NPC ---
         string targetSpawnGroup = "Level 1 SPAWN";
+        if (IsInGroup("NPCtut"))
+        {
+            targetSpawnGroup = "Tutorial SPAWN";
+        }
         if (IsInGroup("NPC2"))
         {
             targetSpawnGroup = "Level 2 SPAWN";
@@ -108,6 +112,11 @@ public partial class NPC : CharacterBody3D
         {
             targetSpawnGroup = "Level 3 SPAWN";
         }
+        if (IsInGroup("NPC4"))
+        {
+            targetSpawnGroup = "Level 4 SPAWN";
+        }
+
 
         var targetRegions = GetTree().GetNodesInGroup(targetSpawnGroup);
         Rid targetRegionRid = new Rid();

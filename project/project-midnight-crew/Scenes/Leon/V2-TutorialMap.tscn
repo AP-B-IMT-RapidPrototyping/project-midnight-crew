@@ -31,7 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://lxkajy4u2eth" path="res://Assets/city/textures/Image_61.jpg" id="23_8yfwm"]
 [ext_resource type="PackedScene" uid="uid://b8n645rkgttfw" path="res://Assets/reversible_chalkboard.glb" id="24_3812m"]
 [ext_resource type="Texture2D" uid="uid://ckghbowbmti5c" path="res://Assets/2D-Afbeeldingen/Tut-Deel1.png" id="25_gclfh"]
-[ext_resource type="Texture2D" uid="uid://bjwvtkp0aytwm" path="res://Assets/2D-Afbeeldingen/Tut-Deel2.png" id="27_gclfh"]
+[ext_resource type="Texture2D" uid="uid://b86lgpt2xfuyc" path="res://Assets/2D-Afbeeldingen/Tut-Deel2 (2).png" id="27_2fit5"]
 [ext_resource type="Texture2D" uid="uid://db3wce8gq1uaa" path="res://Assets/2D-Afbeeldingen/Logo.png" id="34_0wspw"]
 [ext_resource type="Texture2D" uid="uid://c1gnq141vilwm" path="res://Assets/2D-Afbeeldingen/Tut-Deel3.png" id="34_2fit5"]
 
@@ -540,6 +540,8 @@ size = Vector3(14.752197, 9.48703, 1)
 transform = Transform3D(-3.4969112e-08, 0, -0.8, 0, 0.8, 0, 0.8, 0, -3.4969112e-08, -11, 18.8, 19.7)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="tutorial_building1" unique_id=409888253]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tutorial_building1/StaticBody3D" unique_id=1744521909]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2238121, -9.314354, -2.062954)
@@ -550,6 +552,8 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -123
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="tutorial_building2" unique_id=1441160407]
 transform = Transform3D(-0.8, 0, 6.9938224e-08, 0, 0.8, 0, -6.9938224e-08, 0, -0.8, 24.799995, 8.199999, 112.7)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tutorial_building2/StaticBody3D2" unique_id=945498511]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.469522, -13.112459, 140.8454)
@@ -560,6 +564,8 @@ transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -55.5, 18.8, -20.5)
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="tutorial_building4" unique_id=970860100]
 transform = Transform3D(-4.9955876e-08, 0, -1.1428572, 0, 1.1428572, 0, 1.1428572, 0, -4.9955876e-08, 63.571426, 0, 57.428574)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tutorial_building4/StaticBody3D3" unique_id=1820563195]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.267925, -3.966116, 55.410984)
@@ -570,6 +576,8 @@ transform = Transform3D(0.34999996, 0, 0.60621774, 0, 0.70000005, 0, -0.60621774
 
 [node name="StaticBody3D4" type="StaticBody3D" parent="tutorial_building5" unique_id=393793523]
 transform = Transform3D(-4.9955876e-08, 0, -1.1428572, 0, 1.1428572, 0, 1.1428572, 0, -4.9955876e-08, -6.28572, -7.4285717, 52.000004)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tutorial_building5/StaticBody3D4" unique_id=1102878228]
 transform = Transform3D(1, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, 1, -39.991, -3.966116, -4.442879)
@@ -593,6 +601,8 @@ transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -65, 7.3, 18.2)
 
 [node name="StaticBody3D4" type="StaticBody3D" parent="tutorial_building6" unique_id=812524933]
 transform = Transform3D(-5.828185e-08, 0, -1.3333333, 0, 1.3333333, 0, 1.3333333, 0, -5.828185e-08, 89.999985, 19.166662, 2.5)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tutorial_building6/StaticBody3D4" unique_id=2019993129]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9470558, -16.382023, 67.79914)
@@ -603,6 +613,8 @@ transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -109, 17, 75)
 
 [node name="StaticBody3D5" type="StaticBody3D" parent="tutorial_building7" unique_id=338870800]
 transform = Transform3D(-4.9955876e-08, 0, -1.1428572, 0, 1.1428572, 0, 1.1428572, 0, -4.9955876e-08, 147.14285, 2.5714264, -90.42857)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tutorial_building7/StaticBody3D5" unique_id=1781820546]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.31916, -3.5428696, 127.81141)
@@ -625,6 +637,8 @@ transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -12.66357, 1
 
 [node name="StaticBody3D6" type="StaticBody3D" parent="tutorial_building8" unique_id=23187594]
 transform = Transform3D(-0.7999999, 0, 3.496911e-08, 0, 0.8, 0, -3.496911e-08, 0, -0.7999999, 60.299995, 2.7999992, 4.9999914)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tutorial_building8/StaticBody3D6" unique_id=2040337289]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 73.892044, -7.9844255, 2.878522)
@@ -647,6 +661,8 @@ transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -106, 8, 88)
 
 [node name="StaticBody3D5" type="StaticBody3D" parent="tutorial_building9" unique_id=1507614850]
 transform = Transform3D(-4.9955876e-08, 0, -1.1428572, 0, 1.1428572, 0, 1.1428572, 0, -4.9955876e-08, 177.14285, 15.42857, -89)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tutorial_building9/StaticBody3D5" unique_id=465280712]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.719215, -20.356844, 155.27869)
@@ -657,6 +673,8 @@ transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -112.4, 23, 22)
 
 [node name="StaticBody3D6" type="StaticBody3D" parent="tutorial_building10" unique_id=1579729137]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 126.74999, -5.25, -2.875)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tutorial_building10/StaticBody3D6" unique_id=935973203]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0349941, -5.7324963, 127.05035)
@@ -667,6 +685,8 @@ transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -54, 18.4, 81)
 
 [node name="StaticBody3D7" type="StaticBody3D" parent="tutorial_building11" unique_id=446990278]
 transform = Transform3D(-4.9955876e-08, 0, -1.1428572, 0, 1.1428572, 0, 1.1428572, 0, -4.9955876e-08, 61.428562, 0.5714264, -87.57143)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tutorial_building11/StaticBody3D7" unique_id=1259345858]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.47138, -5.7324944, 53.6304)
@@ -677,6 +697,8 @@ transform = Transform3D(-0.7, 0, -6.119594e-08, 0, 0.7, 0, 6.119594e-08, 0, -0.7
 
 [node name="StaticBody3D8" type="StaticBody3D" parent="tutorial_building12" unique_id=1420566586]
 transform = Transform3D(1.4986762e-07, 0, 1.1428572, 0, 1.1428572, 0, -1.1428572, 0, 1.4986762e-07, -56.57142, 13.999996, 30.714283)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tutorial_building12/StaticBody3D8" unique_id=1874650790]
 transform = Transform3D(1, 0, -1.0658141e-14, 0, 1, 0, 1.0658141e-14, 0, 1, 27.430822, -15.307944, 53.415222)
@@ -695,6 +717,8 @@ transform = Transform3D(-0.7, 0, -6.119594e-08, 0, 0.7, 0, 6.119594e-08, 0, -0.7
 
 [node name="StaticBody3D8" type="StaticBody3D" parent="tutorial_building13" unique_id=1462681717]
 transform = Transform3D(1.4986762e-07, 0, 1.1428572, 0, 1.1428572, 0, -1.1428572, 0, 1.4986762e-07, -2.9999924, 8.999996, 31.71429)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tutorial_building13/StaticBody3D8" unique_id=404218538]
 transform = Transform3D(1, 0, -1.0658141e-14, 0, 1, 0, 1.0658141e-14, 0, 1, 26.48773, -17.930574, 1.5851021)
@@ -705,6 +729,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.646576, 0, 57.302795)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="building4" unique_id=1647147879]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 34.914646, 26.519585)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building4/StaticBody3D" unique_id=1218187345]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.710747, 10.038025, 2.9160156)
@@ -715,6 +741,8 @@ transform = Transform3D(0.2759954, 0, 1.9808651, 0, 2, 0, -1.9808651, 0, 0.27599
 mesh = SubResource("ArrayMesh_obu68")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="building4/Object_99_124" unique_id=706691138]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building4/Object_99_124/StaticBody3D" unique_id=386029804]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03555298, -0.06982422, 2.861023e-06)
@@ -725,6 +753,8 @@ transform = Transform3D(1.8059783, 0, 0, 0, 1.2642785, 0, 0, 0, 1.3358786, 2.356
 mesh = SubResource("ArrayMesh_hxl76")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="building4/Object_99_125" unique_id=161592164]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building4/Object_99_125/StaticBody3D" unique_id=546685515]
 transform = Transform3D(1, 0, 0, 0, 1.0000011, 0, 0, 0, 1, -0.012938499, 0.259758, -0.019042969)
@@ -735,6 +765,8 @@ transform = Transform3D(0.052701935, 0, 0.9986103, 0, 1, 0, -0.9986103, 0, 0.052
 mesh = SubResource("ArrayMesh_q6rvh")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="building4/Object_99_126" unique_id=1558433690]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building4/Object_99_126/StaticBody3D" unique_id=1760412929]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08242798, 0.12060547, -0.094675064)
@@ -745,12 +777,16 @@ transform = Transform3D(-0.9216557, 0, -1.1756349, 0, 1.2596028, 0, 1.8459727, 0
 mesh = SubResource("ArrayMesh_jhwxl")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="building4/Object_99_127" unique_id=689966118]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building4/Object_99_127/StaticBody3D" unique_id=268581218]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19737434, 0.24292755, -0.031427383)
 shape = SubResource("BoxShape3D_f33pu")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="building4/Object_99_127" unique_id=1522365975]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building4/Object_99_127/StaticBody3D2" unique_id=268855394]
 transform = Transform3D(0.70035225, 0.7136601, 0.014020458, -0.71378595, 0.70031893, 0.007950621, -0.0041448176, -0.015575886, 0.99987036, 0.7274666, 0.112148285, -0.013395309)
@@ -761,6 +797,8 @@ transform = Transform3D(1, 0, 0, 0, 0.96074045, -0.2774488, 0, 0.2774488, 0.9607
 mesh = SubResource("ArrayMesh_38h1j")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="building4/Object_99_128" unique_id=1024198039]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building4/Object_99_128/StaticBody3D" unique_id=1184344261]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.022979736, -1.1444092e-05, 0.47013474)
@@ -771,6 +809,8 @@ transform = Transform3D(-9.920145, 0, -2.8414317e-07, -1.4809088e-07, 0.9497854,
 mesh = SubResource("ArrayMesh_paxw4")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="building4/Object_99_129" unique_id=194337312]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building4/Object_99_129/StaticBody3D" unique_id=1800818742]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.038513184, 0.14007568, 0.21783257)
@@ -790,6 +830,8 @@ transform = Transform3D(-2.6226829e-08, 0, 0.6, 0, 0.54, 0, -0.6, 0, -2.6226829e
 texture = ExtResource("25_gclfh")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="building4/Sketchfab_Scene" unique_id=818999798]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building4/Sketchfab_Scene/StaticBody3D" unique_id=1410624571]
 transform = Transform3D(1, 0, -2.1316282e-14, 0, 1, 0, 2.1316282e-14, 0, 1, 0.11505127, 6.2375946, -0.014038086)
@@ -797,6 +839,8 @@ shape = SubResource("BoxShape3D_ddydk")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="building4" unique_id=1374596493]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9702463, 45.76723, 21.109886)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building4/StaticBody3D2" unique_id=896595579]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45021057, -0.30765915, 0.04083252)
@@ -804,6 +848,8 @@ shape = SubResource("BoxShape3D_q6rvh")
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="building4" unique_id=551422209]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.105754, 45.76723, 27.95092)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building4/StaticBody3D3" unique_id=884227834]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47705173, -0.0128479, 1.253479)
@@ -811,6 +857,8 @@ shape = SubResource("BoxShape3D_jhwxl")
 
 [node name="StaticBody3D4" type="StaticBody3D" parent="building4" unique_id=121812326]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -12.18674, 45.685265, 23.373665)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building4/StaticBody3D4" unique_id=969850440]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45021057, -0.30765915, 0.04083252)
@@ -818,6 +866,8 @@ shape = SubResource("BoxShape3D_q6rvh")
 
 [node name="StaticBody3D5" type="StaticBody3D" parent="building4" unique_id=1354110816]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.601229, 45.364643, 18.11103)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building4/StaticBody3D5" unique_id=109682320]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10180664, 0, 0)
@@ -825,6 +875,8 @@ shape = SubResource("BoxShape3D_38h1j")
 
 [node name="StaticBody3D6" type="StaticBody3D" parent="building4" unique_id=830649760]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.944761, 45.76723, 19.07985)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building4/StaticBody3D6" unique_id=2099059805]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.023335934, 3.408474, 1.2452698)
@@ -832,6 +884,8 @@ shape = SubResource("BoxShape3D_paxw4")
 
 [node name="StaticBody3D7" type="StaticBody3D" parent="building4" unique_id=439038121]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.547075, 45.76723, 24.084442)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building4/StaticBody3D7" unique_id=1119895875]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8580457, -0.73739624, -0.6933594)
@@ -839,6 +893,8 @@ shape = SubResource("BoxShape3D_e3x6g")
 
 [node name="StaticBody3D8" type="StaticBody3D" parent="building4" unique_id=885357905]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12800312, 45.76723, 28.361473)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building4/StaticBody3D8" unique_id=1830106669]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94311523, 0.4625244, 1.0835037)
@@ -846,6 +902,8 @@ shape = SubResource("BoxShape3D_mexvt")
 
 [node name="StaticBody3D9" type="StaticBody3D" parent="building4" unique_id=244353439]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4107246, 45.76723, 30.451012)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building4/StaticBody3D9" unique_id=2118520382]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2901001, 3.2400093, 0.07562256)
@@ -853,6 +911,8 @@ shape = SubResource("BoxShape3D_xxsh1")
 
 [node name="StaticBody3D10" type="StaticBody3D" parent="building4" unique_id=1131522083]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.669865, 45.76723, 35.66558)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building4/StaticBody3D10" unique_id=1030911991]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.73254395, 0.1061821, -0.47509766)
@@ -860,6 +920,8 @@ shape = SubResource("BoxShape3D_aiikt")
 
 [node name="StaticBody3D11" type="StaticBody3D" parent="building4" unique_id=666575061]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.58906, 44.857418, 31.38684)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building4/StaticBody3D11" unique_id=362709514]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.075683594, 0.44311523, 0)
@@ -867,6 +929,8 @@ shape = SubResource("BoxShape3D_axu3u")
 
 [node name="StaticBody3D12" type="StaticBody3D" parent="building4" unique_id=1980103480]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6769323, 45.76723, 38.07641)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building4/StaticBody3D12" unique_id=1319939350]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48988438, 0.35172272, -0.99264526)
@@ -874,6 +938,8 @@ shape = SubResource("BoxShape3D_fvb1b")
 
 [node name="StaticBody3D13" type="StaticBody3D" parent="building4" unique_id=457336389]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.953008, 45.302048, 39.7501)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building4/StaticBody3D13" unique_id=162061827]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.023101807)
@@ -881,6 +947,8 @@ shape = SubResource("BoxShape3D_d6bdx")
 
 [node name="StaticBody3D14" type="StaticBody3D" parent="building4" unique_id=397908248]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.537281, 45.76723, 36.29953)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building4/StaticBody3D14" unique_id=2061989042]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48161316, -0.42839432, -0.13769531)
@@ -888,6 +956,8 @@ shape = SubResource("BoxShape3D_vu8g0")
 
 [node name="StaticBody3D15" type="StaticBody3D" parent="building4" unique_id=1470496324]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.895911, 45.76723, 39.84793)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building4/StaticBody3D15" unique_id=1815557579]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33364868, -0.15306091, -0.7159729)
@@ -895,6 +965,8 @@ shape = SubResource("BoxShape3D_cc3j8")
 
 [node name="StaticBody3D16" type="StaticBody3D" parent="building4" unique_id=1893210578]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.503885, 48.41017, -25.971252)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building4/StaticBody3D16" unique_id=128837046]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7680664, 1.0337524, -0.970459)
@@ -902,6 +974,8 @@ shape = SubResource("BoxShape3D_djn8g")
 
 [node name="StaticBody3D17" type="StaticBody3D" parent="building4" unique_id=1246449532]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0167656, 47.9402, 30.70784)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building4/StaticBody3D17" unique_id=1015388079]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9948273, 1.606987, -1.1616821)
@@ -909,6 +983,8 @@ shape = SubResource("BoxShape3D_ytarc")
 
 [node name="StaticBody3D18" type="StaticBody3D" parent="building4" unique_id=160419017]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.553585, 47.9402, 30.70784)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building4/StaticBody3D18" unique_id=2135921311]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9948273, 1.606987, -1.1616821)
@@ -916,6 +992,8 @@ shape = SubResource("BoxShape3D_ytarc")
 
 [node name="StaticBody3D19" type="StaticBody3D" parent="building4" unique_id=614910453]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.004608, 47.9402, 40.333786)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building4/StaticBody3D19" unique_id=1719877977]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.732666, 1.5219841, 2.9903488)
@@ -926,6 +1004,8 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 50.2
 
 [node name="StaticBody3D" type="StaticBody3D" parent="building6" unique_id=760031089]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.000008, 49, 83.99998)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building6/StaticBody3D" unique_id=1513594608]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5397606, -1.3488693, 2.7867126)
@@ -941,11 +1021,13 @@ text = "Tip -->"
 font_size = 100
 
 [node name="Sprite3D" type="Sprite3D" parent="building6/Sketchfab_Scene" unique_id=1568911740]
-transform = Transform3D(-4.4703484e-08, 0, 0.9, 0, 0.81, 0, -0.9, 0, -4.4703484e-08, 0.2524414, 7.1572113, -0.00075531006)
-texture = ExtResource("27_gclfh")
+transform = Transform3D(-4.4703484e-08, 0, 0.9, 0, 0.81, 0, -0.9, 0, -4.4703484e-08, 0.08364105, 7.1572113, 0.04311371)
+texture = ExtResource("27_2fit5")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="building6/Sketchfab_Scene/Sprite3D" unique_id=994731810]
 transform = Transform3D(1.0000007, 0, -1.4901161e-08, 0, 1.0000006, 0, 1.4901161e-08, 0, 1.0000007, 3.7060623, -4.092911, -1.377533)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building6/Sketchfab_Scene/Sprite3D/StaticBody3D" unique_id=1278194154]
 transform = Transform3D(1, 0, 2.9802322e-08, 0, 0.9999999, 0, -2.9802322e-08, 0, 1, -3.7220154, 2.176178, 1.1992569)
@@ -953,6 +1035,8 @@ shape = SubResource("BoxShape3D_07i0j")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="building6" unique_id=816416369]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.69557, 48.218685, 78.01236)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building6/StaticBody3D2" unique_id=1326162258]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2559662, -0.027893066, -0.08203125)
@@ -960,6 +1044,8 @@ shape = SubResource("BoxShape3D_tjkgc")
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="building6" unique_id=736535747]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.512493, 49.092804, 86.06236)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building6/StaticBody3D3" unique_id=1000335106]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49003983, -0.71312714, -0.8662834)
@@ -967,6 +1053,8 @@ shape = SubResource("BoxShape3D_6qcg5")
 
 [node name="StaticBody3D4" type="StaticBody3D" parent="building6" unique_id=9208708]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.321793, 49.092804, 91.051575)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building6/StaticBody3D4" unique_id=1336991448]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2241774, 2.0189514, -1.4730892)
@@ -980,6 +1068,8 @@ transform = Transform3D(-0.3499999, 0, -0.6062178, 0, 0.70000005, 0, 0.6062178, 
 
 [node name="StaticBody3D4" type="StaticBody3D" parent="tutorial_building14" unique_id=1811202877]
 transform = Transform3D(-4.9955876e-08, 0, -1.1428572, 0, 1.1428572, 0, 1.1428572, 0, -4.9955876e-08, -6.28572, -7.4285717, 52.000004)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tutorial_building14/StaticBody3D4" unique_id=306792023]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.991, -3.966116, -4.442878)
@@ -1010,6 +1100,8 @@ transform = Transform3D(5.9604645e-08, 0, -0.6999999, 0, 0.70000005, 0, 0.699999
 
 [node name="StaticBody3D5" type="StaticBody3D" parent="tutorial_building15" unique_id=1577311733]
 transform = Transform3D(-4.9955876e-08, 0, -1.1428572, 0, 1.1428572, 0, 1.1428572, 0, -4.9955876e-08, 147.14285, 2.5714264, -90.42857)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tutorial_building15/StaticBody3D5" unique_id=1842463403]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.31916, -3.5428696, 127.81141)
@@ -1035,6 +1127,8 @@ transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -106, 8, 98)
 
 [node name="StaticBody3D5" type="StaticBody3D" parent="tutorial_building16" unique_id=1938004704]
 transform = Transform3D(-4.9955876e-08, 0, -1.1428572, 0, 1.1428572, 0, 1.1428572, 0, -4.9955876e-08, 177.14285, 15.42857, -89)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tutorial_building16/StaticBody3D5" unique_id=1094437249]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.719215, -20.356844, 155.27869)
@@ -1048,6 +1142,8 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 31.3
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="tutorial_building3" unique_id=1191611486]
 transform = Transform3D(-0.8, 0, 6.9938224e-08, 0, 0.8, 0, -6.9938224e-08, 0, -0.8, 24.799995, 8.199999, 112.7)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tutorial_building3/StaticBody3D2" unique_id=1840844016]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.469522, -13.112459, 140.8454)
@@ -1058,6 +1154,8 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -64.
 
 [node name="StaticBody3D" type="StaticBody3D" parent="building9" unique_id=643034888]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.189484, 46.5804, 89.3502)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building9/StaticBody3D" unique_id=1447792171]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3907452, -1.8597755, -2.6845703)
@@ -1065,6 +1163,8 @@ shape = SubResource("BoxShape3D_lvkmf")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="building9" unique_id=965112749]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.671081, 46.5804, 79.14107)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building9/StaticBody3D2" unique_id=1802659437]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4500256, -0.076049805, -0.21081543)
@@ -1072,6 +1172,8 @@ shape = SubResource("BoxShape3D_d3611")
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="building9" unique_id=620137651]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.573492, 46.5804, 93.33283)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building9/StaticBody3D3" unique_id=787746643]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7110481, 0.10021973, -0.29353905)
@@ -1079,6 +1181,8 @@ shape = SubResource("BoxShape3D_03f7y")
 
 [node name="StaticBody3D4" type="StaticBody3D" parent="building9" unique_id=460335625]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5734959, 46.5804, 83.731995)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building9/StaticBody3D4" unique_id=949012961]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7110481, 0.10021973, -0.29353905)
@@ -1086,6 +1190,8 @@ shape = SubResource("BoxShape3D_03f7y")
 
 [node name="StaticBody3D5" type="StaticBody3D" parent="building9" unique_id=2088360781]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5734978, 46.5804, 77.33497)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building9/StaticBody3D5" unique_id=1730440268]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7110481, 0.10021973, -0.29353905)
@@ -1093,6 +1199,8 @@ shape = SubResource("BoxShape3D_03f7y")
 
 [node name="StaticBody3D6" type="StaticBody3D" parent="building9" unique_id=144473362]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.204029, 45.06624, 90.82814)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building9/StaticBody3D6" unique_id=517246972]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19946289, 0.1081543, 0.2581787)
@@ -1100,6 +1208,8 @@ shape = SubResource("BoxShape3D_ws5y4")
 
 [node name="StaticBody3D7" type="StaticBody3D" parent="building9" unique_id=1759804161]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9108105, 46.5804, 95.6989)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building9/StaticBody3D7" unique_id=1526357249]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6735268, -1.4499054, 0.6347313)
@@ -1107,6 +1217,8 @@ shape = SubResource("BoxShape3D_swpqr")
 
 [node name="StaticBody3D8" type="StaticBody3D" parent="building9" unique_id=264282969]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.846654, 45.625404, 89.3502)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building9/StaticBody3D8" unique_id=23477421]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9918823, -2.3472748)
@@ -1114,6 +1226,8 @@ shape = SubResource("BoxShape3D_7hgmi")
 
 [node name="StaticBody3D9" type="StaticBody3D" parent="building9" unique_id=696576497]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.189484, 46.5804, 95.6953)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building9/StaticBody3D9" unique_id=1981760077]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7891846, 3.4108047, 2.543377)
@@ -1121,6 +1235,8 @@ shape = SubResource("BoxShape3D_etjcc")
 
 [node name="StaticBody3D10" type="StaticBody3D" parent="building9" unique_id=863038635]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.189487, 46.5804, 72.812035)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building9/StaticBody3D10" unique_id=1793280094]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7891846, 3.4108047, 2.543377)
@@ -1128,6 +1244,8 @@ shape = SubResource("BoxShape3D_etjcc")
 
 [node name="StaticBody3D11" type="StaticBody3D" parent="building9" unique_id=312322129]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4650936, 49.15753, 92.20892)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building9/StaticBody3D11" unique_id=1415615494]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7891846, 3.4108047, 2.543377)
@@ -1135,6 +1253,8 @@ shape = SubResource("BoxShape3D_etjcc")
 
 [node name="StaticBody3D12" type="StaticBody3D" parent="building9" unique_id=112723486]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3462925, 49.003998, 92.12484)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building9/StaticBody3D12" unique_id=1628492497]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7891846, 3.4108047, 2.543377)
@@ -1142,6 +1262,8 @@ shape = SubResource("BoxShape3D_etjcc")
 
 [node name="StaticBody3D13" type="StaticBody3D" parent="building9" unique_id=380709282]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3462925, 49.003998, 72.72008)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building9/StaticBody3D13" unique_id=906041638]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7891846, 3.4108047, 2.543377)
@@ -1149,6 +1271,8 @@ shape = SubResource("BoxShape3D_etjcc")
 
 [node name="StaticBody3D14" type="StaticBody3D" parent="building9" unique_id=1532883912]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.306141, 49.003998, 72.76625)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building9/StaticBody3D14" unique_id=1311567131]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7891846, 3.4108047, 2.543377)
@@ -1168,6 +1292,8 @@ transform = Transform3D(-2.9802322e-08, 0, 0.6, 0, 0.7128, 0, -0.6, 0, -2.980232
 texture = ExtResource("34_2fit5")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="building9/Sketchfab_Scene" unique_id=1342878694]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="building9/Sketchfab_Scene/StaticBody3D" unique_id=1267410313]
 transform = Transform3D(1, 0, -2.1316282e-14, 0, 1, 0, 2.1316282e-14, 0, 1, 0.11505127, 6.2375946, -0.014038086)
