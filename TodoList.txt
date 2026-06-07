@@ -1,5 +1,0 @@
-TODO:
-
-	Extra levels
-	Map vergroten/Rand verbergen
-	"return to menu" button
